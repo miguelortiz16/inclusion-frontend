@@ -1,0 +1,14 @@
+{
+  "workshop": {
+    "tools": {
+      "rubric": {
+        "title": "Rúbrica de Evaluación",
+        "description": "Crea rúbricas detalladas para evaluar el desempeño de tus estudiantes"
+      },
+      "checklist": {
+        "title": "Lista de Cotejo",
+        "description": "Genera listas de cotejo para evaluar mediante observación el desempeño de tus estudiantes"
+      }
+    }
+  }
+} 
