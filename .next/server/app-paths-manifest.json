@@ -1,10 +1,10 @@
 {
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/workshop/page": "app/workshop/page.js",
   "/unit-planner/page": "app/unit-planner/page.js",
-  "/ranking/page": "app/ranking/page.js",
+  "/history/page": "app/history/page.js",
   "/comunidad/page": "app/comunidad/page.js",
-  "/pricing/page": "app/pricing/page.js",
   "/page": "app/page.js",
+  "/workshop/page": "app/workshop/page.js",
+  "/ranking/page": "app/ranking/page.js",
   "/unit-planner/calendar/page": "app/unit-planner/calendar/page.js"
 }

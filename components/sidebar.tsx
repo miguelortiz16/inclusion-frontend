@@ -69,117 +69,250 @@ export function Sidebar() {
       <aside
         className={`
           fixed top-0 left-0 z-40 
-          h-screen w-64
-          transition-transform duration-300 ease-in-out
+          h-screen w-72
+          transition-all duration-500 ease-in-out
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-          shadow-2xl
         `}
         style={{ 
-          borderRight: '1px solid rgba(101, 204, 138, 0.2)',
-          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
-          backdropFilter: 'blur(10px)'
+          background: 'linear-gradient(180deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%)',
+          backdropFilter: 'blur(20px)',
+          borderRight: '2px solid rgba(148, 163, 184, 0.2)',
+          boxShadow: '0 25px 50px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
         }}
       >
-        <div className="h-full flex flex-col font-poppins">
-          <div className="p-4 sm:p-6 flex items-center gap-3 border-b"
-               style={{ borderColor: 'rgba(101, 204, 138, 0.2)' }}>
+        {/* Subtle background elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 right-4 w-16 h-16 rounded-full opacity-5"
+               style={{ 
+                 background: 'radial-gradient(circle, #65cc8a, transparent)',
+                 animation: 'float 8s ease-in-out infinite'
+               }}></div>
+          <div className="absolute bottom-40 left-8 w-12 h-12 rounded-full opacity-3"
+               style={{ 
+                 background: 'radial-gradient(circle, #4ade80, transparent)',
+                 animation: 'float 6s ease-in-out infinite reverse'
+               }}></div>
+        </div>
+
+        <div className="h-full flex flex-col font-poppins relative z-10">
+          {/* Header with clean styling */}
+          <div className="p-3 flex items-center gap-2 border-b"
+               style={{ 
+                 borderColor: 'rgba(148, 163, 184, 0.2)',
+                 background: 'linear-gradient(135deg, #ffffff, #f8fafc)',
+                 backdropFilter: 'blur(10px)'
+               }}>
             <div className="relative">
-              <Image
-                src="/images/logo.png"
-                alt="Logo"
-                width={40}
-                height={40}
-                className="rounded-lg shadow-lg sm:w-12 sm:h-12"
-                style={{ 
-                  boxShadow: '0 4px 12px rgba(101, 204, 138, 0.3)',
-                  border: '2px solid rgba(101, 204, 138, 0.2)'
-                }}
-              />
-              <div className="absolute -bottom-1 -right-1 rounded-full p-1.5 shadow-md"
-                   style={{ 
-                     background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                     boxShadow: '0 2px 8px rgba(101, 204, 138, 0.4)'
-                   }}>
-                <Accessibility className="w-3 h-3 text-white" />
+              <div className="relative">
+                <Image
+                  src="/images/logo.png"
+                  alt="Logo"
+                  width={36}
+                  height={36}
+                  className="rounded-lg shadow-md"
+                  style={{ 
+                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                    border: '1px solid rgba(148, 163, 184, 0.2)'
+                  }}
+                />
+                <div className="absolute -bottom-1 -right-1 rounded-full p-1 shadow-sm"
+                     style={{ 
+                       background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                       boxShadow: '0 2px 6px rgba(101, 204, 138, 0.3)'
+                     }}>
+                  <Accessibility className="w-2.5 h-2.5 text-white" />
+                </div>
               </div>
             </div>
-            <span className="text-lg sm:text-xl font-bold bg-clip-text text-transparent"
-                  style={{ 
-                    background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                    WebkitBackgroundClip: 'text'
-                  }}>
-              InclusionPlanner
-            </span>
+            <div className="flex flex-col">
+              <span className="text-base font-bold" style={{ color: '#1e293b' }}>
+                InclusionPlanner
+              </span>
+              <span className="text-xs font-medium" style={{ color: '#64748b' }}>
+                Plataforma de Inclusión Educativa
+              </span>
+            </div>
           </div>
 
-          <nav className="flex-1 py-4 sm:py-6">
-            <div className="px-4 mb-2 text-xs font-semibold uppercase tracking-wider"
-                 style={{ color: '#65cc8a' }}>
+          <nav className="flex-1 py-6">
+            <div className="px-3 mb-2 text-xs font-bold uppercase tracking-wider"
+                 style={{ 
+                   color: '#65cc8a',
+                   background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.08), rgba(74, 222, 128, 0.08))',
+                   padding: '4px 8px',
+                   borderRadius: '4px',
+                   margin: '0 12px 8px 12px',
+                   border: '1px solid rgba(101, 204, 138, 0.15)'
+                 }}>
               {t('sidebar.title')}
             </div>
-            <ul className="space-y-2 px-2 font-montserrat font-semibold">
+            <ul className="space-y-1.5 px-2 font-montserrat font-semibold">
               <li>
                 <Link
                   href="/unit-planner"
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm transition-all duration-200 ${isActive("/unit-planner")}`}
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-200 group hover:scale-[1.02] hover:shadow-md ${isActive("/unit-planner")}`}
                   onClick={() => isMobile && setIsOpen(false)}
+                  style={{
+                    background: isActive("/unit-planner") 
+                      ? 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                      : 'transparent',
+                    border: isActive("/unit-planner") 
+                      ? '2px solid rgba(101, 204, 138, 0.25)'
+                      : '1px solid transparent',
+                    boxShadow: isActive("/unit-planner") 
+                      ? '0 4px 12px rgba(101, 204, 138, 0.15)'
+                      : 'none'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive("/unit-planner")) {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(101, 204, 138, 0.05), rgba(74, 222, 128, 0.05))';
+                      e.currentTarget.style.border = '1px solid rgba(101, 204, 138, 0.2)';
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(101, 204, 138, 0.1)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive("/unit-planner")) {
+                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.border = '1px solid transparent';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }
+                  }}
                 >
-                  <div className="p-1.5 rounded-lg shadow-sm"
+                  <div className="p-1 rounded-md shadow-sm"
                        style={{ 
-                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.15), rgba(74, 222, 128, 0.15))',
+                         boxShadow: '0 2px 6px rgba(101, 204, 138, 0.2)'
                        }}>
-                    <BookOpen className="w-5 h-5" style={{ color: '#65cc8a' }} />
+                    <BookOpen className="w-4 h-4" style={{ color: '#65cc8a' }} />
                   </div>
-                  <span>{t('sidebar.classPlanner')}</span>
-                  <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
+                                      <span className="font-medium" style={{ color: '#1e293b' }}>{t('sidebar.classPlanner')}</span>
+                    <ChevronRight className="w-4 h-4 ml-auto opacity-60 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
                 <Link
                   href="/workshop"
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm transition-all duration-200 ${isActive("/workshop")}`}
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-200 group hover:scale-[1.02] hover:shadow-md ${isActive("/workshop")}`}
                   onClick={() => isMobile && setIsOpen(false)}
+                  style={{
+                    background: isActive("/workshop") 
+                      ? 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                      : 'transparent',
+                    border: isActive("/workshop") 
+                      ? '2px solid rgba(101, 204, 138, 0.25)'
+                      : '1px solid transparent',
+                    boxShadow: isActive("/workshop") 
+                      ? '0 4px 12px rgba(101, 204, 138, 0.15)'
+                      : 'none'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive("/workshop")) {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(101, 204, 138, 0.05), rgba(74, 222, 128, 0.05))';
+                      e.currentTarget.style.border = '1px solid rgba(101, 204, 138, 0.2)';
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(101, 204, 138, 0.1)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive("/workshop")) {
+                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.border = '1px solid transparent';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }
+                  }}
                 >
-                  <div className="p-1.5 rounded-lg shadow-sm"
+                  <div className="p-1 rounded-md shadow-sm"
                        style={{ 
-                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.15), rgba(74, 222, 128, 0.15))',
+                         boxShadow: '0 2px 6px rgba(101, 204, 138, 0.2)'
                        }}>
-                    <Wrench className="w-5 h-5" style={{ color: '#65cc8a' }} />
+                    <Wrench className="w-4 h-4" style={{ color: '#65cc8a' }} />
                   </div>
-                  <span>{t('sidebar.aiTools')}</span>
-                  <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
+                                      <span className="font-medium" style={{ color: '#1e293b' }}>{t('sidebar.aiTools')}</span>
+                    <ChevronRight className="w-4 h-4 ml-auto opacity-60 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
                 <Link
                   href="/history"
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm transition-all duration-200 ${isActive("/history")}`}
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-200 group hover:scale-[1.02] hover:shadow-md ${isActive("/history")}`}
                   onClick={() => isMobile && setIsOpen(false)}
+                  style={{
+                    background: isActive("/history") 
+                      ? 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                      : 'transparent',
+                    border: isActive("/history") 
+                      ? '2px solid rgba(101, 204, 138, 0.25)'
+                      : '1px solid transparent',
+                    boxShadow: isActive("/history") 
+                      ? '0 4px 12px rgba(101, 204, 138, 0.15)'
+                      : 'none'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive("/history")) {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(101, 204, 138, 0.05), rgba(74, 222, 128, 0.05))';
+                      e.currentTarget.style.border = '1px solid rgba(101, 204, 138, 0.2)';
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(101, 204, 138, 0.1)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive("/history")) {
+                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.border = '1px solid transparent';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }
+                  }}
                 >
-                  <div className="p-1.5 rounded-lg shadow-sm"
+                  <div className="p-1 rounded-md shadow-sm"
                        style={{ 
-                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.15), rgba(74, 222, 128, 0.15))',
+                         boxShadow: '0 2px 6px rgba(101, 204, 138, 0.2)'
                        }}>
-                    <History className="w-5 h-5" style={{ color: '#65cc8a' }} />
+                    <History className="w-4 h-4" style={{ color: '#65cc8a' }} />
                   </div>
-                  <span>{t('sidebar.history')}</span>
-                  <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
+                                      <span className="font-medium" style={{ color: '#1e293b' }}>{t('sidebar.history')}</span>
+                    <ChevronRight className="w-4 h-4 ml-auto opacity-60 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
                 <Link
                   href="/unit-planner/calendar"
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm transition-all duration-200 ${isActive("/unit-planner/calendar")}`}
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-200 group hover:scale-[1.02] hover:shadow-md ${isActive("/unit-planner/calendar")}`}
                   onClick={() => isMobile && setIsOpen(false)}
+                  style={{
+                    background: isActive("/unit-planner/calendar") 
+                      ? 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                      : 'transparent',
+                    border: isActive("/unit-planner/calendar") 
+                      ? '2px solid rgba(101, 204, 138, 0.25)'
+                      : '1px solid transparent',
+                    boxShadow: isActive("/unit-planner/calendar") 
+                      ? '0 4px 12px rgba(101, 204, 138, 0.15)'
+                      : 'none'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive("/unit-planner/calendar")) {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(101, 204, 138, 0.05), rgba(74, 222, 128, 0.05))';
+                      e.currentTarget.style.border = '1px solid rgba(101, 204, 138, 0.2)';
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(101, 204, 138, 0.1)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive("/unit-planner/calendar")) {
+                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.border = '1px solid transparent';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }
+                  }}
                 >
-                  <div className="p-1.5 rounded-lg shadow-sm"
+                  <div className="p-1 rounded-md shadow-sm"
                        style={{ 
-                         background: 'linear-gradient(135deg, rgba(101, 138, 204, 0.1), rgba(74, 222, 128, 0.1))'
+                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.15), rgba(74, 222, 128, 0.15))',
+                         boxShadow: '0 2px 6px rgba(101, 204, 138, 0.2)'
                        }}>
-                    <CalendarIcon className="w-5 h-5" style={{ color: '#65cc8a' }} />
+                    <CalendarIcon className="w-4 h-4" style={{ color: '#65cc8a' }} />
                   </div>
-                  <span>{t('sidebar.calendar')}</span>
-                  <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
+                                      <span className="font-medium" style={{ color: '#1e293b' }}>{t('sidebar.calendar')}</span>
+                    <ChevronRight className="w-4 h-4 ml-auto opacity-60 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               {/*
@@ -200,33 +333,85 @@ export function Sidebar() {
               <li>
                 <Link
                   href="/ranking"
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm transition-all duration-200 ${isActive("/ranking")}`}
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-200 group hover:scale-[1.02] hover:shadow-md ${isActive("/ranking")}`}
                   onClick={() => isMobile && setIsOpen(false)}
+                  style={{
+                    background: isActive("/ranking") 
+                      ? 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                      : 'transparent',
+                    border: isActive("/ranking") 
+                      ? '2px solid rgba(101, 204, 138, 0.25)'
+                      : '1px solid transparent',
+                    boxShadow: isActive("/ranking") 
+                      ? '0 4px 12px rgba(101, 204, 138, 0.15)'
+                      : 'none'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive("/ranking")) {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(101, 204, 138, 0.05), rgba(74, 222, 128, 0.05))';
+                      e.currentTarget.style.border = '1px solid rgba(101, 204, 138, 0.2)';
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(101, 204, 138, 0.1)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive("/ranking")) {
+                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.border = '1px solid transparent';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }
+                  }}
                 >
-                  <div className="p-1.5 rounded-lg shadow-sm"
+                  <div className="p-1 rounded-md shadow-sm"
                        style={{ 
-                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.15), rgba(74, 222, 128, 0.15))',
+                         boxShadow: '0 2px 6px rgba(101, 204, 138, 0.2)'
                        }}>
-                    <Trophy className="w-5 h-5" style={{ color: '#65cc8a' }} />
+                    <Trophy className="w-4 h-4" style={{ color: '#65cc8a' }} />
                   </div>
-                  <span>{t('sidebar.ranking')}</span>
-                  <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
+                                      <span className="font-medium" style={{ color: '#1e293b' }}>{t('sidebar.ranking')}</span>
+                    <ChevronRight className="w-4 h-4 ml-auto opacity-60 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
                 <Link
                   href="/comunidad"
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm transition-all duration-200 ${isActive("/comunidad")}`}
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-200 group hover:scale-[1.02] hover:shadow-md ${isActive("/comunidad")}`}
                   onClick={() => isMobile && setIsOpen(false)}
+                  style={{
+                    background: isActive("/comunidad") 
+                      ? 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                      : 'transparent',
+                    border: isActive("/comunidad") 
+                      ? '2px solid rgba(101, 204, 138, 0.25)'
+                      : '1px solid transparent',
+                    boxShadow: isActive("/comunidad") 
+                      ? '0 4px 12px rgba(101, 204, 138, 0.15)'
+                      : 'none'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive("/comunidad")) {
+                      e.currentTarget.style.background = 'linear-gradient(135deg, rgba(101, 204, 138, 0.05), rgba(74, 222, 128, 0.05))';
+                      e.currentTarget.style.border = '1px solid rgba(101, 204, 138, 0.2)';
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(101, 204, 138, 0.1)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive("/comunidad")) {
+                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.border = '1px solid transparent';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }
+                  }}
                 >
-                  <div className="p-1.5 rounded-lg shadow-sm"
+                  <div className="p-1 rounded-md shadow-sm"
                        style={{ 
-                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.15), rgba(74, 222, 128, 0.15))',
+                         boxShadow: '0 2px 6px rgba(101, 204, 138, 0.2)'
                        }}>
-                    <Users className="w-5 h-5" style={{ color: '#65cc8a' }} />
+                    <Users className="w-4 h-4" style={{ color: '#65cc8a' }} />
                   </div>
-                  <span>Comunidad</span>
-                  <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
+                                      <span className="font-medium" style={{ color: '#1e293b' }}>Comunidad</span>
+                    <ChevronRight className="w-4 h-4 ml-auto opacity-60 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
@@ -244,14 +429,31 @@ export function Sidebar() {
                       toast.error(t('sidebar.logoutError'))
                     }
                   }}
-                  className="w-full flex items-center gap-2 py-2 px-3 text-sm text-gray-600 hover:text-red-600 rounded-lg transition-colors duration-200"
+                  className="w-full flex items-center gap-3 py-2.5 px-3 text-sm rounded-lg transition-all duration-200 group hover:scale-[1.02] hover:shadow-md"
                   style={{ 
-                    background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.05), rgba(239, 68, 68, 0.1))',
-                    border: '1px solid rgba(239, 68, 68, 0.1)'
+                    background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.15))',
+                    border: '1px solid rgba(239, 68, 68, 0.2)',
+                    color: '#dc2626'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.2))';
+                    e.currentTarget.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(239, 68, 68, 0.15)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.15))';
+                    e.currentTarget.style.border = '1px solid rgba(239, 68, 68, 0.2)';
+                    e.currentTarget.style.boxShadow = 'none';
                   }}
                 >
-                  <LogOut className="w-4 h-4" />
-                  <span>{t('sidebar.logout')}</span>
+                  <div className="p-1 rounded-md shadow-sm"
+                       style={{ 
+                         background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(220, 38, 38, 0.15))',
+                         boxShadow: '0 2px 6px rgba(239, 68, 68, 0.2)'
+                       }}>
+                    <LogOut className="w-4 h-4" style={{ color: '#dc2626' }} />
+                  </div>
+                  <span className="font-medium" style={{ color: '#1e293b' }}>{t('sidebar.logout')}</span>
                 </button>
               </li>
             </ul>
@@ -268,7 +470,7 @@ export function Sidebar() {
           </div>
           */}
           <div className="p-4 border-t"
-               style={{ borderColor: 'rgba(101, 204, 138, 0.2)' }}>
+               style={{ borderColor: 'rgba(148, 163, 184, 0.2)' }}>
             <Link href="/pricing">
               <button
                 className="w-full py-1.5 px-2 text-white rounded-lg text-xs font-medium shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-200 group mb-2"
@@ -311,7 +513,7 @@ export function Sidebar() {
           </div>
           
           <div className="p-4 border-t"
-               style={{ borderColor: 'rgba(101, 204, 138, 0.2)' }}>
+               style={{ borderColor: 'rgba(148, 163, 184, 0.2)' }}>
             <button
               onClick={() => setIsOpen(false)}
               className="mt-4 w-full flex items-center justify-center gap-2 py-2 text-sm text-gray-600 transition-colors duration-200"
