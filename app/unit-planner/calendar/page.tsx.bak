@@ -1,0 +1,221 @@
+"use client"
+
+import { useState, useEffect, useMemo } from "react"
+import { Layout } from "@/components/layout"
+import { Calendar as BigCalendar, dateFnsLocalizer, Views } from "react-big-calendar"
+import { es } from "date-fns/locale"
+import { format, parse, startOfWeek, getDay, add } from "date-fns"
+import "react-big-calendar/lib/css/react-big-calendar.css"
+import "./calendar-custom.css"
+import { useTranslations } from "@/utils/useTranslations"
+import { Button } from "@/components/ui/button"
+import { Plus } from "lucide-react"
+
+interface Leccion {
+  dia: number
+  fecha: string | null
+  titulo: string
+  inicio: { tema: string }
+  desarrollo: { tema: string }
+  cierre: { tema: string }
+}
+
+interface Unidad {
+  _id: string
+  nombreUnidad: string
+  asignatura: string
+  detallesUnidad: string
+  estandaresObjetivos: string
+  numeroLecciones: number
+  nivelEducativo: string | null
+  email: string
+  lecciones: Leccion[]
+  activo: boolean
+}
+
+const locales = {
+  es: es,
+}
+
+const localizer = dateFnsLocalizer({
+  format,
+  parse,
+  startOfWeek: () => startOfWeek(new Date(), { weekStartsOn: 1 }),
+  getDay,
+  locales,
+})
+
+export default function UnitPlannerCalendar() {
+  const t = useTranslations()
+  const [units, setUnits] = useState<Unidad[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [selectedEvent, setSelectedEvent] = useState<any>(null)
+  const [view, setView] = useState<string>(Views.WEEK)
+
+  useEffect(() => {
+    const fetchUnits = async () => {
+      try {
+        const userEmail = localStorage.getItem('email')
+        if (!userEmail) {
+          setError('No se encontró el email del usuario. Por favor, inicie sesión nuevamente.')
+          setLoading(false)
+          return
+        }
+        const response = await fetch(`https://planbackend.us-east-1.elasticbeanstalk.com/api/unit-planner/units/active?email=${userEmail}`)
+        if (!response.ok) {
+          throw new Error(`Error al cargar las clases: ${response.status}`)
+        }
+        const data = await response.json()
+        setUnits(data)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Error desconocido')
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchUnits()
+  }, [])
+
+  // Map lessons with date to calendar events
+  const events = useMemo(() => {
+    return units.flatMap(unit =>
+      unit.lecciones
+        .filter(lesson => lesson.fecha)
+        .map(lesson => {
+          // Fecha en formato dd/MM/yyyy
+          const [day, month, year] = lesson.fecha!.split("/")
+          const start = new Date(Number(year), Number(month) - 1, Number(day), 10, 0)
+          const end = new Date(Number(year), Number(month) - 1, Number(day), 11, 0)
+          return {
+            title: `${lesson.titulo} (${unit.nombreUnidad})`,
+            start,
+            end,
+            resource: { unit, lesson },
+          }
+        })
+    )
+  }, [units])
+
+  // Lecciones sin fecha
+  const lessonsWithoutDate = useMemo(() => {
+    return units.flatMap(unit =>
+      unit.lecciones
+        .filter(lesson => !lesson.fecha)
+        .map(lesson => ({
+          ...lesson,
+          unitName: unit.nombreUnidad,
+          subject: unit.asignatura,
+          unitId: unit._id,
+        }))
+    )
+  }, [units])
+
+  // Handler for empty slot (to create a class)
+  const handleSelectSlot = (slotInfo: any) => {
+    // Aquí puedes abrir un modal o redirigir a la creación de clase
+    alert(`Crear clase para el día: ${format(slotInfo.start, 'PPP', { locale: es })}`)
+  }
+
+  // Handler for clicking an event
+  const handleSelectEvent = (event: any) => {
+    setSelectedEvent(event)
+    // Aquí puedes mostrar detalles o abrir modal de edición
+    alert(`Clase: ${event.title}`)
+  }
+
+  const handleAssignDate = (lesson: any) => {
+    alert(`Asignar fecha a la lección: ${lesson.titulo} (${lesson.unitName})`)
+  }
+
+  if (loading) {
+    return <Layout><div className="p-8 text-center">Cargando...</div></Layout>
+  }
+  if (error) {
+    return <Layout><div className="p-8 text-center text-red-500">{error}</div></Layout>
+  }
+
+  return (
+    <Layout>
+      <div className="p-4">
+        <div className="flex items-center justify-between mb-4">
+          <h1 className="text-2xl font-bold">{t('unitPlanner.calendar.title') || 'Calendario de clases'}</h1>
+          <Button variant="outline" onClick={() => window.location.reload()}><Plus className="w-4 h-4 mr-2" />Planificar</Button>
+        </div>
+        <div style={{ height: 600, background: "#fff", borderRadius: 12, padding: 8 }}>
+          <BigCalendar
+            localizer={localizer}
+            events={events}
+            startAccessor="start"
+            endAccessor="end"
+            style={{ height: 550 }}
+            views={[Views.WEEK, Views.MONTH]}
+            view={view}
+            onView={setView}
+            defaultView={Views.WEEK}
+            messages={{
+              week: 'Semana',
+              month: 'Mes',
+              today: 'Hoy',
+              previous: '<',
+              next: '>',
+              noEventsInRange: 'No hay clases en este rango',
+            }}
+            culture="es"
+            selectable
+            onSelectSlot={handleSelectSlot}
+            onSelectEvent={handleSelectEvent}
+            popup
+            components={{
+              toolbar: (props: any) => (
+                <div className="flex items-center justify-between mb-2 px-2">
+                  <div>
+                    <Button size="sm" variant="outline" onClick={() => props.onNavigate('TODAY')}>Hoy</Button>
+                    <Button size="sm" variant="ghost" onClick={() => props.onNavigate('PREV')}>{'<'}</Button>
+                    <Button size="sm" variant="ghost" onClick={() => props.onNavigate('NEXT')}>{'>'}</Button>
+                  </div>
+                  <div className="font-semibold text-lg">{format(props.date, 'MMMM yyyy', { locale: es })}</div>
+                  <div>
+                    <Button size="sm" variant={props.view === 'week' ? 'default' : 'outline'} onClick={() => props.onView('week')}>Semana</Button>
+                    <Button size="sm" variant={props.view === 'month' ? 'default' : 'outline'} onClick={() => props.onView('month')}>Mes</Button>
+                  </div>
+                </div>
+              ),
+              event: ({ event }: { event: any }) => (
+                <div className="p-1 text-xs font-medium text-blue-700">
+                  {event.title}
+                </div>
+              ),
+              dateCellWrapper: ({ value, children }: { value: Date, children: React.ReactNode }) => {
+                const isToday = format(value, 'yyyy-MM-dd') === format(new Date(), 'yyyy-MM-dd')
+                return (
+                  <div style={isToday ? { background: '#e0e7ff' } : {}}>{children}</div>
+                )
+              },
+            }}
+            longPressThreshold={10}
+          />
+        </div>
+        {/* Listado de lecciones sin fecha */}
+        {lessonsWithoutDate.length > 0 && (
+          <div className="mt-8 bg-white rounded-xl shadow p-6">
+            <h2 className="text-lg font-bold mb-4 text-blue-700">Lecciones sin fecha</h2>
+            <ul className="space-y-4">
+              {lessonsWithoutDate.map((lesson, idx) => (
+                <li key={idx} className="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b pb-3 last:border-b-0 last:pb-0">
+                  <div>
+                    <div className="font-semibold text-gray-800">{lesson.titulo}</div>
+                    <div className="text-sm text-gray-500">{lesson.unitName} — {lesson.subject}</div>
+                  </div>
+                  <Button size="sm" variant="outline" onClick={() => handleAssignDate(lesson)}>
+                    Asignar fecha
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </Layout>
+  )
+} 
