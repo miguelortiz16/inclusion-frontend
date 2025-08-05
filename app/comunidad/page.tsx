@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Bell, Search, Share2, BookOpen, ChevronDown, ChevronUp, ThumbsUp } from "lucide-react"
+import { Bell, Search, Share2, BookOpen, ChevronDown, ChevronUp, ThumbsUp, Accessibility, Heart, Shield } from "lucide-react"
 import { Layout } from "@/components/layout"
 import { useLanguage } from "../contexts/LanguageContext"
 
@@ -82,15 +82,49 @@ export default function Comunidad() {
 
   return (
     <Layout>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50/50 pb-10">
+      <div className="min-h-screen pb-10"
+           style={{
+             background: 'linear-gradient(135deg, #f0fdf4 0%, #ffffff 50%, #dcfce7 100%)',
+             position: 'relative',
+             overflow: 'hidden'
+           }}>
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-32 h-32 rounded-full opacity-20"
+               style={{ 
+                 background: 'radial-gradient(circle, #65cc8a, transparent)',
+                 animation: 'float 6s ease-in-out infinite'
+               }}></div>
+          <div className="absolute top-40 right-20 w-24 h-24 rounded-full opacity-15"
+               style={{ 
+                 background: 'radial-gradient(circle, #4ade80, transparent)',
+                 animation: 'float 8s ease-in-out infinite reverse'
+               }}></div>
+          <div className="absolute bottom-20 left-1/4 w-20 h-20 rounded-full opacity-10"
+               style={{ 
+                 background: 'radial-gradient(circle, #65cc8a, transparent)',
+                 animation: 'float 7s ease-in-out infinite'
+               }}></div>
+        </div>
+        
         {/* Top search bar */}
-        <div className="border-b border-blue-100 bg-white py-4 px-4 shadow-sm sticky top-0 z-10">
+        <div className="py-4 px-4 shadow-sm sticky top-0 z-10"
+             style={{
+               background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+               backdropFilter: 'blur(20px)',
+               borderBottom: '1px solid rgba(101, 204, 138, 0.2)'
+             }}>
           <div className="max-w-4xl mx-auto">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-400 w-5 h-5" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5" style={{ color: '#65cc8a' }} />
               <Input
                 placeholder={t('community.inicio.searchPlaceholder')}
-                className="pl-12 pr-4 py-2.5 border border-blue-100 rounded-lg bg-white shadow-sm focus:ring-1 focus:ring-blue-200 text-base transition-all"
+                className="pl-12 pr-4 py-2.5 rounded-lg text-base transition-all"
+                style={{
+                  border: '1px solid rgba(101, 204, 138, 0.3)',
+                  background: 'rgba(255, 255, 255, 0.9)',
+                  backdropFilter: 'blur(10px)'
+                }}
                 value={searchQuery}
                 onChange={(e) => handleSearch(e.target.value)}
               />
@@ -101,8 +135,17 @@ export default function Comunidad() {
         <div className="max-w-4xl mx-auto px-4 py-6">
           <div className="mb-6">
             <Tabs defaultValue="feed">
-              <TabsList className="bg-white p-1 rounded-lg shadow-sm border border-blue-100">
-                <TabsTrigger value="feed" className="rounded-md data-[state=active]:bg-blue-50 data-[state=active]:text-blue-600 data-[state=active]:shadow-sm transition-all">
+              <TabsList className="p-1 rounded-lg shadow-sm"
+                       style={{
+                         background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+                         backdropFilter: 'blur(20px)',
+                         border: '1px solid rgba(101, 204, 138, 0.2)'
+                       }}>
+                <TabsTrigger value="feed" className="rounded-md transition-all"
+                             style={{
+                               background: 'transparent',
+                               color: '#000000'
+                             }}>
                   {t('community.feed')}
                 </TabsTrigger>
               </TabsList>
@@ -112,22 +155,37 @@ export default function Comunidad() {
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8">
             {/* Left column - User profile */}
             <div className="w-full">
-              <div className="bg-white rounded-xl border border-blue-100 shadow-sm overflow-hidden sticky top-24">
+              <div className="rounded-xl overflow-hidden sticky top-24"
+                   style={{
+                     background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+                     backdropFilter: 'blur(20px)',
+                     border: '1px solid rgba(101, 204, 138, 0.2)',
+                     boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                   }}>
                 <div className="p-5 flex flex-col items-center">
-                  <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-blue-500 to-blue-400 flex items-center justify-center text-white text-2xl font-medium mb-4 shadow-sm">
+                  <div className="w-20 h-20 rounded-xl flex items-center justify-center text-white text-2xl font-medium mb-4 shadow-sm"
+                       style={{
+                         background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                         boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                       }}>
                     {profile.name ? getInitials(profile.name) : 'M'}
                   </div>
-                  <h2 className="text-lg font-semibold text-center mb-3 text-slate-800">{profile.name || 'Nombre del profesor'}</h2>
+                  <h2 className="text-lg font-semibold text-center mb-3" style={{ color: '#000000' }}>{profile.name || 'Nombre del profesor'}</h2>
                   <div className="w-full">
-                    <div className="text-sm font-medium text-blue-600 text-center mb-2">Materias:</div>
+                    <div className="text-sm font-medium text-center mb-2" style={{ color: '#65cc8a' }}>Materias:</div>
                     {profile.subjects && profile.subjects.length > 0 ? (
                       <div className="flex flex-wrap justify-center gap-1.5">
                         {profile.subjects.map((subj, idx) => (
-                          <span key={idx} className="bg-blue-50 text-blue-600 rounded-lg px-2.5 py-1 text-xs font-medium">{subj}</span>
+                          <span key={idx} className="rounded-lg px-2.5 py-1 text-xs font-medium"
+                                style={{
+                                  background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                                  color: '#65cc8a',
+                                  border: '1px solid rgba(101, 204, 138, 0.3)'
+                                }}>{subj}</span>
                         ))}
                       </div>
                     ) : (
-                      <div className="text-xs text-slate-400 text-center">Sin materias registradas</div>
+                      <div className="text-xs text-center" style={{ color: '#000000' }}>Sin materias registradas</div>
                     )}
                   </div>
                 </div>
@@ -137,11 +195,22 @@ export default function Comunidad() {
             {/* Middle column - Posts */}
             <div className="w-full max-w-2xl">
               {/* Nueva publicación */}
-              <div className="mb-6 bg-white rounded-xl shadow-sm p-5 border border-blue-100">
+              <div className="mb-6 rounded-xl shadow-sm p-5"
+                   style={{
+                     background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+                     backdropFilter: 'blur(20px)',
+                     border: '1px solid rgba(101, 204, 138, 0.2)',
+                     boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                   }}>
                 <div className="flex-1 relative">
                   <Input
                     placeholder={t('community.post.placeholder')}
-                    className="pl-4 pr-10 py-2.5 border border-blue-100 rounded-lg bg-white shadow-sm focus:ring-1 focus:ring-blue-200 transition-all"
+                    className="pl-4 pr-10 py-2.5 rounded-lg transition-all"
+                    style={{
+                      border: '1px solid rgba(101, 204, 138, 0.3)',
+                      background: 'rgba(255, 255, 255, 0.9)',
+                      backdropFilter: 'blur(10px)'
+                    }}
                     value={newPost}
                     onChange={e => setNewPost(e.target.value)}
                     onKeyDown={e => {
@@ -152,7 +221,8 @@ export default function Comunidad() {
                     }}
                   />
                   <button
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-blue-500 hover:text-blue-600 transition-colors"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 transition-colors"
+                    style={{ color: '#65cc8a' }}
                     onClick={handleNewPost}
                   >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -163,7 +233,7 @@ export default function Comunidad() {
               </div>
 
               <div className="flex items-center mb-4 px-2">
-                <span className="text-slate-700 font-medium">{t('community.post.forYou')}</span>
+                <span className="font-medium" style={{ color: '#000000' }}>{t('community.post.forYou')}</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="ml-1">
                   <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -172,12 +242,24 @@ export default function Comunidad() {
               {/* Posts dinámicos */}
               <div className="space-y-5">
                 {loading ? (
-                  <div className="flex items-center justify-center min-h-[200px] bg-white rounded-xl border border-blue-100 shadow-sm">
-                    <div className="text-center text-slate-400 py-8">Cargando publicaciones...</div>
+                  <div className="flex items-center justify-center min-h-[200px] rounded-xl shadow-sm"
+                       style={{
+                         background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+                         backdropFilter: 'blur(20px)',
+                         border: '1px solid rgba(101, 204, 138, 0.2)',
+                         boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                       }}>
+                    <div className="text-center py-8" style={{ color: '#000000' }}>Cargando publicaciones...</div>
                   </div>
                 ) : filteredPosts.length === 0 ? (
-                  <div className="flex items-center justify-center min-h-[200px] bg-white rounded-xl border border-blue-100 shadow-sm">
-                    <div className="text-center text-slate-400 py-8">No hay publicaciones.</div>
+                  <div className="flex items-center justify-center min-h-[200px] rounded-xl shadow-sm"
+                       style={{
+                         background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+                         backdropFilter: 'blur(20px)',
+                         border: '1px solid rgba(101, 204, 138, 0.2)',
+                         boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                       }}>
+                    <div className="text-center py-8" style={{ color: '#000000' }}>No hay publicaciones.</div>
                   </div>
                 ) : (
                   filteredPosts.map(post => (
@@ -195,6 +277,25 @@ export default function Comunidad() {
           </div>
         </div>
       </div>
+      
+      {/* CSS Animations */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          33% { transform: translateY(-20px) rotate(1deg); }
+          66% { transform: translateY(-10px) rotate(-1deg); }
+        }
+        
+        @keyframes pulse {
+          0%, 100% { opacity: 0.5; transform: scale(1); }
+          50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        
+        @keyframes gradientShift {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+      `}</style>
     </Layout>
   )
 }
@@ -283,35 +384,47 @@ function ElegantPostCard({ post, t, setPosts, posts }: ElegantPostCardProps) {
   }
 
   return (
-    <div className="bg-white rounded-xl border border-blue-100 shadow-sm p-5 mb-4 transition-all hover:shadow-md">
+    <div className="rounded-xl p-5 mb-4 transition-all hover:shadow-md"
+         style={{
+           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+           backdropFilter: 'blur(20px)',
+           border: '1px solid rgba(101, 204, 138, 0.2)',
+           boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+         }}>
       {/* Header */}
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-blue-400 flex items-center justify-center text-base font-bold text-white shadow-sm">
+        <div className="w-12 h-12 rounded-lg flex items-center justify-center text-base font-bold text-white shadow-sm"
+             style={{
+               background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+               boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+             }}>
           {initials}
         </div>
         <div className="flex-1 min-w-0">
-          <div className="font-medium text-slate-800 leading-tight">{displayName}</div>
-          <div className="text-xs text-slate-400 leading-tight">{fecha}</div>
+          <div className="font-medium leading-tight" style={{ color: '#000000' }}>{displayName}</div>
+          <div className="text-xs leading-tight" style={{ color: '#000000' }}>{fecha}</div>
         </div>
-        <button className="text-slate-400 hover:text-blue-500 transition-colors">
+        <button className="transition-colors" style={{ color: '#65cc8a' }}>
           <Share2 className="w-5 h-5" />
         </button>
       </div>
       {/* Content */}
-      <div className="text-slate-700 mb-4 whitespace-pre-line text-[15px] leading-relaxed">{post.content}</div>
+      <div className="mb-4 whitespace-pre-line text-[15px] leading-relaxed" style={{ color: '#000000' }}>{post.content}</div>
       {/* Actions */}
-      <div className="flex items-center gap-6 border-t border-blue-100 pt-4 pb-2 text-sm">
+      <div className="flex items-center gap-6 pt-4 pb-2 text-sm"
+           style={{ borderTop: '1px solid rgba(101, 204, 138, 0.2)' }}>
         <button
-          className={`flex items-center gap-1.5 font-medium transition-all ${hasLiked ? 'text-blue-600' : 'text-slate-500 hover:text-blue-600'}`}
+          className="flex items-center gap-1.5 font-medium transition-all"
+          style={{ color: hasLiked ? '#65cc8a' : '#000000' }}
           onClick={handleLike}
         >
-          <svg className="w-5 h-5" fill={hasLiked ? '#3b82f6' : 'none'} stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <svg className="w-5 h-5" fill={hasLiked ? '#65cc8a' : 'none'} stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path d="M6 21h12a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-5.31l.95-4.57.03-.32a1 1 0 0 0-.99-1.11h-2.28a1 1 0 0 0-.99.79l-1.38 6.59A1 1 0 0 0 8 13h8" />
           </svg>
           Me gusta
           <span className="ml-1 font-medium">{post.likes?.length || 0}</span>
         </button>
-        <div className="flex items-center gap-1.5 text-slate-500">
+        <div className="flex items-center gap-1.5" style={{ color: '#000000' }}>
           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z" />
           </svg>
@@ -320,12 +433,21 @@ function ElegantPostCard({ post, t, setPosts, posts }: ElegantPostCardProps) {
       </div>
       {/* Input comentario */}
       <div className="flex items-center gap-2 sm:gap-3 mt-4 relative">
-        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-blue-500 to-blue-400 flex items-center justify-center text-white font-bold text-xs sm:text-sm shadow-sm flex-shrink-0">
+        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center text-white font-bold text-xs sm:text-sm shadow-sm flex-shrink-0"
+             style={{
+               background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+               boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+             }}>
           M
         </div>
         <input
           ref={inputRef}
-          className="flex-1 border border-blue-100 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-sm bg-white focus:outline-none focus:ring-1 focus:ring-blue-200 transition-all"
+          className="flex-1 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-sm transition-all"
+          style={{
+            border: '1px solid rgba(101, 204, 138, 0.3)',
+            background: 'rgba(255, 255, 255, 0.9)',
+            backdropFilter: 'blur(10px)'
+          }}
           placeholder="Escribe un comentario..."
           value={comment}
           onChange={e => setComment(e.target.value)}
@@ -334,7 +456,8 @@ function ElegantPostCard({ post, t, setPosts, posts }: ElegantPostCardProps) {
         />
         <button
           ref={emojiBtnRef}
-          className="text-lg sm:text-xl px-1.5 sm:px-2 text-slate-500 hover:text-blue-500 transition-colors flex-shrink-0"
+          className="text-lg sm:text-xl px-1.5 sm:px-2 transition-colors flex-shrink-0"
+          style={{ color: '#65cc8a' }}
           type="button"
           onClick={() => setShowEmojis(v => !v)}
           tabIndex={-1}
@@ -342,11 +465,21 @@ function ElegantPostCard({ post, t, setPosts, posts }: ElegantPostCardProps) {
           😊
         </button>
         {showEmojis && (
-          <div ref={emojiPanelRef} className="absolute bottom-12 right-0 bg-white border border-blue-100 rounded-lg shadow-lg p-2 flex flex-wrap gap-1 z-10">
+          <div ref={emojiPanelRef} className="absolute bottom-12 right-0 rounded-lg shadow-lg p-2 flex flex-wrap gap-1 z-10"
+               style={{
+                 background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
+                 backdropFilter: 'blur(20px)',
+                 border: '1px solid rgba(101, 204, 138, 0.2)',
+                 boxShadow: '0 20px 40px rgba(101, 204, 138, 0.2)'
+               }}>
             {EMOJIS.map(e => (
               <button
                 key={e}
-                className="text-xl sm:text-2xl hover:bg-blue-50 rounded-lg transition-colors"
+                className="text-xl sm:text-2xl rounded-lg transition-colors"
+                style={{
+                  background: 'transparent',
+                  color: '#000000'
+                }}
                 type="button"
                 onClick={() => insertEmoji(e)}
               >
@@ -356,7 +489,11 @@ function ElegantPostCard({ post, t, setPosts, posts }: ElegantPostCardProps) {
           </div>
         )}
         <button
-          className="bg-blue-500 hover:bg-blue-600 text-white rounded-lg p-2 sm:p-2.5 transition-all disabled:opacity-50 shadow-sm flex-shrink-0"
+          className="text-white rounded-lg p-2 sm:p-2.5 transition-all disabled:opacity-50 shadow-sm flex-shrink-0"
+          style={{
+            background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+            boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+          }}
           onClick={handleComment}
           disabled={sending}
         >
@@ -364,18 +501,31 @@ function ElegantPostCard({ post, t, setPosts, posts }: ElegantPostCardProps) {
         </button>
       </div>
       {/* Comentarios */}
-      <div className="mt-4 space-y-3 bg-blue-50/30 rounded-lg p-4">
+      <div className="mt-4 space-y-3 rounded-lg p-4"
+           style={{
+             background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+           }}>
         {post.comments?.map((c: Comment, idx) => (
-          <div key={idx} className="flex items-start gap-3 bg-white rounded-lg shadow-sm border border-blue-100 p-4">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-blue-400 flex items-center justify-center text-white font-bold text-base shadow-sm">
+          <div key={idx} className="flex items-start gap-3 rounded-lg shadow-sm p-4"
+               style={{
+                 background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+                 backdropFilter: 'blur(20px)',
+                 border: '1px solid rgba(101, 204, 138, 0.2)',
+                 boxShadow: '0 8px 16px rgba(101, 204, 138, 0.1)'
+               }}>
+            <div className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-base shadow-sm"
+                 style={{
+                   background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                   boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                 }}>
               {getInitials(c.userName)}
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1">
-                <span className="font-medium text-sm text-slate-800">{c.userName}</span>
-                <span className="text-xs text-slate-400">Hace 1 h</span>
+                <span className="font-medium text-sm" style={{ color: '#000000' }}>{c.userName}</span>
+                <span className="text-xs" style={{ color: '#000000' }}>Hace 1 h</span>
               </div>
-              <div className="text-slate-700 text-[15px] leading-snug break-words">{c.content}</div>
+              <div className="text-[15px] leading-snug break-words" style={{ color: '#000000' }}>{c.content}</div>
             </div>
           </div>
         ))}

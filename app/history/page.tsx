@@ -41,7 +41,10 @@ import {
   Globe2,
   PenSquare,
   Youtube,
-  Grid
+  Grid,
+  Accessibility,
+  Heart,
+  Shield
 } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { API_ENDPOINTS, getEndpointUrl } from "@/config/api"
@@ -616,8 +619,31 @@ export default function HistoryPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="min-h-screen bg-gradient-to-b from-[#F4F7FB] via-white to-[#F4F7FB] font-montserrat"
+        className="min-h-screen font-montserrat"
+        style={{ 
+          background: 'linear-gradient(135deg, #f0fdf4 0%, #ffffff 50%, #dcfce7 100%)',
+          position: 'relative',
+          overflow: 'hidden'
+        }}
       >
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-32 h-32 rounded-full opacity-20"
+               style={{ 
+                 background: 'radial-gradient(circle, #65cc8a, transparent)',
+                 animation: 'float 6s ease-in-out infinite'
+               }}></div>
+          <div className="absolute top-40 right-20 w-24 h-24 rounded-full opacity-15"
+               style={{ 
+                 background: 'radial-gradient(circle, #4ade80, transparent)',
+                 animation: 'float 8s ease-in-out infinite reverse'
+               }}></div>
+          <div className="absolute bottom-20 left-1/4 w-20 h-20 rounded-full opacity-10"
+               style={{ 
+                 background: 'radial-gradient(circle, #65cc8a, transparent)',
+                 animation: 'float 7s ease-in-out infinite'
+               }}></div>
+        </div>
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -664,8 +690,10 @@ export default function HistoryPage() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-1 sm:mb-2 font-montserrat bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">{t('history.title')}</h1>
-                <p className="text-sm sm:text-base lg:text-lg text-gray-600 font-montserrat">{t('history.subtitle')}</p>
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 sm:mb-2 font-montserrat"
+                    style={{ color: '#000000' }}>{t('history.title')}</h1>
+                <p className="text-sm sm:text-base lg:text-lg font-montserrat"
+                   style={{ color: '#000000' }}>{t('history.subtitle')}</p>
               </motion.div>
             </div>
             <motion.div 
@@ -679,7 +707,11 @@ export default function HistoryPage() {
                   <AlertDialogTrigger asChild>
                     <Button 
                       variant="destructive"
-                      className="flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 text-white hover:from-red-700 hover:to-red-800 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-sm sm:text-base w-full sm:w-auto"
+                      className="flex items-center gap-2 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-sm sm:text-base w-full sm:w-auto"
+                      style={{
+                        background: 'linear-gradient(135deg, #ef4444, #dc2626)',
+                        boxShadow: '0 8px 16px rgba(239, 68, 68, 0.3)'
+                      }}
                       disabled={isDeleting}
                     >
                       <Trash2 className="w-4 h-4" />
@@ -706,7 +738,11 @@ export default function HistoryPage() {
                 </AlertDialog>
               )}
               <Button 
-                className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-sm sm:text-base w-full sm:w-auto"
+                className="flex items-center gap-2 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-sm sm:text-base w-full sm:w-auto"
+                style={{
+                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                  boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                }}
                 onClick={() => router.push('/workshop')}
               >
                 <Plus className="w-4 h-4" />
@@ -726,9 +762,16 @@ export default function HistoryPage() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7 }}
-              className="w-full lg:w-96 flex-shrink-0 bg-white rounded-xl border border-gray-100 p-4 sm:p-6 shadow-[0_4px_6px_-1px_rgba(244,247,251,0.1),0_2px_4px_-1px_rgba(244,247,251,0.06)] hover:shadow-[0_10px_15px_-3px_rgba(244,247,251,0.1),0_4px_6px_-2px_rgba(244,247,251,0.05)] transition-all duration-300"
+              className="w-full lg:w-96 flex-shrink-0 rounded-xl p-4 sm:p-6 transition-all duration-300"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(101, 204, 138, 0.2)',
+                boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+              }}
             >
-              <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 font-montserrat bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">{t('history.educationalResources')}</h2>
+                              <h2 className="text-lg sm:text-xl font-semibold mb-4 font-montserrat"
+                    style={{ color: '#000000' }}>{t('history.educationalResources')}</h2>
               <div className="space-y-2 max-h-[300px] sm:max-h-[400px] lg:max-h-[calc(100vh-250px)] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-blue-200 scrollbar-track-blue-50 hover:scrollbar-thumb-blue-300">
                 {folders.map((folder, index) => (
                   <motion.div
@@ -736,11 +779,14 @@ export default function HistoryPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 * index }}
-                    className={`flex items-center gap-2 sm:gap-3 p-2 sm:p-3 cursor-pointer transition-all duration-300 rounded-xl ${
-                      expandedFolders.includes(folder.id)
-                        ? 'bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200'
-                        : 'hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-blue-100/50 hover:border hover:border-blue-200'
-                    }`}
+                    className={`flex items-center gap-2 sm:gap-3 p-2 sm:p-3 cursor-pointer transition-all duration-300 rounded-xl`}
+                    style={expandedFolders.includes(folder.id) ? {
+                      background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.2), rgba(74, 222, 128, 0.2))',
+                      border: '1px solid rgba(101, 204, 138, 0.3)'
+                    } : {
+                      background: 'transparent',
+                      border: '1px solid transparent'
+                    }}
                     onClick={() => toggleFolder(folder.id)}
                   >
                     <motion.div 
@@ -748,14 +794,14 @@ export default function HistoryPage() {
                       transition={{ duration: 0.3 }}
                       className="transition-transform duration-300"
                     >
-                      <ChevronRight className="w-4 h-4 text-blue-600" />
+                      <ChevronRight className="w-4 h-4" style={{ color: '#65cc8a' }} />
                     </motion.div>
                     <div className="flex-shrink-0">
                       {folder.icon}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="font-medium text-gray-900 truncate text-sm sm:text-base">{t(`history.tools.${folder.id}.title`)}</div>
-                      <div className="text-xs sm:text-sm text-gray-500">
+                      <div className="font-medium truncate text-sm sm:text-base" style={{ color: '#000000' }}>{t(`history.tools.${folder.id}.title`)}</div>
+                      <div className="text-xs sm:text-sm" style={{ color: '#000000' }}>
                         {folder.items.length} {folder.items.length === 1 ? t('history.resource') : t('history.resources')}
                       </div>
                     </div>
@@ -769,7 +815,13 @@ export default function HistoryPage() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.8 }}
-              className="flex-1 bg-white rounded-xl border border-gray-100 p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="flex-1 rounded-xl p-4 sm:p-6 transition-all duration-300"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(101, 204, 138, 0.2)',
+                boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+              }}
             >
               {expandedFolders.length === 0 ? (
                 <motion.div 
@@ -782,12 +834,16 @@ export default function HistoryPage() {
                     <motion.div 
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      className="bg-blue-50 rounded-full w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center mx-auto mb-4 shadow-lg"
+                      className="rounded-full w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center mx-auto mb-4 shadow-lg"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.2), rgba(74, 222, 128, 0.2))',
+                        boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                      }}
                     >
-                      <Folder className="w-8 h-8 sm:w-10 sm:h-10 text-blue-500" />
+                      <Folder className="w-8 h-8 sm:w-10 sm:h-10" style={{ color: '#65cc8a' }} />
                     </motion.div>
-                    <h3 className="text-lg sm:text-xl font-medium text-gray-900 mb-2 font-montserrat">{t('history.selectCategory')}</h3>
-                    <p className="text-sm sm:text-base text-gray-600 font-montserrat">{t('history.organizeMaterial')}</p>
+                    <h3 className="text-lg sm:text-xl font-medium mb-2 font-montserrat" style={{ color: '#000000' }}>{t('history.selectCategory')}</h3>
+                    <p className="text-sm sm:text-base font-montserrat" style={{ color: '#000000' }}>{t('history.organizeMaterial')}</p>
                   </div>
                 </motion.div>
               ) : (
@@ -810,12 +866,16 @@ export default function HistoryPage() {
                       >
                         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 mb-4 sm:mb-6">
                           <div className="flex items-center gap-3 sm:gap-4">
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-blue-50 rounded-xl shadow-md">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-xl shadow-md"
+                                 style={{
+                                   background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.2), rgba(74, 222, 128, 0.2))',
+                                   boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                                 }}>
                               {folder.icon}
                             </div>
                             <div>
-                              <h2 className="text-lg sm:text-xl font-semibold text-gray-900 font-montserrat">{t(`history.tools.${folder.id}.title`)}</h2>
-                              <p className="text-xs sm:text-sm text-gray-600">{t(`history.tools.${folder.id}.description`)}</p>
+                              <h2 className="text-lg sm:text-xl font-semibold font-montserrat" style={{ color: '#000000' }}>{t(`history.tools.${folder.id}.title`)}</h2>
+                              <p className="text-xs sm:text-sm" style={{ color: '#000000' }}>{t(`history.tools.${folder.id}.description`)}</p>
                             </div>
                           </div>
                           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-4 w-full sm:w-auto">
@@ -833,7 +893,12 @@ export default function HistoryPage() {
                             </div>
                             <Button 
                               variant="outline"
-                              className="flex items-center gap-2 border-blue-200 hover:bg-blue-50 font-montserrat text-sm sm:text-base"
+                              className="flex items-center gap-2 font-montserrat text-sm sm:text-base"
+                              style={{
+                                background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                                border: '1px solid rgba(101, 204, 138, 0.3)',
+                                color: '#65cc8a'
+                              }}
                               onClick={() => handleViewWorkshop({ tipoTaller: folder.id })}
                             >
                               <Plus className="w-4 h-4" />
@@ -851,17 +916,21 @@ export default function HistoryPage() {
                               transition={{ delay: 0.1 * index }}
                               whileHover={{ scale: 1.02 }}
                               whileTap={{ scale: 0.98 }}
-                              className={`group bg-white rounded-xl border border-gray-100 p-4 sm:p-6 
+                                                              className={`group rounded-xl p-4 sm:p-6 
                                 shadow-lg hover:shadow-xl
                                 hover:-translate-y-2 
                                 transition-all duration-300 ease-out
                                 flex flex-col
                                 relative
-                                before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-white before:to-blue-50 before:opacity-0 before:transition-opacity before:duration-300
-                                hover:before:opacity-100
                                 h-full
-                                border-t-4 border-blue-500
-                                ${selectedItems.includes(item.id) ? 'ring-2 ring-blue-500' : ''}`}
+                                ${selectedItems.includes(item.id) ? 'ring-2' : ''}`}
+                                style={{
+                                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+                                  backdropFilter: 'blur(20px)',
+                                  border: '1px solid rgba(101, 204, 138, 0.2)',
+                                  boxShadow: '0 8px 32px rgba(101, 204, 138, 0.1)',
+                                  borderTop: selectedItems.includes(item.id) ? '4px solid #65cc8a' : '4px solid rgba(101, 204, 138, 0.3)'
+                                }}
                               onClick={() => toggleItemSelection(item.id)}
                             >
                               {/* Efecto de brillo suave */}
@@ -921,18 +990,23 @@ export default function HistoryPage() {
                               <div className="relative z-10">
                                 <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
                                   <motion.div 
-                                    className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-blue-50 rounded-xl shadow-md"
+                                    className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-xl shadow-md"
+                                    style={{
+                                      background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.2), rgba(74, 222, 128, 0.2))',
+                                      boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                                    }}
                                     whileHover={{ 
                                       scale: 1.05,
                                       rotate: 5,
                                       transition: { duration: 0.3 }
                                     }}
                                   >
-                                    <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" />
+                                    <FileText className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: '#65cc8a' }} />
                                   </motion.div>
                                   <div>
                                     <motion.h3 
-                                      className="text-base sm:text-lg font-semibold text-gray-900 group-hover:text-blue-600 font-montserrat"
+                                      className="text-base sm:text-lg font-semibold font-montserrat"
+                                      style={{ color: '#000000' }}
                                       whileHover={{ 
                                         x: 5,
                                         transition: { duration: 0.3 }
@@ -940,7 +1014,7 @@ export default function HistoryPage() {
                                     >
                                       {getWorkshopTitle(item)}
                                     </motion.h3>
-                                    <p className="text-xs sm:text-sm text-gray-500">{formatDate(item.timestamp)}</p>
+                                    <p className="text-xs sm:text-sm" style={{ color: '#000000' }}>{formatDate(item.timestamp)}</p>
                                   </div>
                                 </div>
                                 <div className="flex justify-between items-center">
@@ -952,7 +1026,11 @@ export default function HistoryPage() {
                                   >
                                     <Button
                                       variant="ghost"
-                                      className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 font-montserrat text-sm sm:text-base"
+                                      className="font-montserrat text-sm sm:text-base"
+                                      style={{
+                                        color: '#65cc8a',
+                                        background: 'transparent'
+                                      }}
                                       onClick={(e) => {
                                         e.stopPropagation()
                                         handleViewWorkshop(item)
@@ -969,13 +1047,17 @@ export default function HistoryPage() {
                                   >
                                     <AlertDialog>
                                       <AlertDialogTrigger asChild>
-                                        <Button
-                                          variant="ghost"
-                                          className="text-red-600 hover:text-red-700 hover:bg-red-50 font-montserrat"
-                                          onClick={(e) => e.stopPropagation()}
-                                        >
-                                          <Trash2 className="w-4 h-4" />
-                                        </Button>
+                                                                            <Button
+                                      variant="ghost"
+                                      className="font-montserrat"
+                                      style={{
+                                        color: '#ef4444',
+                                        background: 'transparent'
+                                      }}
+                                      onClick={(e) => e.stopPropagation()}
+                                    >
+                                      <Trash2 className="w-4 h-4" />
+                                    </Button>
                                       </AlertDialogTrigger>
                                       <AlertDialogContent>
                                         <AlertDialogHeader>
@@ -1002,16 +1084,25 @@ export default function HistoryPage() {
                           ))}
                           {filteredItems(folder.items).length === 0 && (
                             <div className="col-span-full text-center py-8 sm:py-12">
-                              <div className="bg-blue-50 rounded-full w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                                <FileText className="w-8 h-8 sm:w-10 sm:h-10 text-blue-500" />
+                              <div className="rounded-full w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center mx-auto mb-4 shadow-lg"
+                                   style={{
+                                     background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.2), rgba(74, 222, 128, 0.2))',
+                                     boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                                   }}>
+                                <FileText className="w-8 h-8 sm:w-10 sm:h-10" style={{ color: '#65cc8a' }} />
                               </div>
-                              <h3 className="text-lg sm:text-xl font-medium text-gray-900 mb-2 font-montserrat">
+                              <h3 className="text-lg sm:text-xl font-medium mb-2 font-montserrat" style={{ color: '#000000' }}>
                                 {searchQuery ? t('history.noResourcesFound') : t('history.noResourcesInCategory')}
                               </h3>
                               {!searchQuery && (
                                 <Button
                                   variant="outline"
-                                  className="border-blue-200 hover:bg-blue-50 font-montserrat text-sm sm:text-base"
+                                  className="font-montserrat text-sm sm:text-base"
+                                  style={{
+                                    background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                                    border: '1px solid rgba(101, 204, 138, 0.3)',
+                                    color: '#65cc8a'
+                                  }}
                                   onClick={() => handleViewWorkshop({ tipoTaller: folder.id })}
                                 >
                                   {t('history.createNewResource')}
@@ -1054,6 +1145,25 @@ export default function HistoryPage() {
           onUpdate={fetchWorkshops}
         />
       )}
+      
+      {/* CSS Animations */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          33% { transform: translateY(-20px) rotate(1deg); }
+          66% { transform: translateY(-10px) rotate(-1deg); }
+        }
+        
+        @keyframes pulse {
+          0%, 100% { opacity: 0.5; transform: scale(1); }
+          50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        
+        @keyframes gradientShift {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+      `}</style>
     </Layout>
   )
 }
