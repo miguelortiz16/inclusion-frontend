@@ -34,6 +34,15 @@ import {
   Clock,
   ChevronDown,
   Users2,
+  Heart,
+  Shield,
+  Globe,
+  Target,
+  Award,
+  Accessibility,
+  Eye,
+  Ear,
+  HandHeart,
 } from "lucide-react"
 import { TypingEffect } from "@/components/TypingEffect"
 import Head from "next/head"
@@ -42,7 +51,7 @@ import { PrivacyPolicy } from "./components/PrivacyPolicy"
 import { motion, useAnimation } from "framer-motion"
 import { useInView } from "framer-motion"
 
-export default function Home() {
+export default function InclusionPlanner() {
   const [visitCount, setVisitCount] = useState<number>(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isContactMenuOpen, setIsContactMenuOpen] = useState(false);
@@ -121,23 +130,25 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>ProfePlanner - IA para Maestros | Magic School AI | MaestroIA | Planificación y Evaluación 10x más Rápida</title>
-        <meta name="description" content="ProfePlanner es la mejor herramienta de IA para profesores. Prepara clases, evalúa y corrige 10 veces más rápido. Únete a más de 50 mil de docentes en la mejor Inteligencia Artificial con calidad pedagógica." />
-        <meta name="keywords" content="IA para Maestros, Magic School AI, MaestroIA, Magic School, Docente, Maestro, Maestra, inteligencia artificial profesores" />
+        <title>InclusionPlanner - Plataforma de Inclusión Educativa | Crecimiento y Armonía para Todos los Estudiantes</title>
+        <meta name="description" content="InclusionPlanner es la plataforma líder en inclusión educativa. Diseña experiencias de aprendizaje accesibles y equitativas que permiten que cada estudiante crezca y se desarrolle en un entorno armonioso." />
+        <meta name="keywords" content="Inclusión Educativa, Educación Inclusiva, Accesibilidad, Diversidad, Necesidades Especiales, UDL, Diseño Universal, Educación Equitativa" />
       </Head>
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="min-h-screen flex flex-col bg-gradient-to-b from-white via-indigo-50 to-blue-100"
-      >
+              <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="min-h-screen flex flex-col"
+          style={{ background: 'linear-gradient(to bottom, #ffffff, #f0fdf4, #dcfce7)' }}
+        >
         {/* WhatsApp Contact Button with Dropdown */}
         <div className="fixed left-4 bottom-4 z-[9999] sm:fixed">
           <div className="relative">
             {/* Main Button */}
             <button
               onClick={() => setIsContactMenuOpen(!isContactMenuOpen)}
-              className="bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full p-4 sm:p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 sm:gap-4"
+              className="text-white rounded-full p-4 sm:p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 sm:gap-4"
+              style={{ background: 'linear-gradient(to right, #65cc8a, #4ade80)' }}
             >
               <MessageCircle className="w-7 h-7 sm:w-8 sm:h-8" />
               <span className="text-base sm:text-lg font-semibold">¡Contáctanos!</span>
@@ -156,14 +167,15 @@ export default function Home() {
                 <div className="p-2">
                   {/* Direct Message Option */}
                   <a
-                    href="https://wa.me/573213589463?text=Hola%2C%20me%20interesa%20ProfePlanner%20y%20quiero%20más%20información."
+                    href="https://wa.me/573213589463?text=Hola%2C%20me%20interesa%20InclusionPlanner%20y%20quiero%20más%20información%20sobre%20inclusión%20educativa."
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsContactMenuOpen(false)}
                     className="flex items-center gap-3 p-3 rounded-lg hover:bg-green-50 transition-colors duration-200 group"
                   >
-                    <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center group-hover:bg-green-200 transition-colors duration-200">
-                      <MessageCircle className="w-5 h-5 text-green-600" />
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center group-hover:bg-green-200 transition-colors duration-200"
+                         style={{ backgroundColor: '#f0fdf4' }}>
+                      <MessageCircle className="w-5 h-5" style={{ color: '#65cc8a' }} />
                     </div>
                     <div className="flex-1">
                       <p className="font-medium text-gray-900">Mensaje Directo</p>
@@ -177,14 +189,15 @@ export default function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsContactMenuOpen(false)}
-                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-blue-50 transition-colors duration-200 group"
+                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-green-50 transition-colors duration-200 group"
                   >
-                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-200 transition-colors duration-200">
-                      <Users2 className="w-5 h-5 text-blue-600" />
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center group-hover:bg-green-200 transition-colors duration-200"
+                         style={{ backgroundColor: '#f0fdf4' }}>
+                      <Users2 className="w-5 h-5" style={{ color: '#65cc8a' }} />
                     </div>
                     <div className="flex-1">
                       <p className="font-medium text-gray-900">Unirse al Grupo</p>
-                      <p className="text-sm text-gray-600">Conecta con otros profesores</p>
+                      <p className="text-sm text-gray-600">Conecta con otros educadores inclusivos</p>
                     </div>
                   </a>
                 </div>
@@ -216,20 +229,21 @@ export default function Home() {
                   <div className="relative w-8 h-8 mr-2">
                     <Image src="/images/logo.png" alt="Logo" fill className="rounded-lg object-cover" />
                   </div>
-                  <span className="text-lg font-display font-semibold bg-gradient-to-r from-blue-700 via-indigo-600 to-blue-700 bg-clip-text text-transparent">
-                    ProfePlanner
+                  <span className="text-lg font-display font-semibold bg-clip-text text-transparent"
+                        style={{ background: 'linear-gradient(to right, #65cc8a, #4ade80)', WebkitBackgroundClip: 'text' }}>
+                    InclusionPlanner
                   </span>
                 </div>
                 <div className="hidden md:ml-8 md:flex md:space-x-6">
                   <Link
                     href="#features"
-                    className="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium"
+                    className="text-gray-600 hover:text-green-600 px-3 py-2 text-sm font-medium"
                   >
                     Características
                   </Link>
                   <Link
                     href="#tools"
-                    className="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium"
+                    className="text-gray-600 hover:text-green-600 px-3 py-2 text-sm font-medium"
                   >
                     Herramientas
                   </Link>
@@ -238,12 +252,13 @@ export default function Home() {
               </div>
               <div className="flex items-center space-x-4">
                 <Link href="/sign-in">
-                  <Button variant="ghost" className="text-gray-600 hover:text-blue-600">
+                  <Button variant="ghost" className="text-gray-600 hover:text-green-600">
                     Iniciar sesión
                   </Button>
                 </Link>
                 <Link href="/sign-up">
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                  <Button className="text-white"
+                          style={{ backgroundColor: '#65cc8a' }}>
                     Registrarse
                   </Button>
                 </Link>
@@ -301,29 +316,31 @@ export default function Home() {
           {/* Hero Section */}
           <AnimatedSection>
             <section className="relative overflow-hidden py-20">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-indigo-50 to-blue-100"></div>
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom right, #f0fdf4, #dcfce7, #f0fdf4)' }}></div>
               <div className="absolute inset-0 bg-[url('/images/notebook-pattern.svg')] bg-repeat opacity-[0.02]"></div>
 
               <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                   <div className="space-y-8">
-                    <div className="inline-block bg-gradient-to-r from-indigo-100 to-blue-100 px-4 py-2 rounded-full">
-                      <span className="text-indigo-700 text-sm font-medium">✨ ¿Cansado de la pila de papeles?</span>
+                    <div className="inline-block px-4 py-2 rounded-full"
+                         style={{ backgroundColor: '#f0fdf4' }}>
+                      <span className="text-sm font-medium" style={{ color: '#65cc8a' }}>🌱 Crecimiento y Armonía para Todos</span>
                     </div>
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold">
-                      <span className="text-blue-900 drop-shadow">
-                        Libera tu tiempo con IA
+                      <span className="drop-shadow" style={{ color: '#1f2937' }}>
+                        Inclusión que Transforma
                       </span>
                     </h1>
 
                     <p className="text-xl text-gray-600 leading-relaxed">
-                      Automatiza tareas repetitivas con IA y dedica tu energía a lo que amas: enseñar e inspirar.
+                      Diseña experiencias de aprendizaje accesibles y equitativas que permiten que cada estudiante crezca y se desarrolle en un entorno armonioso.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
                       <Link href="/sign-up">
                         <Button
                           size="lg"
-                          className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600 hover:from-blue-700 hover:via-indigo-700 hover:to-blue-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 w-full sm:w-auto"
+                          className="text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 w-full sm:w-auto"
+                          style={{ background: 'linear-gradient(to right, #65cc8a, #4ade80)' }}
                         >
                           Comenzar Ahora
                           <ArrowRight className="ml-2 w-5 h-5" />
@@ -331,17 +348,20 @@ export default function Home() {
                       </Link>
                     </div>
                     <div className="flex flex-wrap gap-4">
-                      <div className="flex items-center bg-gradient-to-r from-blue-100 to-indigo-100 px-4 py-2 rounded-full shadow-sm">
-                        <CheckCircle2 className="w-5 h-5 text-indigo-600 mr-2" />
-                        <span className="text-sm font-medium text-gray-700">Seguro para escuelas</span>
+                      <div className="flex items-center px-4 py-2 rounded-full shadow-sm"
+                           style={{ backgroundColor: '#f0fdf4' }}>
+                        <Accessibility className="w-5 h-5 mr-2" style={{ color: '#65cc8a' }} />
+                        <span className="text-sm font-medium text-gray-700">Accesibilidad Universal</span>
                       </div>
-                      <div className="flex items-center bg-gradient-to-r from-indigo-100 to-blue-100 px-4 py-2 rounded-full shadow-sm">
-                        <CheckCircle2 className="w-5 h-5 text-blue-600 mr-2" />
-                        <span className="text-sm font-medium text-gray-700">Privacidad garantizada</span>
+                      <div className="flex items-center px-4 py-2 rounded-full shadow-sm"
+                           style={{ backgroundColor: '#f0fdf4' }}>
+                        <Heart className="w-5 h-5 mr-2" style={{ color: '#65cc8a' }} />
+                        <span className="text-sm font-medium text-gray-700">Diseño Universal</span>
                       </div>
-                      <div className="flex items-center bg-gradient-to-r from-blue-100 to-indigo-100 px-4 py-2 rounded-full shadow-sm">
-                        <CheckCircle2 className="w-5 h-5 text-indigo-600 mr-2" />
-                        <span className="text-sm font-medium text-gray-700">Soporte 24/7</span>
+                      <div className="flex items-center px-4 py-2 rounded-full shadow-sm"
+                           style={{ backgroundColor: '#f0fdf4' }}>
+                        <Shield className="w-5 h-5 mr-2" style={{ color: '#65cc8a' }} />
+                        <span className="text-sm font-medium text-gray-700">Entorno Seguro</span>
                       </div>
                     </div>
                   </div>
@@ -366,14 +386,14 @@ export default function Home() {
 
           {/* Features Section */}
           <AnimatedSection>
-            <section className="py-20 bg-gradient-to-b from-purple-50 to-indigo-100" id="premium-tools">
+            <section className="py-20" id="premium-tools" style={{ background: 'linear-gradient(to bottom, #f0fdf4, #dcfce7)' }}>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
-                    Herramientas Premium que Transforman tu Enseñanza
+                    Herramientas de Inclusión que Fomentan el Crecimiento
                   </h2>
                   <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Accede a las funciones más avanzadas y ahorra horas de trabajo cada semana.
+                    Diseña experiencias de aprendizaje accesibles y equitativas para todos los estudiantes.
                   </p>
                 </div>
                 <motion.div
@@ -384,43 +404,44 @@ export default function Home() {
                   viewport={{ once: true, amount: 0.2 }}
                 >
                   <ToolFeatureCard
-                    icon={<Pencil className="w-8 h-8 text-green-500" />}
-                    title="Planificador de Lecciones con IA"
-                    description="Prepara clases en minutos con metodologías innovadoras y personalizadas."
+                    icon={<Accessibility className="w-8 h-8" style={{ color: '#65cc8a' }} />}
+                    title="Diseño Universal de Aprendizaje"
+                    description="Crea lecciones accesibles para todos los estilos de aprendizaje y necesidades."
                   />
                   <ToolFeatureCard
-                    icon={<Lightbulb className="w-8 h-8 text-yellow-500" />}
-                    title="Generador de Ideas y Actividades"
-                    description="Obtén ideas creativas y actividades listas para usar en clase."
+                    icon={<Eye className="w-8 h-8" style={{ color: '#65cc8a' }} />}
+                    title="Adaptaciones Visuales"
+                    description="Genera materiales con alto contraste, textos alternativos y formatos accesibles."
                   />
                   <ToolFeatureCard
-                    icon={<FileText className="w-8 h-8 text-indigo-600" />}
-                    title="Creador de Cuestionarios Inteligentes"
-                    description="Genera exámenes, rúbricas y listas de cotejo automáticamente."
+                    icon={<Ear className="w-8 h-8" style={{ color: '#65cc8a' }} />}
+                    title="Recursos Auditivos"
+                    description="Crea podcasts, audiolibros y recursos de audio para estudiantes con necesidades auditivas."
                   />
                   <ToolFeatureCard
-                    icon={<BookOpen className="w-8 h-8 text-blue-600" />}
-                    title="Generador de Imágenes Educativas"
-                    description="Crea imágenes y materiales visuales únicos para tus clases con IA."
+                    icon={<HandHeart className="w-8 h-8" style={{ color: '#65cc8a' }} />}
+                    title="Ajustes Razonables"
+                    description="Diseña adaptaciones personalizadas para estudiantes con necesidades específicas."
                   />
                   <ToolFeatureCard
-                    icon={<Brain className="w-8 h-8 text-purple-600" />}
-                    title="Generador de Podcasts Educativos"
-                    description="Convierte tus materiales en podcasts interactivos para tus estudiantes."
+                    icon={<Target className="w-8 h-8" style={{ color: '#65cc8a' }} />}
+                    title="Evaluación Inclusiva"
+                    description="Crea evaluaciones múltiples formatos y opciones de respuesta para todos."
                   />
                   <ToolFeatureCard
-                    icon={<CheckCircle2 className="w-8 h-8 text-violet-500" />}
-                    title="Corrección Automática de Ensayos"
-                    description="Califica ensayos y pruebas en segundos con IA."
+                    icon={<Globe className="w-8 h-8" style={{ color: '#65cc8a' }} />}
+                    title="Materiales Multiculturales"
+                    description="Desarrolla contenido que refleje la diversidad cultural y lingüística."
                   />
                 </motion.div>
                 <div className="text-center mt-12">
                   <Link href="/sign-up">
                     <Button
                       size="lg"
-                      className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-700 hover:via-purple-700 hover:to-indigo-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
+                      className="text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
+                      style={{ background: 'linear-gradient(to right, #65cc8a, #4ade80)' }}
                     >
-                      ¡Quiero acceso ilimitado!
+                      ¡Quiero crear inclusión!
                     </Button>
                   </Link>
                 </div>
@@ -430,20 +451,20 @@ export default function Home() {
 
           {/* Video Tutorial */}
           <AnimatedSection>
-            <section className="py-20 bg-gradient-to-b from-blue-100 to-indigo-50">
+            <section className="py-20" style={{ background: 'linear-gradient(to bottom, #dcfce7, #f0fdf4)' }}>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
-                    Aprende a usar ProfePlanner
+                    Aprende a usar InclusionPlanner
                   </h2>
                   <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Mira nuestro video tutorial y descubre cómo ProfePlanner puede transformar tu experiencia docente
+                    Mira nuestro video tutorial y descubre cómo InclusionPlanner puede transformar tu aula en un espacio de inclusión y crecimiento
                   </p>
                 </div>
                 <div className="aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden shadow-xl">
                   <iframe
                     src="https://www.youtube.com/embed/1YZPk352zd0"
-                    title="Tutorial ProfePlanner"
+                    title="Tutorial InclusionPlanner"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     className="w-full h-full"
@@ -700,14 +721,14 @@ export default function Home() {
 
           {/* Herramientas Destacadas */}
           <AnimatedSection>
-            <section className="py-20 bg-gradient-to-b from-indigo-50 to-blue-100" id="tools">
+            <section className="py-20" id="tools" style={{ background: 'linear-gradient(to bottom, #f0fdf4, #dcfce7)' }}>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
-                    Enseñar es exigente. El agotamiento es real.
+                    La inclusión es un derecho, no un privilegio.
                   </h2>
                   <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Transforma estos desafíos en oportunidades de crecimiento real para tus estudiantes, recuperando tu tiempo y energía.
+                    Transforma tu aula en un espacio donde cada estudiante puede crecer y desarrollarse en un entorno de armonía y respeto.
                   </p>
                 </div>
 
@@ -719,19 +740,19 @@ export default function Home() {
                   viewport={{ once: true, amount: 0.2 }}
                 >
                   <ToolFeatureCard
-                    icon={<FileText className="w-8 h-8 text-indigo-600" />}
-                    title="Planificación de Lecciones"
-                    description="Prepara clases rápidamente con 5 metodologías de enseñanza. Planificación anual en minutos."
+                    icon={<Accessibility className="w-8 h-8" style={{ color: '#65cc8a' }} />}
+                    title="Diseño Universal"
+                    description="Crea experiencias de aprendizaje accesibles para todos los estudiantes desde el primer momento."
                   />
                   <ToolFeatureCard
-                    icon={<BookOpen className="w-8 h-8 text-blue-600" />}
-                    title="Evaluaciones Inteligentes"
-                    description="+500k preguntas con clave de respuestas, preguntas originales e inéditas, exámenes de ingreso."
+                    icon={<Heart className="w-8 h-8" style={{ color: '#65cc8a' }} />}
+                    title="Ajustes Razonables"
+                    description="Diseña adaptaciones personalizadas que respetan las necesidades individuales de cada estudiante."
                   />
                   <ToolFeatureCard
-                    icon={<Brain className="w-8 h-8 text-indigo-600" />}
-                    title="Materiales Educativos"
-                    description="Crea materiales con Inteligencia Artificial. +50 herramientas, planificación y producción de contenido."
+                    icon={<Globe className="w-8 h-8" style={{ color: '#65cc8a' }} />}
+                    title="Diversidad Cultural"
+                    description="Desarrolla materiales que celebran y reflejan la riqueza de la diversidad en tu aula."
                   />
                 </motion.div>
               </div>
@@ -740,51 +761,57 @@ export default function Home() {
 
           {/* Cronograma */}
           <AnimatedSection>
-            <section className="py-20 bg-gradient-to-b from-blue-100 to-indigo-50">
+            <section className="py-20" style={{ background: 'linear-gradient(to bottom, #dcfce7, #f0fdf4)' }}>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
-                    Cronograma de Lanzamiento
+                    Nuestro Compromiso con la Inclusión
                   </h2>
                   <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Únete ahora y disfruta de acceso completo a todas las herramientas de ProfePlanner
+                    Únete ahora y forma parte de la transformación hacia una educación verdaderamente inclusiva
                   </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div className="bg-gradient-to-br from-blue-100 to-indigo-100 p-6 rounded-xl shadow-sm border border-gray-200">
+                  <div className="p-6 rounded-xl shadow-sm border border-gray-200"
+                       style={{ backgroundColor: '#f0fdf4' }}>
                     <div className="flex items-center mb-4">
-                      <div className="w-10 h-10 bg-gradient-to-br from-blue-200 to-indigo-200 rounded-lg flex items-center justify-center mr-4">
-                        <Calendar className="w-6 h-6 text-indigo-600" />
+                      <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4"
+                           style={{ backgroundColor: '#dcfce7' }}>
+                        <Calendar className="w-6 h-6" style={{ color: '#65cc8a' }} />
                       </div>
                       <h3 className="text-lg font-semibold text-gray-900">Fase 1: Acceso Anticipado</h3>
                     </div>
                     <p className="text-gray-600 leading-relaxed">
-                      Acceso completo a todas las herramientas de ProfePlanner. Únete a la comunidad pionera de educadores.
+                      Acceso completo a todas las herramientas de InclusionPlanner. Únete a la comunidad pionera de educadores inclusivos.
                     </p>
                   </div>
 
-                  <div className="bg-gradient-to-br from-indigo-100 to-blue-100 p-6 rounded-xl shadow-sm border border-gray-200">
+                  <div className="p-6 rounded-xl shadow-sm border border-gray-200"
+                       style={{ backgroundColor: '#f0fdf4' }}>
                     <div className="flex items-center mb-4">
-                      <div className="w-10 h-10 bg-gradient-to-br from-indigo-200 to-blue-200 rounded-lg flex items-center justify-center mr-4">
-                        <Rocket className="w-6 h-6 text-blue-600" />
+                      <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4"
+                           style={{ backgroundColor: '#dcfce7' }}>
+                        <Rocket className="w-6 h-6" style={{ color: '#65cc8a' }} />
                       </div>
                       <h3 className="text-lg font-semibold text-gray-900">Fase 2: Lanzamiento Oficial</h3>
                     </div>
                     <p className="text-gray-600 leading-relaxed">
-                      Lanzamiento oficial de la plataforma con todas las funcionalidades completas y optimizadas.
+                      Lanzamiento oficial de la plataforma con todas las funcionalidades de inclusión completas y optimizadas.
                     </p>
                   </div>
 
-                  <div className="bg-gradient-to-br from-blue-100 to-indigo-100 p-6 rounded-xl shadow-sm border border-gray-200">
+                  <div className="p-6 rounded-xl shadow-sm border border-gray-200"
+                       style={{ backgroundColor: '#f0fdf4' }}>
                     <div className="flex items-center mb-4">
-                      <div className="w-10 h-10 bg-gradient-to-br from-blue-200 to-indigo-200 rounded-lg flex items-center justify-center mr-4">
-                        <TrendingUp className="w-6 h-6 text-indigo-600" />
+                      <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4"
+                           style={{ backgroundColor: '#dcfce7' }}>
+                        <TrendingUp className="w-6 h-6" style={{ color: '#65cc8a' }} />
                       </div>
                       <h3 className="text-lg font-semibold text-gray-900">Fase 3: Expansión</h3>
                     </div>
                     <p className="text-gray-600 leading-relaxed">
-                      Nuevas funcionalidades avanzadas y herramientas especializadas para diferentes niveles educativos.
+                      Nuevas funcionalidades avanzadas y herramientas especializadas para diferentes necesidades educativas.
                     </p>
                   </div>
                 </div>
@@ -794,14 +821,14 @@ export default function Home() {
 
           {/* Testimonios */}
           <AnimatedSection>
-            <section className="py-20 bg-gradient-to-b from-indigo-50 to-blue-100">
+            <section className="py-20" style={{ background: 'linear-gradient(to bottom, #f0fdf4, #dcfce7)' }}>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
-                    Lo que dicen los profesores
+                    Lo que dicen los educadores inclusivos
                   </h2>
                   <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Experiencias reales de educadores que transformaron su enseñanza
+                    Experiencias reales de educadores que transformaron sus aulas en espacios de crecimiento y armonía
                   </p>
                 </div>
 
@@ -813,19 +840,19 @@ export default function Home() {
                   viewport={{ once: true, amount: 0.2 }}
                 >
                   <TestimonialCard
-                    quote="He recuperado mi tiempo personal gracias a ProfePlanner. Ahora puedo dedicar más tiempo a mis estudiantes."
+                    quote="InclusionPlanner me ayudó a crear un aula donde cada estudiante se siente valorado y puede crecer a su propio ritmo."
                     author="María González"
-                    role="Profesora de Primaria"
+                    role="Especialista en Educación Inclusiva"
                   />
                   <TestimonialCard
-                    quote="Las evaluaciones generadas son increíblemente precisas y adaptadas a mis estudiantes."
+                    quote="Las herramientas de accesibilidad han transformado la forma en que mis estudiantes con necesidades especiales participan en clase."
                     author="Carlos Rodríguez"
-                    role="Profesor de Secundaria"
+                    role="Profesor de Educación Especial"
                   />
                   <TestimonialCard
-                    quote="La variedad de herramientas me permite crear experiencias de aprendizaje únicas."
+                    quote="La diversidad cultural en mi aula ahora se celebra y se refleja en todos los materiales que creo."
                     author="Ana Martínez"
-                    role="Profesora Universitaria"
+                    role="Coordinadora de Inclusión"
                   />
                 </motion.div>
               </div>
@@ -834,19 +861,20 @@ export default function Home() {
 
           {/* CTA Section */}
           <AnimatedSection>
-            <section className="py-20 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600">
+            <section className="py-20" style={{ background: 'linear-gradient(to right, #65cc8a, #4ade80)' }}>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center">
                   <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
-                    Únete a la Revolución Docente con IA
+                    Únete a la Revolución de la Inclusión Educativa
                   </h2>
                   <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-                    Sé parte de esta comunidad pionera y transforma tu experiencia docente con ProfePlanner.
+                    Sé parte de esta comunidad pionera y transforma tu aula en un espacio de crecimiento y armonía con InclusionPlanner.
                   </p>
                   <Link href="/sign-up">
                     <Button
                       size="lg"
-                      className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
+                      className="bg-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
+                      style={{ color: '#65cc8a' }}
                     >
                       Comenzar Ahora
                       <ArrowRight className="ml-2 w-5 h-5" />
@@ -864,7 +892,8 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="bg-gradient-to-b from-white to-indigo-50 border-t border-gray-200"
+          className="border-t border-gray-200"
+          style={{ background: 'linear-gradient(to bottom, #ffffff, #f0fdf4)' }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -880,13 +909,13 @@ export default function Home() {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <span className="text-lg font-display font-semibold bg-gradient-to-r from-blue-700 via-indigo-600 to-blue-700 bg-clip-text text-transparent">
-                    ProfePlanner
+                  <span className="text-lg font-display font-semibold bg-clip-text text-transparent"
+                        style={{ background: 'linear-gradient(to right, #65cc8a, #4ade80)', WebkitBackgroundClip: 'text' }}>
+                    InclusionPlanner
                   </span>
                 </div>
                 <p className="text-sm text-gray-600 mb-4 max-w-md">
-                  La plataforma de IA  diseñada específicamente para profesores, que te ayuda a planificar, evaluar y
-                  crear materiales educativos de alta calidad.
+                  La plataforma líder en inclusión educativa, diseñada para crear experiencias de aprendizaje accesibles y equitativas que permiten que cada estudiante crezca y se desarrolle en un entorno armonioso.
                 </p>
                 <div className="flex space-x-4">
                   <a href="https://www.facebook.com/share/199nVH2cfN/" className="text-gray-400 hover:text-blue-600 transition-colors duration-200">
@@ -989,10 +1018,12 @@ function ToolFeatureCard({ icon, title, description }: { icon: React.ReactNode; 
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="bg-gradient-to-br from-blue-100 to-indigo-100 p-6 rounded-xl shadow-sm border border-gray-200"
+      className="p-6 rounded-xl shadow-sm border border-gray-200"
+      style={{ backgroundColor: '#f0fdf4' }}
     >
       <div className="flex items-center mb-4">
-        <div className="w-10 h-10 bg-gradient-to-br from-blue-200 to-indigo-200 rounded-lg flex items-center justify-center mr-4">
+        <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4"
+             style={{ backgroundColor: '#dcfce7' }}>
           {icon}
         </div>
         <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
@@ -1009,14 +1040,15 @@ function TestimonialCard({ quote, author, role }: { quote: string; author: strin
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="bg-gradient-to-br from-blue-100 to-indigo-100 p-6 rounded-xl shadow-sm border border-gray-200"
+      className="p-6 rounded-xl shadow-sm border border-gray-200"
+      style={{ backgroundColor: '#f0fdf4' }}
     >
       <div className="flex items-center mb-4">
-        <Star className="w-5 h-5 text-indigo-400" />
-        <Star className="w-5 h-5 text-indigo-400" />
-        <Star className="w-5 h-5 text-indigo-400" />
-        <Star className="w-5 h-5 text-indigo-400" />
-        <Star className="w-5 h-5 text-indigo-400" />
+        <Star className="w-5 h-5" style={{ color: '#65cc8a' }} />
+        <Star className="w-5 h-5" style={{ color: '#65cc8a' }} />
+        <Star className="w-5 h-5" style={{ color: '#65cc8a' }} />
+        <Star className="w-5 h-5" style={{ color: '#65cc8a' }} />
+        <Star className="w-5 h-5" style={{ color: '#65cc8a' }} />
       </div>
       <p className="text-gray-600 mb-6 leading-relaxed">{quote}</p>
       <div>
