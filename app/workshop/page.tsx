@@ -709,19 +709,47 @@ export default function Workshop() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="min-h-screen bg-white font-montserrat"
+        className="min-h-screen font-montserrat"
         style={{ 
-          background: '#ffffff'
+          background: 'linear-gradient(135deg, #f0fdf4 0%, #ffffff 50%, #dcfce7 100%)',
+          position: 'relative',
+          overflow: 'hidden'
         }}
       >
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-32 h-32 rounded-full opacity-20"
+               style={{ 
+                 background: 'radial-gradient(circle, #65cc8a, transparent)',
+                 animation: 'float 6s ease-in-out infinite'
+               }}></div>
+          <div className="absolute top-40 right-20 w-24 h-24 rounded-full opacity-15"
+               style={{ 
+                 background: 'radial-gradient(circle, #4ade80, transparent)',
+                 animation: 'float 8s ease-in-out infinite reverse'
+               }}></div>
+          <div className="absolute bottom-20 left-1/4 w-20 h-20 rounded-full opacity-10"
+               style={{ 
+                 background: 'radial-gradient(circle, #65cc8a, transparent)',
+                 animation: 'float 7s ease-in-out infinite'
+               }}></div>
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           {/* Header */}
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-col gap-4 sm:gap-6 mb-6 sm:mb-12"
-          >
+                      <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex flex-col gap-4 sm:gap-6 mb-6 sm:mb-12"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+                backdropFilter: 'blur(10px)',
+                borderRadius: '24px',
+                padding: '32px',
+                border: '1px solid rgba(101, 204, 138, 0.1)',
+                boxShadow: '0 20px 40px rgba(101, 204, 138, 0.1)'
+              }}
+            >
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -766,16 +794,16 @@ export default function Workshop() {
               >
                 <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-2 sm:gap-4">
                   <div className="flex flex-col gap-1 sm:gap-2">
-                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-montserrat"
+                    <h1 className="text-3xl sm:text-4xl lg:text-6xl font-black font-montserrat"
                         style={{ 
-                          background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                          WebkitBackgroundClip: 'text',
-                          WebkitTextFillColor: 'transparent'
+                          color: '#000000',
+                          textShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
                         }}>
-                      Herramientas de Inclusión
+                       Herramientas de Inclusión
                     </h1>
-                    <p className="text-gray-600 text-xs sm:text-sm lg:text-base font-montserrat">
-                      Descubre herramientas educativas para crear un entorno de aprendizaje inclusivo
+                    <p className="text-sm sm:text-lg lg:text-xl font-medium font-montserrat"
+                       style={{ color: '#000000' }}>
+                      ✨ Transforma tu enseñanza con herramientas diseñadas para la diversidad
                     </p>
                   </div>
                 </div>
@@ -895,11 +923,21 @@ export default function Workshop() {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="mb-6 sm:mb-8"
           >
-            <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4"
-                style={{ color: '#65cc8a' }}>
-              🌱 Herramientas esenciales para inclusión educativa
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6 sm:mb-8"
+                style={{ 
+                  color: '#000000'
+                }}>
+              🌟 Herramientas Destacadas para Inclusión
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+                 style={{
+                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 253, 244, 0.8))',
+                   backdropFilter: 'blur(10px)',
+                   borderRadius: '20px',
+                   padding: '24px',
+                   border: '1px solid rgba(101, 204, 138, 0.1)',
+                   boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                 }}>
               {tools
                 .filter(tool => recommendedTools.includes(tool.id))
                 .map((tool, index) => (
@@ -926,6 +964,14 @@ export default function Workshop() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
             className="flex flex-wrap gap-2 mb-4 sm:mb-6 lg:mb-8 justify-center sm:justify-start"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+              backdropFilter: 'blur(10px)',
+              borderRadius: '20px',
+              padding: '24px',
+              border: '1px solid rgba(101, 204, 138, 0.1)',
+              boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+            }}
           >
             <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
               <div className="w-full max-w-md px-4 sm:px-0">
@@ -997,7 +1043,15 @@ export default function Workshop() {
                 stiffness: 100,
                 damping: 20
               }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 relative z-0"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 relative z-0"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 253, 244, 0.8))',
+                backdropFilter: 'blur(10px)',
+                borderRadius: '24px',
+                padding: '32px',
+                border: '1px solid rgba(101, 204, 138, 0.1)',
+                boxShadow: '0 20px 40px rgba(101, 204, 138, 0.1)'
+              }}
             >
               {isLoading ? (
                 <div className="col-span-full text-center py-6 sm:py-8">
@@ -1093,6 +1147,25 @@ export default function Workshop() {
           </Dialog>
         </div>
       </motion.div>
+      
+      {/* CSS Animations */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          33% { transform: translateY(-20px) rotate(1deg); }
+          66% { transform: translateY(-10px) rotate(-1deg); }
+        }
+        
+        @keyframes pulse {
+          0%, 100% { opacity: 0.5; transform: scale(1); }
+          50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        
+        @keyframes gradientShift {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+      `}</style>
     </Layout>
   )
 }

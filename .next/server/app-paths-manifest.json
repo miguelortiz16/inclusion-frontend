@@ -3,6 +3,7 @@
   "/workshop/page": "app/workshop/page.js",
   "/workshop/creador-cuestionarios/page": "app/workshop/creador-cuestionarios/page.js",
   "/workshop/dua/page": "app/workshop/dua/page.js",
-  "/unit-planner/page": "app/unit-planner/page.js",
-  "/workshop/ajustes-razonables/page": "app/workshop/ajustes-razonables/page.js"
+  "/history/page": "app/history/page.js",
+  "/workshop/ajustes-razonables/page": "app/workshop/ajustes-razonables/page.js",
+  "/workshop/calificador-ensayos/page": "app/workshop/calificador-ensayos/page.js"
 }

@@ -76,6 +76,21 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/workshop/ajustes-razonables/page.js"
+    ],
+    "/workshop/calificador-ensayos/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/workshop/calificador-ensayos/page.js"
+    ],
+    "/solicitar-herramienta/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/solicitar-herramienta/page.js"
+    ],
+    "/workshop/coloring/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/workshop/coloring/page.js"
     ]
   }
 }
