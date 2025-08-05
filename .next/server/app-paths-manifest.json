@@ -1,9 +1,10 @@
 {
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
   "/workshop/page": "app/workshop/page.js",
-  "/comunidad/page": "app/comunidad/page.js",
-  "/workshop/dua/page": "app/workshop/dua/page.js",
-  "/workshop/planificador-lecciones/page": "app/workshop/planificador-lecciones/page.js",
+  "/unit-planner/page": "app/unit-planner/page.js",
   "/ranking/page": "app/ranking/page.js",
-  "/pricing/page": "app/pricing/page.js"
+  "/comunidad/page": "app/comunidad/page.js",
+  "/pricing/page": "app/pricing/page.js",
+  "/page": "app/page.js",
+  "/unit-planner/calendar/page": "app/unit-planner/calendar/page.js"
 }

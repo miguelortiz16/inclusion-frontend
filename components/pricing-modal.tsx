@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Check, Rocket, CreditCard, Shield, Youtube } from "lucide-react"
+import { Check, Rocket, CreditCard, Shield, Youtube, Accessibility, Heart } from "lucide-react"
 import { GooglePayButton } from "@/components/google-pay-button"
 import { toast } from "sonner"
 import { Input } from "@/components/ui/input"
@@ -332,17 +332,29 @@ export function PricingModal({ open, onOpenChange, accessMessage }: PricingModal
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="max-w-5xl max-h-[80vh] overflow-y-auto z-50 bg-white">
+      <DialogContent className="max-w-5xl max-h-[80vh] overflow-y-auto z-50"
+                   style={{
+                     background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
+                     backdropFilter: 'blur(20px)',
+                     border: '1px solid rgba(101, 204, 138, 0.2)',
+                     boxShadow: '0 25px 50px rgba(101, 204, 138, 0.2)'
+                   }}>
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold text-center text-slate-900">
-            Planes de Suscripción    Elige el plan que mejor se adapte a tus necesidades
+          <DialogTitle className="text-xl font-bold text-center"
+                       style={{ color: '#000000' }}>
+            Planes de Suscripción - Elige el plan que mejor se adapte a tus necesidades
           </DialogTitle>
-          <DialogDescription className="text-center text-xs text-slate-600">
+          <DialogDescription className="text-center text-xs"
+                           style={{ color: '#000000' }}>
          
           </DialogDescription>
           {accessMessage && (
-            <div className="mt-2 p-2 bg-blue-50 border border-blue-100 rounded-lg">
-              <p className="text-blue-800 text-center text-xs">{accessMessage}</p>
+            <div className="mt-2 p-2 rounded-lg"
+                 style={{
+                   background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                   border: '1px solid rgba(101, 204, 138, 0.3)'
+                 }}>
+              <p className="text-center text-xs" style={{ color: '#000000' }}>{accessMessage}</p>
             </div>
           )}
           {/* Eliminado: mensaje de espera y lógica de canClose/closeCountdown */}
@@ -350,7 +362,11 @@ export function PricingModal({ open, onOpenChange, accessMessage }: PricingModal
 
         <div className="px-3">
           {/* Early Bird Banner */}
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg p-2 mb-3 text-white text-center shadow-sm">
+          <div className="rounded-lg p-2 mb-3 text-white text-center shadow-sm"
+               style={{
+                 background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                 boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+               }}>
             <h2 className="text-xs font-bold leading-tight">
               🎉 ¡Oferta Especial! Acceso Ilimitado por $29.99 USD/año - por $2.49 USD/mes - ¡Ahorra 60%! 🎉
             </h2>
@@ -358,7 +374,11 @@ export function PricingModal({ open, onOpenChange, accessMessage }: PricingModal
 
           {/* 7 Days Free Trial Banner */}
           {hasUsedTrial === false && (
-            <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-2 mb-3 text-white text-center shadow-sm">
+            <div className="rounded-lg p-2 mb-3 text-white text-center shadow-sm"
+                 style={{
+                   background: 'linear-gradient(135deg, #4ade80, #22c55e)',
+                   boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                 }}>
               <h2 className="text-xs font-semibold leading-tight">
                 ¡Prueba gratis de 7 días! Prueba todas las funcionalidades premium sin compromiso. Se requiere tarjeta para verificar, puedes cancelar en cualquier momento.
               </h2>
@@ -368,24 +388,38 @@ export function PricingModal({ open, onOpenChange, accessMessage }: PricingModal
           {/* All Plans in Horizontal Layout */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-5xl mx-auto">
             {/* Basic Plan */}
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 transition-all duration-300 hover:shadow-md">
+            <div className="rounded-xl shadow-sm transition-all duration-300 hover:shadow-md"
+                 style={{
+                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+                   backdropFilter: 'blur(20px)',
+                   border: '1px solid rgba(101, 204, 138, 0.2)',
+                   boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                 }}>
               <div className="p-2">
-                <h2 className="text-base font-bold text-slate-900 mb-1">{plans.basic.name}</h2>
-                <p className="text-slate-600 mb-1 text-xs">{plans.basic.description}</p>
+                <h2 className="text-base font-bold mb-1" style={{ color: '#000000' }}>{plans.basic.name}</h2>
+                <p className="mb-1 text-xs" style={{ color: '#000000' }}>{plans.basic.description}</p>
                 <div className="mb-1">
                   <div className="text-center">
-                    <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
+                    <span className="text-2xl font-bold"
+                          style={{
+                            background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent'
+                          }}>
                       Gratis
                     </span>
                   </div>
                 </div>
                 <ul className="space-y-1 mb-1">
                   {plans.basic.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-1.5 text-slate-700">
-                      <div className="mt-0.5 p-0.5 rounded-full bg-blue-100">
-                        <Check className="w-2.5 h-2.5 text-blue-500" />
+                    <li key={feature} className="flex items-start gap-1.5">
+                      <div className="mt-0.5 p-0.5 rounded-full"
+                           style={{
+                             background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.2), rgba(74, 222, 128, 0.2))'
+                           }}>
+                        <Check className="w-2.5 h-2.5" style={{ color: '#65cc8a' }} />
                       </div>
-                      <span className="text-slate-600 text-xs">{feature}</span>
+                      <span className="text-xs" style={{ color: '#000000' }}>{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -398,30 +432,45 @@ export function PricingModal({ open, onOpenChange, accessMessage }: PricingModal
                 {plans.monthly.map((plan) => (
                   <div 
                     key={plan.name} 
-                    className="bg-white rounded-xl shadow-sm border border-blue-200 relative scale-105 transition-all duration-300 hover:shadow-md"
+                    className="rounded-xl shadow-sm relative scale-105 transition-all duration-300 hover:shadow-md"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+                      backdropFilter: 'blur(20px)',
+                      border: '1px solid rgba(101, 204, 138, 0.2)',
+                      boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                    }}
                   >
                     <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
-                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-2 py-0.5 rounded-full text-xs font-medium shadow-sm">
+                      <div className="text-white px-2 py-0.5 rounded-full text-xs font-medium shadow-sm"
+                           style={{
+                             background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                             boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                           }}>
                         Más Popular
                       </div>
                     </div>
                     
                     <div className="p-2">
-                      <h2 className="text-base font-bold text-slate-900 mb-1">{plan.name}</h2>
-                      <p className="text-slate-600 mb-1 text-xs">{plan.description}</p>
+                      <h2 className="text-base font-bold mb-1" style={{ color: '#000000' }}>{plan.name}</h2>
+                      <p className="mb-1 text-xs" style={{ color: '#000000' }}>{plan.description}</p>
                       
                       <div className="mb-1">
                         <div className="text-center">
-                          <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
+                          <span className="text-2xl font-bold"
+                                style={{
+                                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                                  WebkitBackgroundClip: 'text',
+                                  WebkitTextFillColor: 'transparent'
+                                }}>
                             ${plan.price}
                           </span>
-                          <span className="text-slate-500 text-xs">/mes USD</span>
+                          <span className="text-xs" style={{ color: '#000000' }}>/mes USD</span>
                           {currencyData && (
                             <>
-                              <div className="text-xs text-slate-500 mt-0.5">
+                              <div className="text-xs mt-0.5" style={{ color: '#000000' }}>
                                 {convertToLocalCurrency(parseFloat(plan.price))} {currencyData.currency}/mes
                               </div>
-                              <div className="text-xs text-slate-500">
+                              <div className="text-xs" style={{ color: '#000000' }}>
                                 {convertToLocalCurrency(parseFloat(plan.price) / 30)} {currencyData.currency}/día
                               </div>
                             </>
@@ -431,19 +480,26 @@ export function PricingModal({ open, onOpenChange, accessMessage }: PricingModal
 
                       <ul className="space-y-1 mb-1">
                         {plan.features.map((feature) => (
-                          <li key={feature} className="flex items-start gap-1.5 text-slate-700">
-                            <div className="mt-0.5 p-0.5 rounded-full bg-blue-100">
-                              <Check className="w-2.5 h-2.5 text-blue-500" />
+                          <li key={feature} className="flex items-start gap-1.5">
+                            <div className="mt-0.5 p-0.5 rounded-full"
+                                 style={{
+                                   background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.2), rgba(74, 222, 128, 0.2))'
+                                 }}>
+                              <Check className="w-2.5 h-2.5" style={{ color: '#65cc8a' }} />
                             </div>
-                            <span className="text-slate-600 text-xs">{feature}</span>
+                            <span className="text-xs" style={{ color: '#000000' }}>{feature}</span>
                           </li>
                         ))}
                       </ul>
 
                       <div className="space-y-1">
                         <Button
-                          className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white h-8 text-xs font-medium transition-all duration-300"
+                          className="w-full text-white h-8 text-xs font-medium transition-all duration-300"
                           size="sm"
+                          style={{
+                            background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                            boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                          }}
                           onClick={() => {
                             onOpenChange(false);
                             handlePayment(plan);
@@ -458,7 +514,8 @@ export function PricingModal({ open, onOpenChange, accessMessage }: PricingModal
                           href="https://www.youtube.com/watch?v=GyCN7t5K4OU"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-2 w-full mt-1 text-blue-700 hover:text-red-600 font-semibold text-xs transition-colors"
+                          className="flex items-center justify-center gap-2 w-full mt-1 font-semibold text-xs transition-colors"
+                          style={{ color: '#65cc8a' }}
                         >
                           <Youtube className="w-4 h-4" />
                           Ver tutorial de cómo pagar
@@ -474,40 +531,55 @@ export function PricingModal({ open, onOpenChange, accessMessage }: PricingModal
                 {plans.yearly.map((plan) => (
                   <div 
                     key={plan.name} 
-                    className="bg-white rounded-xl shadow-sm border border-blue-200 relative scale-105 transition-all duration-300 hover:shadow-md"
+                    className="rounded-xl shadow-sm relative scale-105 transition-all duration-300 hover:shadow-md"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+                      backdropFilter: 'blur(20px)',
+                      border: '1px solid rgba(101, 204, 138, 0.2)',
+                      boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                    }}
                   >
                     <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
-                      <div className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-2 py-0.5 rounded-full text-xs font-medium shadow-sm">
+                      <div className="text-white px-2 py-0.5 rounded-full text-xs font-medium shadow-sm"
+                           style={{
+                             background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                             boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                           }}>
                         Mejor Valor
                       </div>
                     </div>
                     
                     <div className="p-2">
-                      <h2 className="text-base font-bold text-slate-900 mb-1">{plan.name}</h2>
-                      <p className="text-slate-600 mb-1 text-xs">{plan.description}</p>
+                      <h2 className="text-base font-bold mb-1" style={{ color: '#000000' }}>{plan.name}</h2>
+                      <p className="mb-1 text-xs" style={{ color: '#000000' }}>{plan.description}</p>
                       
                       <div className="mb-1">
                         <div className="text-center">
                           <div className="flex items-center justify-center gap-1 mb-0.5">
-                            <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
+                            <span className="text-2xl font-bold"
+                                  style={{
+                                    background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent'
+                                  }}>
                               ${plan.price}
                             </span>
-                            <span className="text-slate-500 text-xs">/año USD</span>
+                            <span className="text-xs" style={{ color: '#000000' }}>/año USD</span>
                           </div>
                           {currencyData && (
                             <>
-                              <div className="text-xs text-slate-500">
+                              <div className="text-xs" style={{ color: '#000000' }}>
                                 {convertToLocalCurrency(parseFloat(plan.price))} {currencyData.currency}/año
                               </div>
-                              <div className="text-xs text-slate-500">
+                              <div className="text-xs" style={{ color: '#000000' }}>
                                 {convertToLocalCurrency(parseFloat(plan.price) / 12)} {currencyData.currency}/mes
                               </div>
-                              <div className="text-xs text-slate-500">
+                              <div className="text-xs" style={{ color: '#000000' }}>
                                 {convertToLocalCurrency(parseFloat(plan.price) / 365)} {currencyData.currency}/día
                               </div>
                             </>
                           )}
-                          <div className="text-xs text-blue-500 font-medium mt-0.5">
+                          <div className="text-xs font-medium mt-0.5" style={{ color: '#65cc8a' }}>
                             ¡Ahorra 60% - ${(parseFloat(plans.monthly[0].price) * 12 - parseFloat(plan.price)).toFixed(2)} USD al año!
                           </div>
                         </div>
@@ -515,19 +587,26 @@ export function PricingModal({ open, onOpenChange, accessMessage }: PricingModal
 
                       <ul className="space-y-1 mb-1">
                         {plan.features.map((feature) => (
-                          <li key={feature} className="flex items-start gap-1.5 text-slate-700">
-                            <div className="mt-0.5 p-0.5 rounded-full bg-blue-100">
-                              <Check className="w-2.5 h-2.5 text-blue-500" />
+                          <li key={feature} className="flex items-start gap-1.5">
+                            <div className="mt-0.5 p-0.5 rounded-full"
+                                 style={{
+                                   background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.2), rgba(74, 222, 128, 0.2))'
+                                 }}>
+                              <Check className="w-2.5 h-2.5" style={{ color: '#65cc8a' }} />
                             </div>
-                            <span className="text-slate-600 text-xs">{feature}</span>
+                            <span className="text-xs" style={{ color: '#000000' }}>{feature}</span>
                           </li>
                         ))}
                       </ul>
 
                       <div className="space-y-1">
                         <Button
-                          className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white h-8 text-xs font-medium transition-all duration-300"
+                          className="w-full text-white h-8 text-xs font-medium transition-all duration-300"
                           size="sm"
+                          style={{
+                            background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                            boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                          }}
                           onClick={() => {
                             onOpenChange(false);
                             handlePayment(plan);
@@ -542,7 +621,8 @@ export function PricingModal({ open, onOpenChange, accessMessage }: PricingModal
                           href="https://www.youtube.com/watch?v=GyCN7t5K4OU"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-2 w-full mt-1 text-blue-700 hover:text-red-600 font-semibold text-xs transition-colors"
+                          className="flex items-center justify-center gap-2 w-full mt-1 font-semibold text-xs transition-colors"
+                          style={{ color: '#65cc8a' }}
                         >
                           <Youtube className="w-4 h-4" />
                           Ver tutorial de cómo pagar
@@ -553,8 +633,12 @@ export function PricingModal({ open, onOpenChange, accessMessage }: PricingModal
                        */}
                         {plan.name === "Plan Profesional Anual" && currencyData?.currency === "COP" && (
                           <Button
-                            className="w-full bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white h-8 text-xs font-medium transition-all duration-300"
+                            className="w-full text-white h-8 text-xs font-medium transition-all duration-300"
                             size="sm"
+                            style={{
+                              background: 'linear-gradient(135deg, #4ade80, #22c55e)',
+                              boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                            }}
                             onClick={() => {
                               onOpenChange(false);
                               handleEpaycoPayment(plan);
@@ -600,37 +684,48 @@ export function PricingModal({ open, onOpenChange, accessMessage }: PricingModal
                     "¡Ahorra más del 60%!"
                   ]
                 }].map((plan) => (
-                  <div key={plan.name} className="bg-white rounded-xl shadow-sm border border-blue-200 relative scale-105 transition-all duration-300 hover:shadow-md">
+                  <div key={plan.name} className="rounded-xl shadow-sm relative scale-105 transition-all duration-300 hover:shadow-md"
+                       style={{
+                         background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+                         backdropFilter: 'blur(20px)',
+                         border: '1px solid rgba(101, 204, 138, 0.2)',
+                         boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                       }}>
                     <div className="p-2">
-                      <h2 className="text-base font-bold text-slate-900 mb-1">{plan.name}</h2>
-                      <p className="text-slate-600 mb-1 text-xs">{plan.description}</p>
+                      <h2 className="text-base font-bold mb-1" style={{ color: '#000000' }}>{plan.name}</h2>
+                      <p className="mb-1 text-xs" style={{ color: '#000000' }}>{plan.description}</p>
                       <div className="mb-1">
                         <div className="text-center">
-                          <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
+                          <span className="text-2xl font-bold"
+                                style={{
+                                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                                  WebkitBackgroundClip: 'text',
+                                  WebkitTextFillColor: 'transparent'
+                                }}>
                             ${plan.price}
                           </span>
-                          <span className="text-slate-500 text-xs">{plan.name === 'Plan Mensual' ? '/mes USD' : '/año USD'}</span>
+                          <span className="text-xs" style={{ color: '#000000' }}>{plan.name === 'Plan Mensual' ? '/mes USD' : '/año USD'}</span>
                           {currencyData && (
                             <>
                               {plan.name === 'Plan Mensual' && (
                                 <>
-                                  <div className="text-xs text-slate-500 mt-0.5">
+                                  <div className="text-xs mt-0.5" style={{ color: '#000000' }}>
                                     {convertToLocalCurrency(parseFloat(plan.price))} {currencyData.currency}/mes
                                   </div>
-                                  <div className="text-xs text-slate-500">
+                                  <div className="text-xs" style={{ color: '#000000' }}>
                                     {convertToLocalCurrency(parseFloat(plan.price) / 30)} {currencyData.currency}/día
                                   </div>
                                 </>
                               )}
                               {plan.name === 'Plan Anual' && (
                                 <>
-                                  <div className="text-xs text-slate-500">
+                                  <div className="text-xs" style={{ color: '#000000' }}>
                                     {convertToLocalCurrency(parseFloat(plan.price))} {currencyData.currency}/año
                                   </div>
-                                  <div className="text-xs text-slate-500">
+                                  <div className="text-xs" style={{ color: '#000000' }}>
                                     {convertToLocalCurrency(parseFloat(plan.price) / 12)} {currencyData.currency}/mes
                                   </div>
-                                  <div className="text-xs text-slate-500">
+                                  <div className="text-xs" style={{ color: '#000000' }}>
                                     {convertToLocalCurrency(parseFloat(plan.price) / 365)} {currencyData.currency}/día
                                   </div>
                                 </>
@@ -641,18 +736,25 @@ export function PricingModal({ open, onOpenChange, accessMessage }: PricingModal
                       </div>
                       <ul className="space-y-1 mb-1">
                         {plan.features.map((feature) => (
-                          <li key={feature} className="flex items-start gap-1.5 text-slate-700">
-                            <div className="mt-0.5 p-0.5 rounded-full bg-blue-100">
-                              <Check className="w-2.5 h-2.5 text-blue-500" />
+                          <li key={feature} className="flex items-start gap-1.5">
+                            <div className="mt-0.5 p-0.5 rounded-full"
+                                 style={{
+                                   background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.2), rgba(74, 222, 128, 0.2))'
+                                 }}>
+                              <Check className="w-2.5 h-2.5" style={{ color: '#65cc8a' }} />
                             </div>
-                            <span className="text-slate-600 text-xs">{feature}</span>
+                            <span className="text-xs" style={{ color: '#000000' }}>{feature}</span>
                           </li>
                         ))}
                       </ul>
                       <div className="space-y-1">
                         <Button
-                          className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white h-8 text-xs font-medium transition-all duration-300"
+                          className="w-full text-white h-8 text-xs font-medium transition-all duration-300"
                           size="sm"
+                          style={{
+                            background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                            boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                          }}
                           onClick={
                             () => {
                               onOpenChange(false);
@@ -667,8 +769,12 @@ export function PricingModal({ open, onOpenChange, accessMessage }: PricingModal
                         </Button>
                         {plan.name === "Plan Anual" && currencyData?.currency === "COP" && (
                           <Button
-                            className="w-full bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white h-8 text-xs font-medium transition-all duration-300"
+                            className="w-full text-white h-8 text-xs font-medium transition-all duration-300"
                             size="sm"
+                            style={{
+                              background: 'linear-gradient(135deg, #4ade80, #22c55e)',
+                              boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                            }}
                             onClick={() => handleEpaycoPayment(plan)}
                           >
                             <Rocket className="w-3 h-3 mr-1" />
