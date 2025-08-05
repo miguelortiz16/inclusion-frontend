@@ -138,9 +138,22 @@ export default function InclusionPlanner() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="min-h-screen flex flex-col"
-          style={{ background: 'linear-gradient(to bottom, #ffffff, #f0fdf4, #dcfce7)' }}
+          className="min-h-screen flex flex-col relative overflow-hidden"
+          style={{ 
+            background: 'linear-gradient(135deg, #ffffff 0%, #f0fdf4 25%, #dcfce7 50%, #f0fdf4 75%, #ffffff 100%)',
+            backgroundSize: '400% 400%',
+            animation: 'gradientShift 15s ease infinite'
+          }}
         >
+          {/* Animated background elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-20 left-10 w-32 h-32 rounded-full opacity-10"
+                 style={{ background: 'radial-gradient(circle, #65cc8a, transparent)', animation: 'float 6s ease-in-out infinite' }}></div>
+            <div className="absolute top-40 right-20 w-24 h-24 rounded-full opacity-15"
+                 style={{ background: 'radial-gradient(circle, #4ade80, transparent)', animation: 'float 8s ease-in-out infinite reverse' }}></div>
+            <div className="absolute bottom-40 left-1/4 w-20 h-20 rounded-full opacity-10"
+                 style={{ background: 'radial-gradient(circle, #65cc8a, transparent)', animation: 'float 7s ease-in-out infinite' }}></div>
+          </div>
         {/* WhatsApp Contact Button with Dropdown */}
         <div className="fixed left-4 bottom-4 z-[9999] sm:fixed">
           <div className="relative">
@@ -220,45 +233,47 @@ export default function InclusionPlanner() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200"
+          className="sticky top-0 z-50 backdrop-blur-md border-b border-white/20"
+          style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between h-16">
+            <div className="flex justify-between h-20">
               <div className="flex items-center">
                 <div className="flex-shrink-0 flex items-center">
-                  <div className="relative w-8 h-8 mr-2">
+                  <div className="relative w-10 h-10 mr-3 p-2 rounded-xl"
+                       style={{ background: 'linear-gradient(135deg, #65cc8a, #4ade80)' }}>
                     <Image src="/images/logo.png" alt="Logo" fill className="rounded-lg object-cover" />
                   </div>
-                  <span className="text-lg font-display font-semibold bg-clip-text text-transparent"
+                  <span className="text-xl font-display font-bold bg-clip-text text-transparent"
                         style={{ background: 'linear-gradient(to right, #65cc8a, #4ade80)', WebkitBackgroundClip: 'text' }}>
                     InclusionPlanner
                   </span>
                 </div>
-                <div className="hidden md:ml-8 md:flex md:space-x-6">
+                <div className="hidden md:ml-12 md:flex md:space-x-8">
                   <Link
                     href="#features"
-                    className="text-gray-600 hover:text-green-600 px-3 py-2 text-sm font-medium"
+                    className="text-gray-700 hover:text-green-600 px-4 py-2 text-sm font-medium transition-all duration-300 hover:scale-105"
                   >
                     Características
                   </Link>
                   <Link
                     href="#tools"
-                    className="text-gray-600 hover:text-green-600 px-3 py-2 text-sm font-medium"
+                    className="text-gray-700 hover:text-green-600 px-4 py-2 text-sm font-medium transition-all duration-300 hover:scale-105"
                   >
                     Herramientas
                   </Link>
                   <PrivacyPolicy />
                 </div>
               </div>
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-6">
                 <Link href="/sign-in">
-                  <Button variant="ghost" className="text-gray-600 hover:text-green-600">
+                  <Button variant="ghost" className="text-gray-700 hover:text-green-600 font-medium">
                     Iniciar sesión
                   </Button>
                 </Link>
                 <Link href="/sign-up">
-                  <Button className="text-white"
-                          style={{ backgroundColor: '#65cc8a' }}>
+                  <Button className="text-white font-semibold px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                          style={{ background: 'linear-gradient(135deg, #65cc8a, #4ade80)' }}>
                     Registrarse
                   </Button>
                 </Link>
@@ -315,87 +330,179 @@ export default function InclusionPlanner() {
         <main>
           {/* Hero Section */}
           <AnimatedSection>
-            <section className="relative overflow-hidden py-20">
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom right, #f0fdf4, #dcfce7, #f0fdf4)' }}></div>
-              <div className="absolute inset-0 bg-[url('/images/notebook-pattern.svg')] bg-repeat opacity-[0.02]"></div>
-
+            <section className="relative overflow-hidden py-32">
+              {/* Animated background */}
+              <div className="absolute inset-0" style={{ 
+                background: 'radial-gradient(ellipse at center, rgba(101, 204, 138, 0.1) 0%, rgba(255, 255, 255, 0) 70%)',
+                animation: 'pulse 4s ease-in-out infinite'
+              }}></div>
+              
               <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                  <div className="space-y-8">
-                    <div className="inline-block px-4 py-2 rounded-full"
-                         style={{ backgroundColor: '#f0fdf4' }}>
-                      <span className="text-sm font-medium" style={{ color: '#65cc8a' }}>🌱 Crecimiento y Armonía para Todos</span>
-                    </div>
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold">
-                      <span className="drop-shadow" style={{ color: '#1f2937' }}>
-                        Inclusión que Transforma
-                      </span>
-                    </h1>
+                <div className="text-center mb-16">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="inline-flex items-center px-6 py-3 rounded-full mb-8"
+                    style={{ 
+                      background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                      border: '1px solid rgba(101, 204, 138, 0.2)'
+                    }}
+                  >
+                    <span className="text-lg mr-2">🌱</span>
+                    <span className="text-sm font-semibold" style={{ color: '#65cc8a' }}>
+                      Crecimiento y Armonía para Todos
+                    </span>
+                  </motion.div>
+                  
+                  <motion.h1
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="text-5xl md:text-7xl lg:text-8xl font-display font-black mb-8"
+                    style={{ 
+                      background: 'linear-gradient(135deg, #1f2937 0%, #65cc8a 50%, #1f2937 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text'
+                    }}
+                  >
+                    Inclusión que
+                    <br />
+                    <span style={{ color: '#65cc8a' }}>Transforma</span>
+                  </motion.h1>
 
-                    <p className="text-xl text-gray-600 leading-relaxed">
-                      Diseña experiencias de aprendizaje accesibles y equitativas que permiten que cada estudiante crezca y se desarrolle en un entorno armonioso.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4">
-                      <Link href="/sign-up">
-                        <Button
-                          size="lg"
-                          className="text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 w-full sm:w-auto"
-                          style={{ background: 'linear-gradient(to right, #65cc8a, #4ade80)' }}
-                        >
-                          Comenzar Ahora
-                          <ArrowRight className="ml-2 w-5 h-5" />
-                        </Button>
-                      </Link>
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-4xl mx-auto mb-12"
+                  >
+                    Diseña experiencias de aprendizaje accesibles y equitativas que permiten que cada estudiante crezca y se desarrolle en un entorno armonioso.
+                  </motion.p>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    className="flex flex-col sm:flex-row gap-6 justify-center mb-16"
+                  >
+                    <Link href="/sign-up">
+                      <Button
+                        size="lg"
+                        className="text-white px-12 py-6 text-xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 w-full sm:w-auto"
+                        style={{ 
+                          background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                          boxShadow: '0 20px 40px rgba(101, 204, 138, 0.3)'
+                        }}
+                      >
+                        Comenzar Ahora
+                        <ArrowRight className="ml-3 w-6 h-6" />
+                      </Button>
+                    </Link>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.8 }}
+                    className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto"
+                  >
+                    <div className="flex items-center justify-center p-6 rounded-2xl backdrop-blur-sm"
+                         style={{ 
+                           background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                           border: '1px solid rgba(101, 204, 138, 0.2)'
+                         }}>
+                      <Accessibility className="w-8 h-8 mr-3" style={{ color: '#65cc8a' }} />
+                      <span className="text-lg font-semibold text-gray-800">Accesibilidad Universal</span>
                     </div>
-                    <div className="flex flex-wrap gap-4">
-                      <div className="flex items-center px-4 py-2 rounded-full shadow-sm"
-                           style={{ backgroundColor: '#f0fdf4' }}>
-                        <Accessibility className="w-5 h-5 mr-2" style={{ color: '#65cc8a' }} />
-                        <span className="text-sm font-medium text-gray-700">Accesibilidad Universal</span>
-                      </div>
-                      <div className="flex items-center px-4 py-2 rounded-full shadow-sm"
-                           style={{ backgroundColor: '#f0fdf4' }}>
-                        <Heart className="w-5 h-5 mr-2" style={{ color: '#65cc8a' }} />
-                        <span className="text-sm font-medium text-gray-700">Diseño Universal</span>
-                      </div>
-                      <div className="flex items-center px-4 py-2 rounded-full shadow-sm"
-                           style={{ backgroundColor: '#f0fdf4' }}>
-                        <Shield className="w-5 h-5 mr-2" style={{ color: '#65cc8a' }} />
-                        <span className="text-sm font-medium text-gray-700">Entorno Seguro</span>
-                      </div>
+                    <div className="flex items-center justify-center p-6 rounded-2xl backdrop-blur-sm"
+                         style={{ 
+                           background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                           border: '1px solid rgba(101, 204, 138, 0.2)'
+                         }}>
+                      <Heart className="w-8 h-8 mr-3" style={{ color: '#65cc8a' }} />
+                      <span className="text-lg font-semibold text-gray-800">Diseño Universal</span>
                     </div>
-                  </div>
-                  <div className="relative">
-                    <div className="relative bg-white p-8 rounded-2xl shadow-xl">
-                      <video
-                        src="/images/profeplanner.mp4"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        width={500}
-                        height={500}
-                        className="w-full h-auto rounded-xl"
-                      />
+                    <div className="flex items-center justify-center p-6 rounded-2xl backdrop-blur-sm"
+                         style={{ 
+                           background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                           border: '1px solid rgba(101, 204, 138, 0.2)'
+                         }}>
+                      <Shield className="w-8 h-8 mr-3" style={{ color: '#65cc8a' }} />
+                      <span className="text-lg font-semibold text-gray-800">Entorno Seguro</span>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
+
+                {/* Floating video container */}
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 1 }}
+                  className="relative max-w-4xl mx-auto"
+                >
+                  <div className="relative bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-2xl border border-white/20"
+                       style={{ boxShadow: '0 25px 50px rgba(0, 0, 0, 0.1)' }}>
+                    <video
+                      src="/images/profeplanner.mp4"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      width={500}
+                      height={500}
+                      className="w-full h-auto rounded-2xl"
+                    />
+                  </div>
+                </motion.div>
               </div>
             </section>
           </AnimatedSection>
 
           {/* Features Section */}
           <AnimatedSection>
-            <section className="py-20" id="premium-tools" style={{ background: 'linear-gradient(to bottom, #f0fdf4, #dcfce7)' }}>
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                  <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
-                    Herramientas de Inclusión que Fomentan el Crecimiento
+            <section className="py-32 relative overflow-hidden" id="premium-tools">
+              {/* Background with animated elements */}
+              <div className="absolute inset-0" style={{ 
+                background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #f0fdf4 100%)',
+                backgroundSize: '400% 400%',
+                animation: 'gradientShift 20s ease infinite'
+              }}></div>
+              
+              <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                  className="text-center mb-20"
+                >
+                  <div className="inline-flex items-center px-6 py-3 rounded-full mb-8"
+                       style={{ 
+                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                         border: '1px solid rgba(101, 204, 138, 0.2)'
+                       }}>
+                    <span className="text-lg mr-2">🚀</span>
+                    <span className="text-sm font-semibold" style={{ color: '#65cc8a' }}>
+                      Herramientas Avanzadas
+                    </span>
+                  </div>
+                  
+                  <h2 className="text-4xl md:text-6xl font-display font-black mb-8"
+                      style={{ 
+                        background: 'linear-gradient(135deg, #1f2937 0%, #65cc8a 50%, #1f2937 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text'
+                      }}>
+                    Inclusión que Fomenta el Crecimiento
                   </h2>
-                  <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Diseña experiencias de aprendizaje accesibles y equitativas para todos los estudiantes.
+                  
+                  <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                    Diseña experiencias de aprendizaje accesibles y equitativas para todos los estudiantes con nuestras herramientas especializadas.
                   </p>
-                </div>
+                </motion.div>
                 <motion.div
                   className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                   variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
@@ -434,17 +541,27 @@ export default function InclusionPlanner() {
                     description="Desarrolla contenido que refleje la diversidad cultural y lingüística."
                   />
                 </motion.div>
-                <div className="text-center mt-12">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="text-center mt-16"
+                >
                   <Link href="/sign-up">
                     <Button
                       size="lg"
-                      className="text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
-                      style={{ background: 'linear-gradient(to right, #65cc8a, #4ade80)' }}
+                      className="text-white px-12 py-6 text-xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110"
+                      style={{ 
+                        background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                        boxShadow: '0 20px 40px rgba(101, 204, 138, 0.3)'
+                      }}
                     >
                       ¡Quiero crear inclusión!
+                      <ArrowRight className="ml-3 w-6 h-6" />
                     </Button>
                   </Link>
-                </div>
+                </motion.div>
               </div>
             </section>
           </AnimatedSection>
@@ -476,49 +593,95 @@ export default function InclusionPlanner() {
 
           {/* Pricing Section */}
           <AnimatedSection>
-            <section className="py-20 bg-gradient-to-b from-indigo-50 to-blue-100">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                  <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
-                    Planes de Suscripción
+            <section className="py-32 relative overflow-hidden">
+              {/* Background with animated elements */}
+              <div className="absolute inset-0" style={{ 
+                background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #f0fdf4 100%)',
+                backgroundSize: '400% 400%',
+                animation: 'gradientShift 20s ease infinite'
+              }}></div>
+              
+              <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                  className="text-center mb-20"
+                >
+                  <div className="inline-flex items-center px-6 py-3 rounded-full mb-8"
+                       style={{ 
+                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                         border: '1px solid rgba(101, 204, 138, 0.2)'
+                       }}>
+                    <span className="text-lg mr-2">💰</span>
+                    <span className="text-sm font-semibold" style={{ color: '#65cc8a' }}>
+                      Planes Accesibles
+                    </span>
+                  </div>
+                  
+                  <h2 className="text-4xl md:text-6xl font-display font-black mb-8"
+                      style={{ 
+                        background: 'linear-gradient(135deg, #1f2937 0%, #65cc8a 50%, #1f2937 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text'
+                      }}>
+                    Planes de Inclusión
                   </h2>
-                  <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                    Elige el plan que mejor se adapte a tus necesidades
+                  
+                  <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                    Elige el plan que mejor se adapte a tus necesidades de inclusión educativa
                   </p>
-                </div>
+                </motion.div>
+                <br />
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+                >
                   {/* Plan Básico */}
-                  <div className="bg-white rounded-xl shadow-lg border border-slate-200 transition-all duration-300 hover:shadow-xl scale-100 md:scale-105">
-                    <div className="p-6">
-                      <h3 className="text-2xl font-display font-bold text-slate-900 mb-2">Plan Básico</h3>
-                      <p className="text-slate-600 mb-6 text-sm">Ideal para empezar</p>
+                  <div className="relative group">
+                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-gray-100 to-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative p-8 rounded-3xl backdrop-blur-sm border border-white/20 transition-all duration-300 hover:scale-105"
+                         style={{ 
+                           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+                           boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+                         }}>
+                      <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">Plan Básico</h3>
+                      <p className="text-gray-600 mb-6 text-sm">Ideal para empezar tu camino en la inclusión</p>
 
-
-                      <ul className="space-y-3 mb-6">
-                        <li className="flex items-start gap-2 text-slate-700">
-                          <div className="mt-0.5 p-1 rounded-full bg-indigo-100">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                      <ul className="space-y-4 mb-8">
+                        <li className="flex items-start gap-3 text-gray-700">
+                          <div className="mt-1 p-1 rounded-full"
+                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
                           </div>
-                          <span className="text-slate-600 text-sm">Acceso a funcionalidades básicas</span>
+                          <span className="text-gray-600 text-sm">Acceso a funcionalidades básicas de inclusión</span>
                         </li>
-                        <li className="flex items-start gap-2 text-slate-700">
-                          <div className="mt-0.5 p-1 rounded-full bg-indigo-100">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                        <li className="flex items-start gap-3 text-gray-700">
+                          <div className="mt-1 p-1 rounded-full"
+                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
                           </div>
-                          <span className="text-slate-600 text-sm">5 créditos mensuales</span>
+                          <span className="text-gray-600 text-sm">5 créditos mensuales</span>
                         </li>
-                        <li className="flex items-start gap-2 text-slate-700">
-                          <div className="mt-0.5 p-1 rounded-full bg-indigo-100">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                        <li className="flex items-start gap-3 text-gray-700">
+                          <div className="mt-1 p-1 rounded-full"
+                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
                           </div>
-                          <span className="text-slate-600 text-sm">Recursos básicos</span>
+                          <span className="text-gray-600 text-sm">Recursos básicos de inclusión</span>
                         </li>
                       </ul>
 
                       <Link href="/sign-up">
                         <Button
-                          className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white h-10 text-base font-medium transition-all duration-300"
+                          className="w-full text-white h-12 text-base font-semibold rounded-2xl transition-all duration-300 hover:scale-105"
+                          style={{ background: 'linear-gradient(135deg, #65cc8a, #4ade80)' }}
                           size="lg"
                         >
                           Comenzar Ahora
@@ -528,56 +691,79 @@ export default function InclusionPlanner() {
                   </div>
 
                   {/* Plan Mensual */}
-                  <div className="bg-white rounded-xl shadow-lg border border-indigo-500 relative scale-100 md:scale-105 transition-all duration-300 hover:shadow-xl">
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                      <div className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
+                  <div className="relative group">
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                      <div className="px-6 py-2 rounded-full text-sm font-bold shadow-lg"
+                           style={{ 
+                             background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                             color: 'white'
+                           }}>
                         Más Popular
                       </div>
                     </div>
+                    
+                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-green-100 to-green-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative p-8 rounded-3xl backdrop-blur-sm border-2 border-green-200 transition-all duration-300 hover:scale-105"
+                         style={{ 
+                           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
+                           boxShadow: '0 15px 40px rgba(101, 204, 138, 0.2)'
+                         }}>
+                      <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">Plan Profesional Mensual</h3>
+                      <p className="text-gray-600 mb-6 text-sm">Acceso completo a todas las herramientas de inclusión</p>
 
-                    <div className="p-6">
-                      <h3 className="text-2xl font-display font-bold text-slate-900 mb-2">Plan Profesional Mensual</h3>
-                      <p className="text-slate-600 mb-6 text-sm">Acceso completo a todas las herramientas</p>
-
-                      <div className="mb-6">
+                      <div className="mb-8">
                         <div className="text-center">
-                          <span className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                          <span className="text-5xl font-black"
+                                style={{ 
+                                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                                  WebkitBackgroundClip: 'text',
+                                  WebkitTextFillColor: 'transparent',
+                                  backgroundClip: 'text'
+                                }}>
                             $6.00
                           </span>
-                          <span className="text-slate-500">/mes USD</span>
+                          <span className="text-gray-500 block">/mes USD</span>
                         </div>
                       </div>
 
-                      <ul className="space-y-3 mb-6">
-                        <li className="flex items-start gap-2 text-slate-700">
-                          <div className="mt-0.5 p-1 rounded-full bg-indigo-100">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                      <ul className="space-y-4 mb-8">
+                        <li className="flex items-start gap-3 text-gray-700">
+                          <div className="mt-1 p-1 rounded-full"
+                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
                           </div>
-                          <span className="text-slate-600 text-sm">Acceso ilimitado a todas las funcionalidades</span>
+                          <span className="text-gray-600 text-sm">Acceso ilimitado a todas las funcionalidades</span>
                         </li>
-                        <li className="flex items-start gap-2 text-slate-700">
-                          <div className="mt-0.5 p-1 rounded-full bg-indigo-100">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                        <li className="flex items-start gap-3 text-gray-700">
+                          <div className="mt-1 p-1 rounded-full"
+                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
                           </div>
-                          <span className="text-slate-600 text-sm">Generación ilimitada de clases</span>
+                          <span className="text-gray-600 text-sm">Generación ilimitada de materiales inclusivos</span>
                         </li>
-                        <li className="flex items-start gap-2 text-slate-700">
-                          <div className="mt-0.5 p-1 rounded-full bg-indigo-100">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                        <li className="flex items-start gap-3 text-gray-700">
+                          <div className="mt-1 p-1 rounded-full"
+                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
                           </div>
-                          <span className="text-slate-600 text-sm">Recursos premium</span>
+                          <span className="text-gray-600 text-sm">Recursos premium de inclusión</span>
                         </li>
-                        <li className="flex items-start gap-2 text-slate-700">
-                          <div className="mt-0.5 p-1 rounded-full bg-indigo-100">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                        <li className="flex items-start gap-3 text-gray-700">
+                          <div className="mt-1 p-1 rounded-full"
+                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
                           </div>
-                          <span className="text-slate-600 text-sm">Soporte prioritario</span>
+                          <span className="text-gray-600 text-sm">Soporte prioritario especializado</span>
                         </li>
                       </ul>
 
                       <Link href="/sign-up">
                         <Button
-                          className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white h-10 text-base font-medium transition-all duration-300"
+                          className="w-full text-white h-12 text-base font-semibold rounded-2xl transition-all duration-300 hover:scale-105"
+                          style={{ 
+                            background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                            boxShadow: '0 10px 25px rgba(101, 204, 138, 0.3)'
+                          }}
                           size="lg"
                         >
                           ¡Prueba gratis de 7 días!
@@ -587,70 +773,94 @@ export default function InclusionPlanner() {
                   </div>
 
                   {/* Plan Anual */}
-                  <div className="bg-white rounded-xl shadow-lg border border-indigo-500 relative scale-100 md:scale-105 transition-all duration-300 hover:shadow-xl">
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                      <div className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
+                  <div className="relative group">
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                      <div className="px-6 py-2 rounded-full text-sm font-bold shadow-lg"
+                           style={{ 
+                             background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                             color: 'white'
+                           }}>
                         Mejor Valor
                       </div>
                     </div>
+                    
+                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-green-100 to-green-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative p-8 rounded-3xl backdrop-blur-sm border-2 border-green-200 transition-all duration-300 hover:scale-105"
+                         style={{ 
+                           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
+                           boxShadow: '0 15px 40px rgba(101, 204, 138, 0.2)'
+                         }}>
+                      <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">Plan Profesional Anual</h3>
+                      <p className="text-gray-600 mb-6 text-sm">Acceso completo con precio de lanzamiento</p>
 
-                    <div className="p-6">
-                      <h3 className="text-2xl font-display font-bold text-slate-900 mb-2">Plan Profesional Anual</h3>
-                      <p className="text-slate-600 mb-6 text-sm">Acceso completo a todas las herramientas precio de lanzamiento</p>
-
-                      <div className="mb-6">
+                      <div className="mb-8">
                         <div className="text-center">
                           <div className="flex items-center justify-center gap-2 mb-2">
-                            <span className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                            <span className="text-5xl font-black"
+                                  style={{ 
+                                    background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    backgroundClip: 'text'
+                                  }}>
                               $29.99
                             </span>
-                            <span className="text-slate-500">/año USD</span>
+                            <span className="text-gray-500">/año USD</span>
                           </div>
-                          <div className="text-sm text-emerald-600 font-medium">
+                          <div className="text-sm font-bold" style={{ color: '#65cc8a' }}>
                             ¡Ahorra 60% - $42.1 USD al año!
                           </div>
-                          <div className="text-sm text-slate-500 mt-1">
+                          <div className="text-sm text-gray-500 mt-1">
                             $2.49 USD/mes
                           </div>
                         </div>
                       </div>
 
-                      <ul className="space-y-3 mb-6">
-                        <li className="flex items-start gap-2 text-slate-700">
-                          <div className="mt-0.5 p-1 rounded-full bg-indigo-100">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                      <ul className="space-y-4 mb-8">
+                        <li className="flex items-start gap-3 text-gray-700">
+                          <div className="mt-1 p-1 rounded-full"
+                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
                           </div>
-                          <span className="text-slate-600 text-sm">Acceso ilimitado a todas las funcionalidades</span>
+                          <span className="text-gray-600 text-sm">Acceso ilimitado a todas las funcionalidades</span>
                         </li>
-                        <li className="flex items-start gap-2 text-slate-700">
-                          <div className="mt-0.5 p-1 rounded-full bg-indigo-100">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                        <li className="flex items-start gap-3 text-gray-700">
+                          <div className="mt-1 p-1 rounded-full"
+                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
                           </div>
-                          <span className="text-slate-600 text-sm">Generación ilimitada de clases</span>
+                          <span className="text-gray-600 text-sm">Generación ilimitada de materiales inclusivos</span>
                         </li>
-                        <li className="flex items-start gap-2 text-slate-700">
-                          <div className="mt-0.5 p-1 rounded-full bg-indigo-100">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                        <li className="flex items-start gap-3 text-gray-700">
+                          <div className="mt-1 p-1 rounded-full"
+                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
                           </div>
-                          <span className="text-slate-600 text-sm">Recursos premium</span>
+                          <span className="text-gray-600 text-sm">Recursos premium de inclusión</span>
                         </li>
-                        <li className="flex items-start gap-2 text-slate-700">
-                          <div className="mt-0.5 p-1 rounded-full bg-indigo-100">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                        <li className="flex items-start gap-3 text-gray-700">
+                          <div className="mt-1 p-1 rounded-full"
+                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
                           </div>
-                          <span className="text-slate-600 text-sm">Soporte prioritario</span>
+                          <span className="text-gray-600 text-sm">Soporte prioritario especializado</span>
                         </li>
-                        <li className="flex items-start gap-2 text-slate-700">
-                          <div className="mt-0.5 p-1 rounded-full bg-indigo-100">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                        <li className="flex items-start gap-3 text-gray-700">
+                          <div className="mt-1 p-1 rounded-full"
+                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
                           </div>
-                          <span className="text-slate-600 text-sm">¡Ahorra más del 60%!</span>
+                          <span className="text-gray-600 text-sm font-bold">¡Ahorra más del 60%!</span>
                         </li>
                       </ul>
 
                       <Link href="/sign-up">
                         <Button
-                          className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white h-10 text-base font-medium transition-all duration-300"
+                          className="w-full text-white h-12 text-base font-semibold rounded-2xl transition-all duration-300 hover:scale-105"
+                          style={{ 
+                            background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                            boxShadow: '0 10px 25px rgba(101, 204, 138, 0.3)'
+                          }}
                           size="lg"
                         >
                           ¡Prueba gratis de 7 días!
@@ -658,53 +868,83 @@ export default function InclusionPlanner() {
                       </Link>
                     </div>
                   </div>
-                </div>
-                {/* Plan para Escuelas centrado en una fila aparte */}
-                <div className="flex justify-center mt-16">
-                  <div className="bg-white rounded-xl shadow-lg border border-indigo-500 relative scale-100 md:scale-105 transition-all duration-300 hover:shadow-xl min-h-[600px] w-full max-w-md flex flex-col justify-center mx-auto">
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                      <div className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
+                </motion.div>
+
+                {/* Plan para Escuelas */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  viewport={{ once: true }}
+                  className="flex justify-center mt-20"
+                >
+                  <div className="relative group max-w-md w-full">
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                      <div className="px-6 py-2 rounded-full text-sm font-bold shadow-lg"
+                           style={{ 
+                             background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                             color: 'white'
+                           }}>
                         Recomienda tu escuela
                       </div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-2xl font-display font-bold text-slate-900 mb-2">Plan para Escuelas</h3>
-                      <p className="text-slate-600 mb-6 text-sm">Obtén profePlanner gratis y conviértete en la sensación entre los profesores</p>
-                      <div className="mb-6">
+                    
+                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-green-100 to-green-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative p-8 rounded-3xl backdrop-blur-sm border-2 border-green-200 transition-all duration-300 hover:scale-105 min-h-[600px] flex flex-col justify-center"
+                         style={{ 
+                           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
+                           boxShadow: '0 15px 40px rgba(101, 204, 138, 0.2)'
+                         }}>
+                      <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">Plan para Escuelas</h3>
+                      <p className="text-gray-600 mb-6 text-sm">Obtén InclusionPlanner gratis y conviértete en la sensación entre los educadores</p>
+                      <div className="mb-8">
                         <div className="text-center">
-                          <span className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                          <span className="text-5xl font-black"
+                                style={{ 
+                                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                                  WebkitBackgroundClip: 'text',
+                                  WebkitTextFillColor: 'transparent',
+                                  backgroundClip: 'text'
+                                }}>
                             Bajo consulta
                           </span>
-                          <span className="text-slate-500 block mt-1">Precio especial para instituciones</span>
+                          <span className="text-gray-500 block mt-1">Precio especial para instituciones</span>
                         </div>
                       </div>
-                      <ul className="space-y-3 mb-6">
-                        <li className="flex items-start gap-2 text-slate-700">
-                          <div className="mt-0.5 p-1 rounded-full bg-indigo-100">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                      <ul className="space-y-4 mb-8">
+                        <li className="flex items-start gap-3 text-gray-700">
+                          <div className="mt-1 p-1 rounded-full"
+                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
                           </div>
-                          <span className="text-slate-600 text-sm">Acceso para toda la escuela</span>
+                          <span className="text-gray-600 text-sm">Acceso para toda la escuela</span>
                         </li>
-                        <li className="flex items-start gap-2 text-slate-700">
-                          <div className="mt-0.5 p-1 rounded-full bg-indigo-100">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                        <li className="flex items-start gap-3 text-gray-700">
+                          <div className="mt-1 p-1 rounded-full"
+                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
                           </div>
-                          <span className="text-slate-600 text-sm">Capacitación y soporte personalizado</span>
+                          <span className="text-gray-600 text-sm">Capacitación y soporte personalizado</span>
                         </li>
-                        <li className="flex items-start gap-2 text-slate-700">
-                          <div className="mt-0.5 p-1 rounded-full bg-indigo-100">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                        <li className="flex items-start gap-3 text-gray-700">
+                          <div className="mt-1 p-1 rounded-full"
+                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
                           </div>
-                          <span className="text-slate-600 text-sm">Promociones exclusivas</span>
+                          <span className="text-gray-600 text-sm">Promociones exclusivas</span>
                         </li>
                       </ul>
                       <a
-                        href="https://wa.me/573213589463?text=Hola%2C%20quiero%20recomendar%20ProfePlanner%20en%20mi%20escuela%20y%20conocer%20los%20beneficios%20para%20instituciones."
+                        href="https://wa.me/573213589463?text=Hola%2C%20quiero%20recomendar%20InclusionPlanner%20en%20mi%20escuela%20y%20conocer%20los%20beneficios%20para%20instituciones."
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <Button
-                          className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white h-10 text-base font-medium transition-all duration-300"
+                          className="w-full text-white h-12 text-base font-semibold rounded-2xl transition-all duration-300 hover:scale-105"
+                          style={{ 
+                            background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                            boxShadow: '0 10px 25px rgba(101, 204, 138, 0.3)'
+                          }}
                           size="lg"
                         >
                           Hablemos por WhatsApp
@@ -712,7 +952,7 @@ export default function InclusionPlanner() {
                       </a>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </section>
           </AnimatedSection>
@@ -1018,17 +1258,29 @@ function ToolFeatureCard({ icon, title, description }: { icon: React.ReactNode; 
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="p-6 rounded-xl shadow-sm border border-gray-200"
-      style={{ backgroundColor: '#f0fdf4' }}
+      className="p-8 rounded-3xl backdrop-blur-sm border border-white/20 relative overflow-hidden group"
+      style={{ 
+        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+      }}
     >
-      <div className="flex items-center mb-4">
-        <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4"
-             style={{ backgroundColor: '#dcfce7' }}>
-          {icon}
+      {/* Hover effect background */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+           style={{ background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))' }}></div>
+      
+      <div className="relative">
+        <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+             style={{ 
+               background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+               boxShadow: '0 8px 25px rgba(101, 204, 138, 0.3)'
+             }}>
+          <div className="text-white">
+            {icon}
+          </div>
         </div>
-        <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+        <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-green-700 transition-colors duration-300">{title}</h3>
+        <p className="text-gray-600 leading-relaxed text-lg">{description}</p>
       </div>
-      <p className="text-gray-600 leading-relaxed">{description}</p>
     </motion.div>
   )
 }
@@ -1040,21 +1292,54 @@ function TestimonialCard({ quote, author, role }: { quote: string; author: strin
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      className="p-6 rounded-xl shadow-sm border border-gray-200"
-      style={{ backgroundColor: '#f0fdf4' }}
+      className="p-8 rounded-3xl backdrop-blur-sm border border-white/20 relative overflow-hidden group"
+      style={{ 
+        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
+        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+      }}
     >
-      <div className="flex items-center mb-4">
-        <Star className="w-5 h-5" style={{ color: '#65cc8a' }} />
-        <Star className="w-5 h-5" style={{ color: '#65cc8a' }} />
-        <Star className="w-5 h-5" style={{ color: '#65cc8a' }} />
-        <Star className="w-5 h-5" style={{ color: '#65cc8a' }} />
-        <Star className="w-5 h-5" style={{ color: '#65cc8a' }} />
-      </div>
-      <p className="text-gray-600 mb-6 leading-relaxed">{quote}</p>
-      <div>
-        <p className="font-semibold text-gray-900">{author}</p>
-        <p className="text-gray-500 text-sm">{role}</p>
+      {/* Hover effect background */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+           style={{ background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))' }}></div>
+      
+      <div className="relative">
+        <div className="flex items-center mb-6">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} className="w-6 h-6" style={{ color: '#65cc8a' }} />
+          ))}
+        </div>
+        <p className="text-gray-700 mb-6 leading-relaxed text-lg italic">"{quote}"</p>
+        <div className="border-t border-gray-200 pt-4">
+          <p className="font-bold text-gray-900 text-lg">{author}</p>
+          <p className="text-gray-600 font-medium">{role}</p>
+        </div>
       </div>
     </motion.div>
   )
+}
+
+// CSS Animations
+const styles = `
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.2; }
+  }
+`;
+
+// Inject styles
+if (typeof document !== 'undefined') {
+  const styleSheet = document.createElement('style');
+  styleSheet.textContent = styles;
+  document.head.appendChild(styleSheet);
 } 

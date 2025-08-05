@@ -26,10 +26,56 @@
       "static/chunks/main-app.js",
       "static/chunks/app/workshop/page.js"
     ],
-    "/_not-found/page": [
+    "/history/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/history/page.js"
+    ],
+    "/unit-planner/calendar/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/unit-planner/calendar/page.css",
+      "static/chunks/app/unit-planner/calendar/page.js"
+    ],
+    "/comunidad/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/comunidad/page.js"
+    ],
+    "/ranking/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/ranking/page.js"
+    ],
+    "/unit-planner/history/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/unit-planner/history/page.js"
+    ],
+    "/workshop/dua/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/workshop/dua/page.js"
+    ],
+    "/workshop/diapositivas/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/workshop/diapositivas/page.js"
+    ],
+    "/workshop/creador-cuestionarios/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/workshop/creador-cuestionarios/page.js"
+    ],
+    "/workshop/accesibilidad-textos/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/workshop/accesibilidad-textos/page.js"
+    ],
+    "/workshop/ajustes-razonables/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/workshop/ajustes-razonables/page.js"
     ]
   }
 }

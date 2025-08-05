@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { Layout } from "@/components/layout"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, Calendar, CloudCog, Eye, FileDown, FileText,GraduationCap, BrainCircuit, FileQuestion, Share2, LightbulbIcon, HelpCircle, ThumbsUp, ThumbsDown, BookOpen, Target, Award, Activity, Lightbulb, X, ListOrdered, MessageSquare, AlertCircle, FileSpreadsheet, ClipboardList, Trash2, Settings2, Loader2, Wand2, Globe, Rocket, Presentation, Youtube } from "lucide-react"
+import { ArrowLeft, Calendar, CloudCog, Eye, FileDown, FileText,GraduationCap, BrainCircuit, FileQuestion, Share2, LightbulbIcon, HelpCircle, ThumbsUp, ThumbsDown, BookOpen, Target, Award, Activity, Lightbulb, X, ListOrdered, MessageSquare, AlertCircle, FileSpreadsheet, ClipboardList, Trash2, Settings2, Loader2, Wand2, Globe, Rocket, Presentation, Youtube, Accessibility, Heart, Shield } from "lucide-react"
 import Link from "next/link"
 import { API_ENDPOINTS } from "@/config/api"
 import { useRouter } from 'next/navigation'
@@ -1262,7 +1262,7 @@ console.log(workshop)
       <Layout>
         <div className="p-6 flex items-center justify-center min-h-[400px]">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-500 mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4" style={{ borderColor: '#65cc8a' }}></div>
             <p className="text-gray-600">Cargando datos de la clase...</p>
           </div>
         </div>
@@ -1277,7 +1277,11 @@ console.log(workshop)
           <div className="text-center text-red-600">
             <p>{error || 'No se encontraron datos de la unidad o las lecciones'}</p>
             <Button 
-              className="mt-4 bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white"
+              className="mt-4 text-white"
+              style={{ 
+                background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+              }}
               onClick={() => router.push('/unit-planner')}
             >
               Volver al Planificador
@@ -1345,7 +1349,11 @@ console.log(workshop)
                 className="w-full sm:w-auto"
               >
                 <Button
-                  className="w-full sm:w-auto bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white text-sm sm:text-base"
+                  className="w-full sm:w-auto text-white text-sm sm:text-base"
+                  style={{ 
+                    background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                    boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                  }}
                   onClick={exportToExcel}
                 >
                   <FileText className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
@@ -1358,7 +1366,11 @@ console.log(workshop)
                 className="w-full sm:w-auto"
               >
                 <Button
-                  className="w-full sm:w-auto bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white text-sm sm:text-base"
+                  className="w-full sm:w-auto text-white text-sm sm:text-base"
+                  style={{ 
+                    background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                    boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                  }}
                   onClick={exportToWord}
                 >
                   <FileText className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
@@ -1372,7 +1384,11 @@ console.log(workshop)
               >
                 <Button
                   onClick={handleShare}
-                  className="w-full sm:w-auto bg-blue-500 text-white text-sm sm:text-base hover:bg-blue-600 transition-colors"
+                  className="w-full sm:w-auto text-white text-sm sm:text-base transition-colors"
+                  style={{ 
+                    background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                    boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                  }}
                 >
                   <FaShare className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Compartir
@@ -1427,27 +1443,27 @@ console.log(workshop)
                 transition={{ delay: 0.5 }}
                 className="flex-1"
               >
-                <h1 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-blue-600 mb-2">{unitData.nombreUnidad}</h1>
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-display font-bold mb-2" style={{ color: '#65cc8a' }}>{unitData.nombreUnidad}</h1>
                 <div className="flex flex-wrap items-center gap-2 sm:gap-4">
                   <motion.div 
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center gap-2 text-sm sm:text-base text-gray-600"
                   >
-                    <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-blue-300" />
+                    <Calendar className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: '#65cc8a' }} />
                     <span>{unitData.numeroLecciones} {t('unitPlanner.history.lessons')}</span>
                   </motion.div>
                   <motion.div 
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center gap-2 text-sm sm:text-base text-gray-600"
                   >
-                    <CloudCog className="w-4 h-4 sm:w-5 sm:h-5 text-blue-300" />
+                    <CloudCog className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: '#65cc8a' }} />
                     <span>{unitData.asignatura}</span>
                   </motion.div>
                   <motion.div 
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center gap-2 text-sm sm:text-base text-gray-600"
                   >
-                    <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-blue-300" />
+                    <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: '#65cc8a' }} />
                     <span>{unitData?.nivelEducativo}</span>
                   </motion.div>
                   {unitData?.methodology && (
@@ -1455,7 +1471,7 @@ console.log(workshop)
                       whileHover={{ scale: 1.05 }}
                       className="flex items-center gap-2 text-sm sm:text-base text-gray-600"
                     >
-                      <BrainCircuit className="w-4 h-4 sm:w-5 sm:h-5 text-blue-300" />
+                      <BrainCircuit className="w-4 h-4 sm:w-5 sm:h-5" style={{ color: '#65cc8a' }} />
                       <span>{unitData.methodology.replace("Usa la siguiente metodología como base: ", "")}</span>
                     </motion.div>
                   )}

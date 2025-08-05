@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
-import { LayoutDashboard, BookOpen, Wrench, History, ChevronRight, Users, GraduationCap, School, Menu, X, ChevronLeft, LogOut, Trophy, Globe, CalendarIcon } from "lucide-react"
+import { LayoutDashboard, BookOpen, Wrench, History, ChevronRight, Users, GraduationCap, School, Menu, X, ChevronLeft, LogOut, Trophy, Globe, CalendarIcon, Accessibility, Heart, Shield } from "lucide-react"
 import { useSidebar } from "@/contexts/sidebar-context"
 import { signOut } from "firebase/auth"
 import { auth } from "@/lib/firebase"
@@ -25,8 +25,8 @@ export function Sidebar() {
   const isActive = (path: string) => {
     if (!pathname) return false
     return pathname === path || pathname.startsWith(path + "/")
-      ? "bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-600 font-medium border-l-4 border-blue-500 shadow-sm"
-      : "hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-indigo-50/50 text-gray-600"
+      ? "bg-gradient-to-r from-green-50 to-green-100 text-green-600 font-medium border-l-4 border-green-500 shadow-sm"
+      : "hover:bg-gradient-to-r hover:from-green-50/50 hover:to-green-100/50 text-gray-600"
   }
 
   return (
@@ -36,8 +36,9 @@ export function Sidebar() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="fixed top-4 left-4 z-50 p-2 rounded-lg bg-white shadow-lg sm:hidden"
+          style={{ boxShadow: '0 4px 12px rgba(101, 204, 138, 0.2)' }}
         >
-          {isOpen ? <X className="w-6 h-6 text-blue-600" /> : <Menu className="w-6 h-6 text-blue-600" />}
+          {isOpen ? <X className="w-6 h-6" style={{ color: '#65cc8a' }} /> : <Menu className="w-6 h-6" style={{ color: '#65cc8a' }} />}
         </button>
       )}
 
@@ -45,10 +46,14 @@ export function Sidebar() {
       {!isOpen && !isMobile && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed top-4 left-4 z-50 p-2 rounded-lg bg-white shadow-lg hidden md:flex items-center gap-2 hover:bg-blue-50 transition-colors duration-200"
+          className="fixed top-4 left-4 z-50 p-2 rounded-lg bg-white shadow-lg hidden md:flex items-center gap-2 transition-colors duration-200"
+          style={{ 
+            boxShadow: '0 4px 12px rgba(101, 204, 138, 0.2)',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))'
+          }}
         >
-          <Menu className="w-6 h-6 text-blue-600" />
-          <span className="text-sm text-blue-600 font-medium">{t('sidebar.menu')}</span>
+          <Menu className="w-6 h-6" style={{ color: '#65cc8a' }} />
+          <span className="text-sm font-medium" style={{ color: '#65cc8a' }}>{t('sidebar.menu')}</span>
         </button>
       )}
 
@@ -67,30 +72,49 @@ export function Sidebar() {
           h-screen w-64
           transition-transform duration-300 ease-in-out
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-          border-r border-blue-100 shadow-lg
+          shadow-2xl
         `}
+        style={{ 
+          borderRight: '1px solid rgba(101, 204, 138, 0.2)',
+          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
+          backdropFilter: 'blur(10px)'
+        }}
       >
-        <div className="h-full flex flex-col bg-gradient-to-b from-[#F4F7FB] to-blue-50/30 font-poppins">
-          <div className="p-4 sm:p-6 flex items-center gap-3 border-b border-blue-100">
+        <div className="h-full flex flex-col font-poppins">
+          <div className="p-4 sm:p-6 flex items-center gap-3 border-b"
+               style={{ borderColor: 'rgba(101, 204, 138, 0.2)' }}>
             <div className="relative">
               <Image
                 src="/images/logo.png"
                 alt="Logo"
                 width={40}
                 height={40}
-                className="rounded-lg shadow-lg ring-2 ring-blue-100 sm:w-12 sm:h-12"
+                className="rounded-lg shadow-lg sm:w-12 sm:h-12"
+                style={{ 
+                  boxShadow: '0 4px 12px rgba(101, 204, 138, 0.3)',
+                  border: '2px solid rgba(101, 204, 138, 0.2)'
+                }}
               />
-              <div className="absolute -bottom-1 -right-1 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full p-1.5 shadow-md">
-                <GraduationCap className="w-3 h-3 text-white" />
+              <div className="absolute -bottom-1 -right-1 rounded-full p-1.5 shadow-md"
+                   style={{ 
+                     background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                     boxShadow: '0 2px 8px rgba(101, 204, 138, 0.4)'
+                   }}>
+                <Accessibility className="w-3 h-3 text-white" />
               </div>
             </div>
-            <span className="text-lg sm:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
-              ProfePlanner
+            <span className="text-lg sm:text-xl font-bold bg-clip-text text-transparent"
+                  style={{ 
+                    background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                    WebkitBackgroundClip: 'text'
+                  }}>
+              InclusionPlanner
             </span>
           </div>
 
           <nav className="flex-1 py-4 sm:py-6">
-            <div className="px-4 mb-2 text-xs font-semibold text-blue-500 uppercase tracking-wider">
+            <div className="px-4 mb-2 text-xs font-semibold uppercase tracking-wider"
+                 style={{ color: '#65cc8a' }}>
               {t('sidebar.title')}
             </div>
             <ul className="space-y-2 px-2 font-montserrat font-semibold">
@@ -100,8 +124,11 @@ export function Sidebar() {
                   className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm transition-all duration-200 ${isActive("/unit-planner")}`}
                   onClick={() => isMobile && setIsOpen(false)}
                 >
-                  <div className="p-1.5 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg shadow-sm">
-                    <BookOpen className="w-5 h-5 text-blue-600" />
+                  <div className="p-1.5 rounded-lg shadow-sm"
+                       style={{ 
+                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                       }}>
+                    <BookOpen className="w-5 h-5" style={{ color: '#65cc8a' }} />
                   </div>
                   <span>{t('sidebar.classPlanner')}</span>
                   <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
@@ -113,8 +140,11 @@ export function Sidebar() {
                   className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm transition-all duration-200 ${isActive("/workshop")}`}
                   onClick={() => isMobile && setIsOpen(false)}
                 >
-                  <div className="p-1.5 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg shadow-sm">
-                    <Wrench className="w-5 h-5 text-blue-600" />
+                  <div className="p-1.5 rounded-lg shadow-sm"
+                       style={{ 
+                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                       }}>
+                    <Wrench className="w-5 h-5" style={{ color: '#65cc8a' }} />
                   </div>
                   <span>{t('sidebar.aiTools')}</span>
                   <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
@@ -126,8 +156,11 @@ export function Sidebar() {
                   className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm transition-all duration-200 ${isActive("/history")}`}
                   onClick={() => isMobile && setIsOpen(false)}
                 >
-                  <div className="p-1.5 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg shadow-sm">
-                    <History className="w-5 h-5 text-blue-600" />
+                  <div className="p-1.5 rounded-lg shadow-sm"
+                       style={{ 
+                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                       }}>
+                    <History className="w-5 h-5" style={{ color: '#65cc8a' }} />
                   </div>
                   <span>{t('sidebar.history')}</span>
                   <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
@@ -139,8 +172,11 @@ export function Sidebar() {
                   className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm transition-all duration-200 ${isActive("/unit-planner/calendar")}`}
                   onClick={() => isMobile && setIsOpen(false)}
                 >
-                  <div className="p-1.5 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg shadow-sm">
-                    <CalendarIcon className="w-5 h-5 text-blue-600" />
+                  <div className="p-1.5 rounded-lg shadow-sm"
+                       style={{ 
+                         background: 'linear-gradient(135deg, rgba(101, 138, 204, 0.1), rgba(74, 222, 128, 0.1))'
+                       }}>
+                    <CalendarIcon className="w-5 h-5" style={{ color: '#65cc8a' }} />
                   </div>
                   <span>{t('sidebar.calendar')}</span>
                   <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
@@ -167,8 +203,11 @@ export function Sidebar() {
                   className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm transition-all duration-200 ${isActive("/ranking")}`}
                   onClick={() => isMobile && setIsOpen(false)}
                 >
-                  <div className="p-1.5 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg shadow-sm">
-                    <Trophy className="w-5 h-5 text-blue-600" />
+                  <div className="p-1.5 rounded-lg shadow-sm"
+                       style={{ 
+                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                       }}>
+                    <Trophy className="w-5 h-5" style={{ color: '#65cc8a' }} />
                   </div>
                   <span>{t('sidebar.ranking')}</span>
                   <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
@@ -180,8 +219,11 @@ export function Sidebar() {
                   className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm transition-all duration-200 ${isActive("/comunidad")}`}
                   onClick={() => isMobile && setIsOpen(false)}
                 >
-                  <div className="p-1.5 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg shadow-sm">
-                    <Users className="w-5 h-5 text-blue-600" />
+                  <div className="p-1.5 rounded-lg shadow-sm"
+                       style={{ 
+                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                       }}>
+                    <Users className="w-5 h-5" style={{ color: '#65cc8a' }} />
                   </div>
                   <span>Comunidad</span>
                   <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
@@ -202,7 +244,11 @@ export function Sidebar() {
                       toast.error(t('sidebar.logoutError'))
                     }
                   }}
-                  className="w-full flex items-center gap-2 py-2 px-3 text-sm text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-200"
+                  className="w-full flex items-center gap-2 py-2 px-3 text-sm text-gray-600 hover:text-red-600 rounded-lg transition-colors duration-200"
+                  style={{ 
+                    background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.05), rgba(239, 68, 68, 0.1))',
+                    border: '1px solid rgba(239, 68, 68, 0.1)'
+                  }}
                 >
                   <LogOut className="w-4 h-4" />
                   <span>{t('sidebar.logout')}</span>
@@ -221,10 +267,15 @@ export function Sidebar() {
             </button>
           </div>
           */}
-          <div className="p-4 border-t border-blue-100">
+          <div className="p-4 border-t"
+               style={{ borderColor: 'rgba(101, 204, 138, 0.2)' }}>
             <Link href="/pricing">
               <button
-                className="w-full py-1.5 px-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white rounded-lg text-xs font-medium shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-200 group mb-2"
+                className="w-full py-1.5 px-2 text-white rounded-lg text-xs font-medium shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-200 group mb-2"
+                style={{ 
+                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                  boxShadow: '0 4px 12px rgba(101, 204, 138, 0.3)'
+                }}
               >
                 <span className="flex items-center justify-center gap-1.5">
                   <div className="p-0.5 bg-white/20 rounded-lg group-hover:bg-white/30 transition-colors duration-200">
@@ -232,17 +283,21 @@ export function Sidebar() {
                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.39-2.1 1.39-1.6 0-2.23-.72-2.32-1.64H8.04c.1 1.7 1.36 2.66 2.86 2.97V19h2.34v-1.67c1.52-.29 2.72-1.16 2.73-2.77-.01-2.2-1.9-2.96-3.66-3.42z"/>
                     </svg>
                   </div>
-                  <span>¡Suscrípcion  Premium!</span>
+                  <span>¡Suscripción Premium!</span>
                 </span>
               </button>
             </Link>
 
             <button
               onClick={() => {
-                const message = encodeURIComponent("¡Descubre ProfePlanner! La mejor plataforma de IA para profesores. 🚀\n\nhttps://www.profeplanner.com/");
+                const message = encodeURIComponent("¡Descubre InclusionPlanner! La mejor plataforma de inclusión educativa. 🌱\n\nhttps://www.inclusionplanner.com/");
                 window.open(`https://wa.me/?text=${message}`, '_blank');
               }}
-              className="w-full py-1.5 px-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white rounded-lg text-xs font-medium shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-200 group"
+              className="w-full py-1.5 px-2 text-white rounded-lg text-xs font-medium shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-200 group"
+              style={{ 
+                background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                boxShadow: '0 4px 12px rgba(101, 204, 138, 0.3)'
+              }}
             >
               <span className="flex items-center justify-center gap-1.5">
                 <div className="p-0.5 bg-white/20 rounded-lg group-hover:bg-white/30 transition-colors duration-200">
@@ -255,10 +310,12 @@ export function Sidebar() {
             </button>
           </div>
           
-          <div className="p-4 border-t border-blue-100">
+          <div className="p-4 border-t"
+               style={{ borderColor: 'rgba(101, 204, 138, 0.2)' }}>
             <button
               onClick={() => setIsOpen(false)}
-              className="mt-4 w-full flex items-center justify-center gap-2 py-2 text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200"
+              className="mt-4 w-full flex items-center justify-center gap-2 py-2 text-sm text-gray-600 transition-colors duration-200"
+              style={{ color: '#65cc8a' }}
             >
               <ChevronLeft className="w-4 h-4" />
               <span>{t('sidebar.hideMenu')}</span>

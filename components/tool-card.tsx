@@ -4,7 +4,7 @@ import { Tool } from "@/types/tool"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { RiStarFill, RiMagicFill } from "react-icons/ri"
-import { Star } from "lucide-react"
+import { Star, Accessibility, Heart, Shield } from "lucide-react"
 import { Trash2 } from "lucide-react"
 import {
   Tooltip,
@@ -52,24 +52,29 @@ export function ToolCard({
           <Link href={tool.href} onClick={handleClick} prefetch={true}>
             <div className="relative group">
               <motion.div 
-                className={`bg-white rounded-xl border border-gray-100 p-4 sm:p-6 
+                className={`bg-white rounded-xl border p-4 sm:p-6 
                   shadow-lg hover:shadow-xl
                   transition-all duration-300 ease-out
                   flex flex-col
                   relative
                   overflow-hidden
-                  before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-white before:to-blue-50 before:opacity-0 before:transition-opacity before:duration-300
+                  before:absolute before:inset-0 before:z-0 before:bg-gradient-to-b before:from-white before:to-green-50 before:opacity-0 before:transition-opacity before:duration-300
                   hover:before:opacity-100
                   h-full
-                  border-t-4 ${tool.isCustom ? "border-purple-500" : "border-blue-500"}
-                  group-hover:border-blue-600
-                  after:absolute after:inset-0 after:z-0 after:bg-gradient-to-r after:from-blue-500/10 after:to-transparent after:opacity-0 after:transition-opacity after:duration-500
+                  border-t-4 ${tool.isCustom ? "border-purple-500" : "border-green-500"}
+                  group-hover:border-green-600
+                  after:absolute after:inset-0 after:z-0 after:bg-gradient-to-r after:from-green-500/10 after:to-transparent after:opacity-0 after:transition-opacity after:duration-500
                   group-hover:after:opacity-100
                   perspective-1000
                   transform-style-preserve-3d
                   ${tool.isPremium ? 'cursor-not-allowed opacity-75' : 'cursor-pointer'}`}
+                style={{
+                  background: '#ffffff',
+                  border: '1px solid rgba(101, 204, 138, 0.1)',
+                  boxShadow: '0 4px 6px rgba(101, 204, 138, 0.1)'
+                }}
                 whileHover={{
-                  boxShadow: "0 20px 25px -5px rgb(59 130 246 / 0.2), 0 8px 10px -6px rgb(59 130 246 / 0.1)",
+                  boxShadow: "0 20px 25px -5px rgba(101, 204, 138, 0.2), 0 8px 10px -6px rgba(101, 204, 138, 0.1)",
                   y: -5,
                   scale: 1.02,
                   rotateX: [0, 5, -5, 0],
@@ -91,7 +96,7 @@ export function ToolCard({
                   <>
                     {/* Efecto de rayos mejorado */}
                     <motion.div 
-                      className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.5 }}
@@ -100,7 +105,7 @@ export function ToolCard({
                       {[...Array(8)].map((_, i) => (
                         <motion.div
                           key={i}
-                          className="absolute w-2 h-40 bg-gradient-to-b from-purple-400/60 to-transparent"
+                          className="absolute w-2 h-40 bg-gradient-to-b from-green-400/60 to-transparent"
                           style={{
                             left: "50%",
                             top: "50%",
@@ -129,7 +134,7 @@ export function ToolCard({
                       {[...Array(16)].map((_, i) => (
                         <motion.div
                           key={`secondary-${i}`}
-                          className="absolute w-1 h-32 bg-gradient-to-b from-purple-300/40 to-transparent"
+                          className="absolute w-1 h-32 bg-gradient-to-b from-green-300/40 to-transparent"
                           style={{
                             left: "50%",
                             top: "50%",
@@ -156,7 +161,7 @@ export function ToolCard({
 
                       {/* Centro energético */}
                       <motion.div
-                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 shadow-lg shadow-purple-500/30"
+                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-green-600 shadow-lg shadow-green-500/30"
                         initial={{ scale: 0 }}
                         animate={{ 
                           scale: [0, 1.2, 1],
@@ -184,7 +189,7 @@ export function ToolCard({
 
                       {/* Efecto de destello */}
                       <motion.div
-                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-purple-400/30"
+                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-green-400/30"
                         animate={{
                           scale: [1, 2, 1],
                           opacity: [0.5, 0, 0.5]
@@ -216,8 +221,12 @@ export function ToolCard({
                 <div className="flex items-start justify-between mb-4 relative z-10">
                   <motion.div 
                     className={`w-14 h-14 flex items-center justify-center rounded-xl group-hover:bg-white transition-colors duration-300 shadow-md
-                      group-hover:shadow-lg ${tool.isCustom ? "group-hover:shadow-purple-500/20 bg-purple-50" : "group-hover:shadow-blue-500/20 bg-blue-50"}
+                      group-hover:shadow-lg ${tool.isCustom ? "group-hover:shadow-green-500/20 bg-green-50" : "group-hover:shadow-green-500/20 bg-green-50"}
                       relative overflow-hidden`}
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                      boxShadow: '0 4px 8px rgba(101, 204, 138, 0.2)'
+                    }}
                     whileHover={{ 
                       rotate: [0, -10, 10, -10, 0],
                       scale: 1.1,
@@ -229,7 +238,7 @@ export function ToolCard({
                   >
                     {/* Efecto de pulso en el icono */}
                     <motion.div
-                      className={`absolute inset-0 rounded-xl ${tool.isCustom ? "bg-purple-400/20" : "bg-blue-400/20"}`}
+                      className="absolute inset-0 rounded-xl bg-green-400/20"
                       animate={{
                         scale: [1, 1.2, 1],
                         opacity: [0.5, 0, 0.5]
@@ -321,7 +330,7 @@ export function ToolCard({
                   <motion.h3 
                     className={`text-lg font-semibold mb-2 font-montserrat
                       group-hover:translate-x-1 transition-transform duration-300
-                      ${tool.isCustom ? "text-purple-900 group-hover:text-purple-600" : "text-gray-900 group-hover:text-blue-600"}`}
+                      ${tool.isCustom ? "text-green-900 group-hover:text-green-600" : "text-gray-900 group-hover:text-green-600"}`}
                     whileHover={{ 
                       x: [0, 5, -5, 5, 0],
                       transition: { 
@@ -349,8 +358,8 @@ export function ToolCard({
 
                 {/* Barra de progreso con efecto de brillo */}
                 <motion.div 
-                  className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${tool.isCustom ? "from-purple-500" : "from-blue-500"} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                    overflow-hidden`}
+                  className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300
+                    overflow-hidden"
                   initial={{ scaleX: 0 }}
                   whileHover={{ scaleX: 1 }}
                   transition={{ duration: 0.3 }}
@@ -369,7 +378,7 @@ export function ToolCard({
                 </motion.div>
 
                 {tool.isPremium && (
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gradient-to-r from-purple-500 to-pink-500 text-white absolute top-2 right-2">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gradient-to-r from-green-500 to-green-600 text-white absolute top-2 right-2">
                     Premium
                   </span>
                 )}

@@ -49,7 +49,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { toast } from "sonner"
 import { Toaster } from "sonner"
-import { FileDown, Share2, FileText, Bold, Italic, List, ListOrdered, AlignLeft, Undo, Redo, LinkIcon, Trash2, Star, ThumbsUp, ThumbsDown } from "lucide-react"
+import { FileDown, Share2, FileText, Bold, Italic, List, ListOrdered, AlignLeft, Undo, Redo, LinkIcon, Trash2, Star, ThumbsUp, ThumbsDown, Accessibility, Heart, Shield } from "lucide-react"
 import jsPDF from 'jspdf'
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
 import {
@@ -95,14 +95,14 @@ export default function Workshop() {
   const router = useRouter()
   const { language, setLanguage, t } = useLanguage()
 
-  // Recommended tools (most used or simplest)
+  // Recommended tools for inclusion (most used for inclusive education)
   const recommendedTools = [
+    "dua",
+    "ajustes-razonables",
     "planificador-lecciones",
     "creador-cuestionarios",
-    "diapositivas",
-    "generador-ideas",
-    "material-educativo",
-    "sopa-de-letras"
+    "accesibilidad-textos",
+    "nivelacion-textos"
   ]
 
   useEffect(() => {
@@ -115,7 +115,7 @@ export default function Workshop() {
             id: "dua",
             title: t('workshop.tools.dua.title'),
             description: t('workshop.tools.dua.description'),
-            icon: <RiUserSettingsLine className="w-8 h-8 text-indigo-500" />,
+            icon: <Accessibility className="w-8 h-8" style={{ color: '#65cc8a' }} />,
             href: "/workshop/dua",
             category: "assessment" as const
           },
@@ -152,7 +152,7 @@ export default function Workshop() {
             id: "creador-cuestionarios",
             title: t('workshop.tools.quizCreator.title'),
             description: t('workshop.tools.quizCreator.description'),
-            icon: <RiQuestionAnswerFill className="w-8 h-8 text-blue-500" />,
+            icon: <RiQuestionAnswerFill className="w-8 h-8" style={{ color: '#65cc8a' }} />,
             href: "/workshop/creador-cuestionarios",
             category: "assessment" as const
           },
@@ -160,7 +160,7 @@ export default function Workshop() {
             id: "planificador-lecciones",
             title: t('workshop.tools.lessonPlanner.title'),
             description: t('workshop.tools.lessonPlanner.description'),
-            icon: <RiBookReadFill className="w-8 h-8 text-green-500" />,
+            icon: <RiBookReadFill className="w-8 h-8" style={{ color: '#65cc8a' }} />,
             href: "/workshop/planificador-lecciones",
             category: "planning" as const
           },
@@ -168,7 +168,7 @@ export default function Workshop() {
             id: "buscador-imagenes",
             title: t('workshop.tools.imageSearch.title'),
             description: t('workshop.tools.imageSearch.description'),
-            icon: <RiSearchFill className="w-8 h-8 text-purple-500" />,
+            icon: <RiSearchFill className="w-8 h-8" style={{ color: '#65cc8a' }} />,
             href: "/workshop/buscador-imagenes",
             category: "content" as const
           },
@@ -186,7 +186,7 @@ export default function Workshop() {
             id: "generador-ideas",
             title: t('workshop.tools.ideaGenerator.title'),
             description: t('workshop.tools.ideaGenerator.description'),
-            icon: <RiLightbulbFill className="w-8 h-8 text-yellow-500" />,
+            icon: <RiLightbulbFill className="w-8 h-8" style={{ color: '#65cc8a' }} />,
             href: "/workshop/generador-ideas",
             category: "content" as const
           },
@@ -194,7 +194,7 @@ export default function Workshop() {
             id: "ajustes-razonables",
             title: t('workshop.tools.reasonableAdjustments.title'),
             description: t('workshop.tools.reasonableAdjustments.description'),
-            icon: <RiUserSettingsLine className="w-8 h-8 text-indigo-500" />,
+            icon: <Heart className="w-8 h-8" style={{ color: '#65cc8a' }} />,
             href: "/workshop/ajustes-razonables",
             category: "assessment" as const
           },
@@ -202,7 +202,7 @@ export default function Workshop() {
             id: "steam",
             title: t('workshop.tools.steam.title'),
             description: t('workshop.tools.steam.description'),
-            icon: <RiUserSettingsLine className="w-8 h-8 text-indigo-500" />,
+            icon: <RiUserSettingsLine className="w-8 h-8" style={{ color: '#65cc8a' }} />,
             href: "/workshop/steam",
             category: "planning" as const
           },
@@ -210,7 +210,7 @@ export default function Workshop() {
             id: "rubrica",
             title: t('workshop.tools.rubric.title'),
             description: t('workshop.tools.rubric.description'),
-            icon: <RiFileTextFill className="w-8 h-8 text-purple-500" />,
+            icon: <RiFileTextFill className="w-8 h-8" style={{ color: '#65cc8a' }} />,
             href: "/workshop/rubrica",
             category: "assessment" as const
           },
@@ -218,7 +218,7 @@ export default function Workshop() {
             id: "cotejo",
             title: t('workshop.tools.checklist.title'),
             description: t('workshop.tools.checklist.description'),
-            icon: <RiCheckboxCircleFill className="w-8 h-8 text-green-500" />,
+            icon: <RiCheckboxCircleFill className="w-8 h-8" style={{ color: '#65cc8a' }} />,
             href: "/workshop/cotejo",
             category: "assessment" as const
           },
@@ -418,7 +418,7 @@ export default function Workshop() {
             id: "nivelacion-textos",
             title: t('workshop.tools.textLeveling.title'),
             description: t('workshop.tools.textLeveling.description'),
-            icon: <RiFileTextFill className="w-8 h-8 text-pink-500" />,
+            icon: <RiFileTextFill className="w-8 h-8" style={{ color: '#65cc8a' }} />,
             href: "/workshop/nivelacion-textos",
             category: "content" as const
           },
@@ -426,7 +426,7 @@ export default function Workshop() {
             id: "accesibilidad-textos",
             title: t('workshop.tools.textAccessibility.title'),
             description: t('workshop.tools.textAccessibility.description'),
-            icon: <RiUserSettingsLine className="w-8 h-8 text-orange-500" />,
+            icon: <Shield className="w-8 h-8" style={{ color: '#65cc8a' }} />,
             href: "/workshop/accesibilidad-textos",
             category: "content" as const
           },
@@ -709,7 +709,10 @@ export default function Workshop() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="min-h-screen bg-gradient-to-b from-[#F4F7FB] via-white to-[#F4F7FB] font-montserrat"
+        className="min-h-screen bg-white font-montserrat"
+        style={{ 
+          background: '#ffffff'
+        }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           {/* Header */}
@@ -725,28 +728,36 @@ export default function Workshop() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center gap-4"
             >
-              <motion.div 
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="relative"
-              >
-                <Image
-                  src="/images/logo.png"
-                  alt="Logo"
-                  width={48}
-                  height={48}
-                  className="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 sm:w-16 sm:h-16"
-                />
-                <motion.div 
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.6 }}
-                  className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 bg-yellow-400 text-white rounded-full w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center text-xs font-bold"
+                              <motion.div 
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="relative"
                 >
-                  !
+                  <Image
+                    src="/images/logo.png"
+                    alt="Logo"
+                    width={48}
+                    height={48}
+                    className="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 sm:w-16 sm:h-16"
+                    style={{ 
+                      boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)',
+                      border: '2px solid rgba(101, 204, 138, 0.2)'
+                    }}
+                  />
+                  <motion.div 
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.6 }}
+                    className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 rounded-full w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center text-xs font-bold"
+                    style={{ 
+                      background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                      color: 'white'
+                    }}
+                  >
+                    !
+                  </motion.div>
                 </motion.div>
-              </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -755,11 +766,16 @@ export default function Workshop() {
               >
                 <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-2 sm:gap-4">
                   <div className="flex flex-col gap-1 sm:gap-2">
-                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 font-montserrat">
-                      Herramientas
+                    <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-montserrat"
+                        style={{ 
+                          background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent'
+                        }}>
+                      Herramientas de Inclusión
                     </h1>
                     <p className="text-gray-600 text-xs sm:text-sm lg:text-base font-montserrat">
-                      Descubre y utiliza nuestras herramientas educativas
+                      Descubre herramientas educativas para crear un entorno de aprendizaje inclusivo
                     </p>
                   </div>
                 </div>
@@ -773,7 +789,12 @@ export default function Workshop() {
             >
               <Button
                 variant="outline"
-                className="flex items-center gap-2 bg-white border-gray-200 hover:bg-gray-50 shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-xs sm:text-sm lg:text-base w-full sm:w-auto"
+                className="flex items-center gap-2 shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-xs sm:text-sm lg:text-base w-full sm:w-auto"
+                style={{ 
+                  background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                  border: '1px solid rgba(101, 204, 138, 0.3)',
+                  color: '#65cc8a'
+                }}
                 onClick={() => setShowGettingStarted(true)}
               >
                 <RiQuestionAnswerFill className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -781,7 +802,11 @@ export default function Workshop() {
               </Button>
 
               <Link href="/solicitar-herramienta" className="w-full sm:w-auto">
-                <Button className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-xs sm:text-sm lg:text-base w-full">
+                <Button className="flex items-center gap-2 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-xs sm:text-sm lg:text-base w-full"
+                        style={{ 
+                          background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                          boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                        }}>
                   <RiAddLine className="w-3 h-3 sm:w-4 sm:h-4" />
                   {t('workshop.suggestNewTool')}
                 </Button>
@@ -801,43 +826,63 @@ export default function Workshop() {
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 className="bg-white rounded-xl p-8 max-w-md w-full mx-4 shadow-2xl"
+                style={{ 
+                  background: '#ffffff',
+                  border: '1px solid rgba(101, 204, 138, 0.2)',
+                  boxShadow: '0 20px 40px rgba(101, 204, 138, 0.1)'
+                }}
                 onClick={e => e.stopPropagation()}
               >
-                <h2 className="text-2xl font-bold mb-4">¿Qué necesitas hacer?</h2>
+                <h2 className="text-2xl font-bold mb-4" style={{ color: '#65cc8a' }}>¿Qué necesitas hacer?</h2>
                 <div className="space-y-4">
-                  <Button
-                    className="w-full flex items-center gap-2 justify-start"
-                    variant="outline"
-                    onClick={() => {
-                      setSelectedCategory("planning")
-                      setShowGettingStarted(false)
-                    }}
-                  >
-                    <RiBookReadFill className="w-5 h-5" />
-                    Planificar una clase o unidad
-                  </Button>
-                  <Button
-                    className="w-full flex items-center gap-2 justify-start"
-                    variant="outline"
-                    onClick={() => {
-                      setSelectedCategory("assessment")
-                      setShowGettingStarted(false)
-                    }}
-                  >
-                    <RiQuestionAnswerFill className="w-5 h-5" />
-                    Crear una evaluación o cuestionario
-                  </Button>
-                  <Button
-                    className="w-full flex items-center gap-2 justify-start"
-                    variant="outline"
-                    onClick={() => {
-                      setSelectedCategory("content")
-                      setShowGettingStarted(false)
-                    }}
-                  >
-                    <RiFileTextFill className="w-5 h-5" />
-                    Generar material educativo
-                  </Button>
+                                      <Button
+                      className="w-full flex items-center gap-2 justify-start"
+                      variant="outline"
+                      style={{ 
+                        background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                        border: '1px solid rgba(101, 204, 138, 0.3)',
+                        color: '#65cc8a'
+                      }}
+                      onClick={() => {
+                        setSelectedCategory("planning")
+                        setShowGettingStarted(false)
+                      }}
+                    >
+                      <RiBookReadFill className="w-5 h-5" />
+                      Planificar una clase o unidad
+                    </Button>
+                    <Button
+                      className="w-full flex items-center gap-2 justify-start"
+                      variant="outline"
+                      style={{ 
+                        background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                        border: '1px solid rgba(101, 204, 138, 0.3)',
+                        color: '#65cc8a'
+                      }}
+                      onClick={() => {
+                        setSelectedCategory("assessment")
+                        setShowGettingStarted(false)
+                      }}
+                    >
+                      <RiQuestionAnswerFill className="w-5 h-5" />
+                      Crear una evaluación o cuestionario
+                    </Button>
+                    <Button
+                      className="w-full flex items-center gap-2 justify-start"
+                      variant="outline"
+                      style={{ 
+                        background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                        border: '1px solid rgba(101, 204, 138, 0.3)',
+                        color: '#65cc8a'
+                      }}
+                      onClick={() => {
+                        setSelectedCategory("content")
+                        setShowGettingStarted(false)
+                      }}
+                    >
+                      <RiFileTextFill className="w-5 h-5" />
+                      Generar material educativo
+                    </Button>
                 </div>
               </motion.div>
             </motion.div>
@@ -850,7 +895,10 @@ export default function Workshop() {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="mb-6 sm:mb-8"
           >
-            <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Herramientas recomendadas</h2>
+            <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4"
+                style={{ color: '#65cc8a' }}>
+              🌱 Herramientas esenciales para inclusión educativa
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
               {tools
                 .filter(tool => recommendedTools.includes(tool.id))
@@ -889,11 +937,16 @@ export default function Workshop() {
               </div>
               <Button
                 variant={showFavorites ? "default" : "outline"}
-                className={`${
-                  showFavorites 
-                    ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800" 
-                    : "bg-white text-gray-700 hover:bg-gray-50"
-                } shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-xs sm:text-sm lg:text-base w-full sm:w-auto flex items-center gap-2 justify-center`}
+                className={`shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-xs sm:text-sm lg:text-base w-full sm:w-auto flex items-center gap-2 justify-center`}
+                style={showFavorites ? {
+                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                  color: 'white',
+                  boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                } : {
+                  background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                  border: '1px solid rgba(101, 204, 138, 0.3)',
+                  color: '#65cc8a'
+                }}
                 onClick={() => setShowFavorites(!showFavorites)}
               >
                 <RiHeartFill className="w-4 h-4" />
@@ -910,11 +963,16 @@ export default function Workshop() {
               >
                 <Button
                   variant={selectedCategory === category.id ? "default" : "outline"}
-                  className={`${
-                    selectedCategory === category.id 
-                      ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800" 
-                      : "bg-white text-gray-700 hover:bg-gray-50"
-                  } shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-xs sm:text-sm lg:text-base w-full sm:w-auto flex items-center gap-2 justify-center`}
+                  className={`shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-xs sm:text-sm lg:text-base w-full sm:w-auto flex items-center gap-2 justify-center`}
+                  style={selectedCategory === category.id ? {
+                    background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                    color: 'white',
+                    boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                  } : {
+                    background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                    border: '1px solid rgba(101, 204, 138, 0.3)',
+                    color: '#65cc8a'
+                  }}
                   onClick={() => setSelectedCategory(category.id)}
                 >
                   {category.id === "planning" && <RiBookReadFill className="w-3 h-3 sm:w-4 sm:h-4" />}
@@ -1020,7 +1078,11 @@ export default function Workshop() {
                 <div className="flex justify-end">
                   <Button 
                     onClick={() => handleFeedback('positive', true)}
-                    className="bg-blue-500 hover:bg-blue-600 text-white"
+                    className="text-white"
+                    style={{ 
+                      background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                      boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                    }}
                     disabled={!feedbackSent} // Deshabilitar el botón hasta que se seleccione un tipo de feedback
                   >
                     Enviar Feedback

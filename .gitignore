@@ -4,7 +4,7 @@ node_modules/
 # Archivos de build y producción
 dist/
 build/
-
+.next/
 # Archivos de entorno (¡MUY IMPORTANTE!)
 .env
 .env.local

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Layout } from "@/components/layout"
 import { Button } from "@/components/ui/button"
-import { ArrowDown, ArrowRight, Clock, Sparkles, AlertCircle, Loader2, BookOpen, BrainCircuit, Target, Calendar, Lightbulb } from "lucide-react"
+import { ArrowDown, ArrowRight, Clock, Sparkles, AlertCircle, Loader2, BookOpen, BrainCircuit, Target, Calendar, Lightbulb, Accessibility, Heart, Shield } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
@@ -78,6 +78,11 @@ function LoadingSpinner() {
           damping: 10
         }}
         className="bg-white rounded-xl p-8 shadow-lg flex flex-col items-center"
+        style={{ 
+          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
+          backdropFilter: 'blur(10px)',
+          boxShadow: '0 20px 40px rgba(101, 204, 138, 0.2)'
+        }}
       >
         <motion.div
           animate={{ rotate: 360 }}
@@ -87,7 +92,7 @@ function LoadingSpinner() {
             ease: "linear"
           }}
         >
-          <Loader2 className="w-12 h-12 text-blue-500 mb-4" />
+          <Loader2 className="w-12 h-12 mb-4" style={{ color: '#65cc8a' }} />
         </motion.div>
         <motion.p 
           initial={{ opacity: 0, y: 10 }}
@@ -122,7 +127,11 @@ function Alert({ message }: { message: string }) {
         stiffness: 200,
         damping: 15
       }}
-      className="bg-red-50 border-l-4 border-red-500 p-4 mb-4 rounded-r-lg"
+      className="p-4 mb-4 rounded-r-lg"
+      style={{ 
+        background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05))',
+        borderLeft: '4px solid #ef4444'
+      }}
     >
       <motion.div 
         initial={{ scale: 0.8 }}
@@ -139,13 +148,13 @@ function Alert({ message }: { message: string }) {
             damping: 15
           }}
         >
-          <AlertCircle className="h-5 w-5 text-red-500 mr-2" />
+          <AlertCircle className="h-5 w-5 mr-2" style={{ color: '#ef4444' }} />
         </motion.div>
         <motion.p 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="text-red-700"
+          style={{ color: '#dc2626' }}
         >
           {message}
         </motion.p>
@@ -166,11 +175,16 @@ function ProgressIndicator({ currentStep }: { currentStep: number }) {
           transition={{ duration: 0.3 }}
           className={`h-2 w-2 rounded-full ${
             index + 1 === currentStep
-              ? 'bg-blue-600 scale-125'
-              : index + 1 < currentStep
-              ? 'bg-blue-400'
-              : 'bg-gray-200'
+              ? 'scale-125'
+              : ''
           }`}
+          style={{
+            backgroundColor: index + 1 === currentStep
+              ? '#65cc8a'
+              : index + 1 < currentStep
+              ? '#4ade80'
+              : '#e5e7eb'
+          }}
         />
       ))}
       <span className="text-sm text-gray-500 ml-2">
@@ -453,6 +467,9 @@ export default function UnitPlanner() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
         className="max-w-6xl mx-auto py-16 px-4"
+        style={{ 
+          background: '#ffffff'
+        }}
       >
         {step === 0 ? (
           <motion.div 
@@ -465,16 +482,24 @@ export default function UnitPlanner() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-4 py-2 rounded-full mb-6"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+              style={{ 
+                background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                border: '1px solid rgba(101, 204, 138, 0.2)'
+              }}
             >
-              <Sparkles className="w-5 h-5" />
-              <span className="text-sm font-medium">{t('unitPlanner.newTool')}</span>
+              <Sparkles className="w-5 h-5" style={{ color: '#65cc8a' }} />
+              <span className="text-sm font-medium" style={{ color: '#65cc8a' }}>{t('unitPlanner.newTool')}</span>
             </motion.div>
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
+              className="text-4xl font-bold mb-4 bg-clip-text text-transparent"
+              style={{ 
+                background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                WebkitBackgroundClip: 'text'
+              }}
             >
               {t('unitPlanner.title')}
             </motion.h1>
@@ -491,11 +516,19 @@ export default function UnitPlanner() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="bg-white rounded-xl p-8 shadow-lg max-w-md mx-auto border border-gray-100 mb-16"
+              className="bg-white rounded-xl p-8 shadow-lg max-w-md mx-auto border mb-16"
+              style={{ 
+                background: '#ffffff',
+                border: '1px solid rgba(101, 204, 138, 0.2)',
+                boxShadow: '0 8px 16px rgba(101, 204, 138, 0.1)'
+              }}
             >
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center">
-                  <BookOpen className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center"
+                     style={{ 
+                       background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                     }}>
+                  <BookOpen className="w-6 h-6" style={{ color: '#65cc8a' }} />
                 </div>
                 <div>
                   <h2 className="text-xl font-semibold text-gray-800">{t('unitPlanner.startPlanning')}</h2>
@@ -503,9 +536,13 @@ export default function UnitPlanner() {
                 </div>
               </div>
               <Button
-                className="w-full py-6 text-lg bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white shadow-sm hover:shadow-md transition-all duration-300"
+                className="w-full py-6 text-lg text-white shadow-sm hover:shadow-md transition-all duration-300"
                 size="lg"
                 onClick={startPlanning}
+                style={{ 
+                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                  boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                }}
               >
                 {t('unitPlanner.letsStart')} <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
@@ -520,7 +557,12 @@ export default function UnitPlanner() {
               <Link href="/unit-planner/history">
                 <Button 
                   variant="outline" 
-                  className="flex items-center gap-2 bg-gradient-to-r from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200 text-blue-600 border-blue-200 hover:border-blue-300 px-6 py-3 text-base font-medium shadow-sm hover:shadow-md transition-all duration-300"
+                  className="flex items-center gap-2 px-6 py-3 text-base font-medium shadow-sm hover:shadow-md transition-all duration-300"
+                  style={{ 
+                    background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                    border: '1px solid rgba(101, 204, 138, 0.3)',
+                    color: '#65cc8a'
+                  }}
                 >
                   <Clock className="w-5 h-5" />
                   {t('unitPlanner.classHistory')}
@@ -532,11 +574,19 @@ export default function UnitPlanner() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.8 }}
-              className="max-w-3xl mx-auto mb-12 bg-white rounded-xl p-6 shadow-lg border border-gray-100"
+              className="max-w-3xl mx-auto mb-12 bg-white rounded-xl p-6 shadow-lg border"
+              style={{ 
+                background: '#ffffff',
+                border: '1px solid rgba(101, 204, 138, 0.2)',
+                boxShadow: '0 8px 16px rgba(101, 204, 138, 0.1)'
+              }}
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center">
-                  <BookOpen className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center"
+                     style={{ 
+                       background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                     }}>
+                  <BookOpen className="w-6 h-6" style={{ color: '#65cc8a' }} />
                 </div>
                 <div>
                   <h2 className="text-xl font-semibold text-gray-800">Tutorial: Cómo crear una planeación efectiva</h2>
@@ -566,12 +616,20 @@ export default function UnitPlanner() {
             >
               <motion.div 
                 whileHover={{ scale: 1.02 }}
-                className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:border-blue-100 cursor-pointer"
+                className="bg-white rounded-xl p-8 shadow-sm border cursor-pointer"
+                style={{ 
+                  background: '#ffffff',
+                  border: '1px solid rgba(101, 204, 138, 0.2)',
+                  boxShadow: '0 4px 8px rgba(101, 204, 138, 0.1)'
+                }}
                 onClick={() => setStep(1)}
               >
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mr-4">
-                    <BrainCircuit className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-4"
+                       style={{ 
+                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                       }}>
+                    <BrainCircuit className="w-6 h-6" style={{ color: '#65cc8a' }} />
                   </div>
                   <h3 className="text-lg font-medium text-gray-800">{t('unitPlanner.features.intelligentPlanning.title')}</h3>
                 </div>
@@ -580,12 +638,20 @@ export default function UnitPlanner() {
 
               <motion.div 
                 whileHover={{ scale: 1.02 }}
-                className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:border-purple-100 cursor-pointer"
+                className="bg-white rounded-xl p-8 shadow-sm border cursor-pointer"
+                style={{ 
+                  background: '#ffffff',
+                  border: '1px solid rgba(101, 204, 138, 0.2)',
+                  boxShadow: '0 4px 8px rgba(101, 204, 138, 0.1)'
+                }}
                 onClick={() => setStep(1)}
               >
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center mr-4">
-                    <Target className="w-6 h-6 text-purple-600" />
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-4"
+                       style={{ 
+                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                       }}>
+                    <Target className="w-6 h-6" style={{ color: '#65cc8a' }} />
                   </div>
                   <h3 className="text-lg font-medium text-gray-800">{t('unitPlanner.features.clearObjectives.title')}</h3>
                 </div>
@@ -594,12 +660,20 @@ export default function UnitPlanner() {
 
               <motion.div 
                 whileHover={{ scale: 1.02 }}
-                className="bg-white rounded-xl p-8 shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:border-green-100 cursor-pointer"
+                className="bg-white rounded-xl p-8 shadow-sm border cursor-pointer"
+                style={{ 
+                  background: '#ffffff',
+                  border: '1px solid rgba(101, 204, 138, 0.2)',
+                  boxShadow: '0 4px 8px rgba(101, 204, 138, 0.1)'
+                }}
                 onClick={() => setStep(1)}
               >
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center mr-4">
-                    <Calendar className="w-6 h-6 text-green-600" />
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-4"
+                       style={{ 
+                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                       }}>
+                    <Calendar className="w-6 h-6" style={{ color: '#65cc8a' }} />
                   </div>
                   <h3 className="text-lg font-medium text-gray-800">{t('unitPlanner.features.efficientOrganization.title')}</h3>
                 </div>
@@ -625,6 +699,21 @@ export default function UnitPlanner() {
           />
         )}
       </motion.div>
+      
+      <style jsx>{`
+        @keyframes gradientShift {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 0.8; }
+          50% { opacity: 1; }
+        }
+      `}</style>
       
       <PricingModal 
         open={showPricingModal} 
@@ -694,6 +783,11 @@ function UnitPlannerSteps({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       className="bg-white rounded-xl border shadow-sm p-8"
+      style={{ 
+        background: '#ffffff',
+        border: '1px solid rgba(101, 204, 138, 0.2)',
+        boxShadow: '0 8px 16px rgba(101, 204, 138, 0.1)'
+      }}
     >
       <ProgressIndicator currentStep={currentStep} />
       
@@ -718,9 +812,12 @@ function UnitPlannerSteps({
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center"
+              className="w-12 h-12 rounded-lg flex items-center justify-center"
+              style={{ 
+                background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+              }}
             >
-              <BookOpen className="w-6 h-6 text-blue-600" />
+              <BookOpen className="w-6 h-6" style={{ color: '#65cc8a' }} />
             </motion.div>
             <div>
               <h1 className="text-2xl font-semibold text-gray-800">{t('unitPlanner.steps.basicInfo.title')}</h1>
@@ -741,7 +838,7 @@ function UnitPlannerSteps({
                 value={formData.nombreUnidad}
                 onChange={(e) => handleFieldChange('nombreUnidad', e.target.value)}
                 placeholder="Ej: La independencia de Colombia"
-                className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+                className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
                   touched.nombreUnidad && errors.nombreUnidad ? 'border-red-500' : 'border-gray-300'
                 }`}
               />
@@ -770,7 +867,7 @@ function UnitPlannerSteps({
                     handleFieldChange("nivelEducativo", newValues)
                   }}
                 >
-                  <SelectTrigger className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+                  <SelectTrigger className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
                     touched.nivelEducativo && errors.nivelEducativo ? 'border-red-500' : 'border-gray-300'
                   }`}>
                     <SelectValue>
@@ -862,7 +959,7 @@ function UnitPlannerSteps({
                   value={formData.asignatura}
                   onValueChange={(value) => handleFieldChange('asignatura', value)}
                 >
-                  <SelectTrigger className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+                  <SelectTrigger className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
                     touched.asignatura && errors.asignatura ? 'border-red-500' : 'border-gray-300'
                   }`}>
                     <SelectValue placeholder="Selecciona la materia" />
@@ -954,7 +1051,11 @@ function UnitPlannerSteps({
               </Button>
               <Button
                 onClick={goNext}
-                className="flex-1 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white"
+                className="flex-1 text-white"
+                style={{ 
+                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                  boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                }}
                 disabled={touched.nombreUnidad && touched.asignatura && (!!errors.nombreUnidad || !!errors.asignatura)}
               >
                 {t('unitPlanner.steps.basicInfo.next')}
@@ -1002,7 +1103,7 @@ function UnitPlannerSteps({
                   handleFieldChange('methodology', newMethodologies)
                 }}
               >
-                <SelectTrigger className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+                <SelectTrigger className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
                   touched.methodology && errors.methodology ? 'border-red-500' : 'border-gray-300'
                 }`}>
                   <SelectValue>
@@ -1139,7 +1240,7 @@ function UnitPlannerSteps({
                 value={formData.detallesUnidad}
                 onChange={(e) => handleFieldChange('detallesUnidad', e.target.value)}
                 placeholder="Describe los principales conceptos y habilidades que quieres que tus estudiantes desarrollen"
-                className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 min-h-[100px] ${
+                className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 min-h-[100px] ${
                   touched.detallesUnidad && errors.detallesUnidad ? 'border-red-500' : 'border-gray-300'
                 }`}
               />
@@ -1167,7 +1268,11 @@ function UnitPlannerSteps({
               </Button>
               <Button
                 onClick={goNext}
-                className="flex-1 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white"
+                className="flex-1 text-white"
+                style={{ 
+                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                  boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                }}
                 disabled={touched.detallesUnidad && !!errors.detallesUnidad}
               >
                 {t('unitPlanner.steps.classDetails.next')}
@@ -1210,7 +1315,7 @@ function UnitPlannerSteps({
                 value={formData.estandaresObjetivos}
                 onChange={(e) => handleFieldChange('estandaresObjetivos', e.target.value)}
                 placeholder="Aquí puedes escribir los estándares y objetivos de aprendizaje, todos los detalles de la clase (actividades, contenidos, recursos y estrategias inclusivas), y puedes  incorporar los planes y programas de la Educación de enseñanza de tu país."
-                className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 min-h-[100px] ${
+                className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 min-h-[100px] ${
                   touched.estandaresObjetivos && errors.estandaresObjetivos ? 'border-red-500' : 'border-gray-300'
                 }`}
               />
@@ -1248,7 +1353,11 @@ function UnitPlannerSteps({
               </Button>
               <Button
                 onClick={goNext}
-                className="flex-1 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white"
+                className="flex-1 text-white"
+                style={{ 
+                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                  boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                }}
                 disabled={touched.estandaresObjetivos && !!errors.estandaresObjetivos}
               >
                 {t('unitPlanner.steps.classDetails.next')}
@@ -1269,9 +1378,12 @@ function UnitPlannerSteps({
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center"
+              className="w-12 h-12 rounded-lg flex items-center justify-center"
+              style={{ 
+                background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+              }}
             >
-              <Calendar className="w-6 h-6 text-green-600" />
+              <Calendar className="w-6 h-6" style={{ color: '#65cc8a' }} />
             </motion.div>
             <div>
               <h1 className="text-2xl font-semibold text-gray-800">Duración de la clase</h1>
@@ -1332,7 +1444,11 @@ function UnitPlannerSteps({
               </Button>
               <Button
                 onClick={goNext}
-                className="flex-1 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white"
+                className="flex-1 text-white"
+                style={{ 
+                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                  boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                }}
               >
                 Ver vista previa
               </Button>
@@ -1352,9 +1468,12 @@ function UnitPlannerSteps({
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center"
+              className="w-12 h-12 rounded-lg flex items-center justify-center"
+              style={{ 
+                background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+              }}
             >
-              <BookOpen className="w-6 h-6 text-blue-600" />
+              <BookOpen className="w-6 h-6" style={{ color: '#65cc8a' }} />
             </motion.div>
             <div>
               <h1 className="text-2xl font-semibold text-gray-800">Vista previa de tu planeación</h1>
@@ -1406,7 +1525,11 @@ function UnitPlannerSteps({
               </Button>
               <Button
                 onClick={onSubmit}
-                className="flex-1 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white"
+                className="flex-1 text-white"
+                style={{ 
+                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                  boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                }}
                 disabled={isLoading}
               >
                 {isLoading ? (
