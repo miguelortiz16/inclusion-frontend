@@ -121,6 +121,16 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/workshop/capacitacion-docentes/page.js"
+    ],
+    "/workshop/sopa-de-letras/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/workshop/sopa-de-letras/page.js"
+    ],
+    "/workshop/generador-ideas/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/workshop/generador-ideas/page.js"
     ]
   }
 }

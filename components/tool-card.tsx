@@ -45,6 +45,20 @@ export function ToolCard({
     router.push(tool.href)
   }
 
+  // Determinar el tamaño de la card basado en el ID o importancia
+  const getCardSize = () => {
+    const importantTools = ['dua', 'ajustes-razonables', 'planificador-lecciones', 'creador-cuestionarios']
+    if (importantTools.includes(tool.id)) {
+      return 'large' // 2x2
+    } else if (tool.id.includes('generador') || tool.id.includes('creador')) {
+      return 'medium' // 1x2
+    } else {
+      return 'small' // 1x1
+    }
+  }
+
+  const cardSize = getCardSize()
+
   return (
     <TooltipProvider>
       <Tooltip delayDuration={300}>
@@ -52,280 +66,137 @@ export function ToolCard({
           <Link href={tool.href} onClick={handleClick} prefetch={true}>
             <div className="relative group">
               <motion.div 
-                className="relative overflow-hidden rounded-2xl p-6 h-full cursor-pointer"
+                className={`relative overflow-hidden cursor-pointer ${
+                  cardSize === 'large' ? 'col-span-2 row-span-2' : 
+                  cardSize === 'medium' ? 'col-span-1 row-span-2' : 
+                  'col-span-1 row-span-1'
+                }`}
                 style={{
                   background: '#ffffff',
-                  border: '1px solid rgba(0, 0, 0, 0.1)',
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
+                  borderRadius: '12px',
+                  border: '1px solid rgba(0, 0, 0, 0.08)',
+                  boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)'
                 }}
                 whileHover={{
-                  y: -8,
-                  scale: 1.02,
+                  y: -2,
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
                   transition: {
-                    duration: 0.3,
+                    duration: 0.2,
                     ease: "easeOut"
                   }
                 }}
                 whileTap={{
                   scale: 0.98,
-                  transition: { duration: 0.2 }
+                  transition: { duration: 0.1 }
                 }}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
-                {/* Animated background gradient */}
-                <motion.div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{
-                    background: 'rgba(251, 146, 60, 0.1)',
-                    borderRadius: '16px'
-                  }}
-                />
-
-                {/* Floating particles effect */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                  {[...Array(3)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-2 h-2 rounded-full"
-                      style={{
-                        background: 'radial-gradient(circle, #fb923c, transparent)',
-                        left: `${20 + i * 30}%`,
-                        top: `${30 + i * 20}%`
-                      }}
-                      animate={{
-                        y: [0, -20, 0],
-                        opacity: [0, 1, 0],
-                        scale: [0, 1, 0]
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        delay: i * 0.5,
-                        ease: "easeInOut"
-                      }}
-                    />
-                  ))}
-                </div>
-
-                {/* Header with icon and favorite button */}
-                <div className="flex items-start justify-between mb-6 relative z-10">
-                  <motion.div 
-                    className="relative"
-                    whileHover={{ 
-                      rotate: [0, -5, 5, 0],
-                      scale: 1.1,
-                      transition: { 
-                        duration: 0.5,
-                        ease: "easeInOut"
-                      }
-                    }}
-                  >
-                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center relative overflow-hidden"
+                {/* Content */}
+                <div className={`relative z-10 h-full flex flex-col ${
+                  cardSize === 'large' ? 'p-6' : 
+                  cardSize === 'medium' ? 'p-5' : 
+                  'p-4'
+                }`}>
+                  
+                  {/* Header */}
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex items-center justify-center w-10 h-10 rounded-lg"
                          style={{
-                           background: 'rgba(251, 146, 60, 0.1)',
-                           boxShadow: '0 2px 8px rgba(251, 146, 60, 0.2)',
-                           border: '1px solid rgba(251, 146, 60, 0.2)'
+                           background: 'rgba(99, 102, 241, 0.08)',
+                           border: '1px solid rgba(99, 102, 241, 0.15)'
                          }}>
-                      {/* Icon glow effect */}
-                      <motion.div
-                        className="absolute inset-0 rounded-2xl"
-                        style={{
-                          background: 'radial-gradient(circle, rgba(251, 146, 60, 0.3), transparent)'
-                        }}
-                        animate={{
-                          scale: [1, 1.2, 1],
-                          opacity: [0.5, 0, 0.5]
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }}
-                      />
                       {tool.icon}
                     </div>
-                  </motion.div>
 
-                  <div className="flex items-center gap-2">
-                    {tool.isCustom && onDeactivate && (
-                      <motion.button 
-                        onClick={(e) => {
-                          e.preventDefault()
-                          e.stopPropagation()
-                          onDeactivate(tool.id)
-                        }}
-                        className="px-3 py-1 rounded-lg flex items-center gap-2 transition-all duration-300"
-                        style={{
-                          background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1))',
-                          border: '1px solid rgba(239, 68, 68, 0.3)',
-                          color: '#dc2626'
-                        }}
-                        whileHover={{ 
-                          scale: 1.05,
-                          transition: { 
-                            duration: 0.2,
-                            ease: "easeInOut"
-                          }
-                        }}
-                        whileTap={{ 
-                          scale: 0.95,
-                          transition: { 
-                            type: "spring",
-                            stiffness: 400,
-                            damping: 10
-                          }
-                        }}
+                    <div className="flex items-center gap-2">
+                      {tool.isCustom && onDeactivate && (
+                        <button 
+                          onClick={(e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            onDeactivate(tool.id)
+                          }}
+                          className="px-2 py-1 rounded text-xs transition-colors"
+                          style={{
+                            background: 'rgba(239, 68, 68, 0.08)',
+                            color: '#dc2626'
+                          }}
+                        >
+                          <Trash2 className="w-3 h-3" />
+                        </button>
+                      )}
+                      <button 
+                        onClick={(e) => onFavoriteClick(e, tool.href)}
+                        className="opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                       >
-                        <Trash2 className="w-4 h-4" />
-                        <span className="text-sm font-medium">Eliminar</span>
-                      </motion.button>
-                    )}
-                    <motion.button 
-                      onClick={(e) => onFavoriteClick(e, tool.href)}
-                      className="opacity-0 group-hover:opacity-100 transition-all duration-300 focus:outline-none
-                        hover:scale-110 relative"
-                      whileHover={{ 
-                        scale: 1.2,
-                        rotate: [0, -10, 10, -10, 0],
-                        transition: { 
-                          duration: 0.5,
-                          ease: "easeInOut"
-                        }
-                      }}
-                      whileTap={{ 
-                        scale: 0.9,
-                        transition: { 
-                          type: "spring",
-                          stiffness: 400,
-                          damping: 10
-                        }
+                        {favorites.includes(tool.href) ? (
+                          <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                        ) : (
+                          <Star className="w-4 h-4 text-gray-400 hover:text-yellow-500 transition-colors" />
+                        )}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Title and Description */}
+                  <div className="flex-1">
+                    <h3 
+                      className={`font-semibold ${
+                        cardSize === 'large' ? 'text-xl mb-2' :
+                        cardSize === 'medium' ? 'text-lg mb-2' :
+                        'text-base mb-1'
+                      }`}
+                      style={{ color: '#1f2937' }}
+                    >
+                      {tool.title}
+                    </h3>
+                    <p 
+                      className={`leading-relaxed ${
+                        cardSize === 'large' ? 'text-sm' :
+                        cardSize === 'medium' ? 'text-sm' :
+                        'text-xs'
+                      }`}
+                      style={{ color: '#6b7280' }}
+                    >
+                      {cardSize === 'large' 
+                        ? tool.description 
+                        : cardSize === 'medium' 
+                        ? tool.description.substring(0, 80) + '...'
+                        : tool.description.substring(0, 50) + '...'
+                      }
+                    </p>
+                  </div>
+
+                  {/* Premium badge */}
+                  {tool.isPremium && (
+                    <span 
+                      className="inline-flex items-center px-2 py-1 rounded text-xs font-medium absolute top-3 right-3"
+                      style={{
+                        background: 'rgba(99, 102, 241, 0.1)',
+                        color: '#6366f1'
                       }}
                     >
-                      {/* Star glow effect */}
-                      <motion.div
-                        className="absolute inset-0 rounded-full"
-                        style={{
-                          background: 'radial-gradient(circle, rgba(234, 179, 8, 0.3), transparent)'
-                        }}
-                        initial={{ scale: 0, opacity: 0 }}
-                        whileHover={{ 
-                          scale: 1.5,
-                          opacity: [0, 0.5, 0],
-                          transition: { duration: 0.5 }
-                        }}
-                      />
-                      {favorites.includes(tool.href) ? (
-                        <Star 
-                          className="w-6 h-6 text-yellow-500 fill-yellow-500 cursor-pointer"
-                          style={{ filter: 'drop-shadow(0 0 8px rgba(234, 179, 8, 0.5))' }}
-                        />
-                      ) : (
-                        <Star 
-                          className="w-6 h-6 text-gray-400 cursor-pointer hover:text-yellow-500 transition-colors duration-300"
-                        />
-                      )}
-                    </motion.button>
-                  </div>
+                      Premium
+                    </span>
+                  )}
                 </div>
-
-                {/* Content */}
-                <div className="relative z-10">
-                  <motion.h3 
-                    className="text-xl font-bold mb-3 font-montserrat"
-                    style={{ 
-                      color: '#000000'
-                    }}
-                    whileHover={{ 
-                      x: [0, 5, -5, 5, 0],
-                      transition: { 
-                        duration: 0.5,
-                        ease: "easeInOut"
-                      }
-                    }}
-                  >
-                    {tool.title}
-                  </motion.h3>
-                  <motion.p 
-                    className="text-sm leading-relaxed font-montserrat"
-                    style={{ color: '#000000' }}
-                    whileHover={{ 
-                      x: [0, 5, -5, 5, 0],
-                      transition: { 
-                        duration: 0.5,
-                        ease: "easeInOut"
-                      }
-                    }}
-                  >
-                    {tool.description}
-                  </motion.p>
-                </div>
-
-                {/* Animated progress bar */}
-                <motion.div 
-                  className="absolute bottom-0 left-0 right-0 h-1 overflow-hidden rounded-b-2xl"
-                  style={{
-                    background: 'linear-gradient(90deg, #fb923c, #f97316, #ea580c)'
-                  }}
-                  initial={{ scaleX: 0 }}
-                  whileHover={{ scaleX: 1 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <motion.div
-                    className="absolute inset-0"
-                    style={{
-                      background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent)'
-                    }}
-                    animate={{
-                      x: ["-100%", "100%"],
-                      transition: {
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "linear"
-                      }
-                    }}
-                  />
-                </motion.div>
-
-                {/* Premium badge */}
-                {tool.isPremium && (
-                  <motion.span 
-                    className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold absolute top-4 right-4"
-                    style={{
-                      background: '#fb923c',
-                      color: 'white',
-                      boxShadow: '0 4px 8px rgba(251, 146, 60, 0.3)'
-                    }}
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    Premium
-                  </motion.span>
-                )}
-
-                {/* Hover overlay effect */}
-                <motion.div
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{
-                    background: 'rgba(251, 146, 60, 0.05)',
-                    border: '1px solid rgba(251, 146, 60, 0.2)'
-                  }}
-                />
               </motion.div>
             </div>
           </Link>
         </TooltipTrigger>
         <TooltipContent 
           side="top" 
-          className="max-w-xs p-4 bg-white border border-gray-200 shadow-xl rounded-xl font-montserrat z-[9999]"
+          className="max-w-xs p-3 bg-white border border-gray-200 shadow-sm rounded-lg font-montserrat z-[9999]"
           style={{
             background: '#ffffff',
-            border: '1px solid rgba(0, 0, 0, 0.1)',
-            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
+            border: '1px solid rgba(0, 0, 0, 0.08)',
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)'
           }}
-          sideOffset={10}
+          sideOffset={8}
           align="start"
         >
-          <p className="text-sm font-medium" style={{ color: '#000000' }}>{tool.description}</p>
+          <p className="text-sm" style={{ color: '#1f2937' }}>{tool.description}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

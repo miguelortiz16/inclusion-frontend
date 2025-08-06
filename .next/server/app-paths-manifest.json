@@ -3,7 +3,9 @@
   "/workshop/page": "app/workshop/page.js",
   "/unit-planner/page": "app/unit-planner/page.js",
   "/pricing/page": "app/pricing/page.js",
-  "/unit-planner/calendar/page": "app/unit-planner/calendar/page.js",
-  "/workshop/ajustes-razonables/page": "app/workshop/ajustes-razonables/page.js",
-  "/page": "app/page.js"
+  "/workshop/sopa-de-letras/page": "app/workshop/sopa-de-letras/page.js",
+  "/workshop/cotejo/page": "app/workshop/cotejo/page.js",
+  "/workshop/generador-ideas/page": "app/workshop/generador-ideas/page.js",
+  "/page": "app/page.js",
+  "/workshop/dua/page": "app/workshop/dua/page.js"
 }
