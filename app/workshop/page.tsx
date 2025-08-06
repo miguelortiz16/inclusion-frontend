@@ -1022,7 +1022,7 @@ export default function Workshop() {
                 stiffness: 100,
                 damping: 20
               }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 relative z-0"
+              className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 relative z-0"
               style={{
                 background: '#ffffff',
                 borderRadius: '16px',

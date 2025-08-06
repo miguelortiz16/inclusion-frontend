@@ -6,131 +6,15 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
-    "/api/auth/[...nextauth]/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/auth/[...nextauth]/route.js"
-    ],
-    "/unit-planner/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/unit-planner/page.js"
-    ],
     "/workshop/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/workshop/page.js"
     ],
-    "/history/page": [
+    "/api/auth/[...nextauth]/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/history/page.js"
-    ],
-    "/unit-planner/calendar/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/unit-planner/calendar/page.css",
-      "static/chunks/app/unit-planner/calendar/page.js"
-    ],
-    "/comunidad/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/comunidad/page.js"
-    ],
-    "/ranking/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/ranking/page.js"
-    ],
-    "/unit-planner/history/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/unit-planner/history/page.js"
-    ],
-    "/workshop/dua/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/workshop/dua/page.js"
-    ],
-    "/workshop/diapositivas/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/workshop/diapositivas/page.js"
-    ],
-    "/workshop/creador-cuestionarios/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/workshop/creador-cuestionarios/page.js"
-    ],
-    "/workshop/accesibilidad-textos/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/workshop/accesibilidad-textos/page.js"
-    ],
-    "/workshop/ajustes-razonables/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/workshop/ajustes-razonables/page.js"
-    ],
-    "/workshop/calificador-ensayos/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/workshop/calificador-ensayos/page.js"
-    ],
-    "/solicitar-herramienta/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/solicitar-herramienta/page.js"
-    ],
-    "/workshop/coloring/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/workshop/coloring/page.js"
-    ],
-    "/workshop/educational-images/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/workshop/educational-images/page.js"
-    ],
-    "/pricing/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/pricing/page.js"
-    ],
-    "/workshop/planificador-lecciones/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/workshop/planificador-lecciones/page.js"
-    ],
-    "/workshop/cotejo/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/workshop/cotejo/page.js"
-    ],
-    "/workshop/nivelacion-textos/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/workshop/nivelacion-textos/page.js"
-    ],
-    "/workshop/capacitacion-docentes/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/workshop/capacitacion-docentes/page.js"
-    ],
-    "/workshop/sopa-de-letras/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/workshop/sopa-de-letras/page.js"
-    ],
-    "/workshop/generador-ideas/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/workshop/generador-ideas/page.js"
+      "static/chunks/app/api/auth/[...nextauth]/route.js"
     ]
   }
 }

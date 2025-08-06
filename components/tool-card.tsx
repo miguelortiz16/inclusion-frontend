@@ -45,8 +45,8 @@ export function ToolCard({
     router.push(tool.href)
   }
 
-  // Determinar el tamaño de la card basado en el ID o importancia
-  const getCardSize = () => {
+  // Determinar el tamaño del círculo basado en el ID o importancia
+  const getCircleSize = () => {
     const importantTools = ['dua', 'ajustes-razonables', 'planificador-lecciones', 'creador-cuestionarios']
     if (importantTools.includes(tool.id)) {
       return 'large' // 2x2
@@ -57,7 +57,7 @@ export function ToolCard({
     }
   }
 
-  const cardSize = getCardSize()
+  const circleSize = getCircleSize()
 
   return (
     <TooltipProvider>
@@ -66,115 +66,121 @@ export function ToolCard({
           <Link href={tool.href} onClick={handleClick} prefetch={true}>
             <div className="relative group">
               <motion.div 
-                className={`relative overflow-hidden cursor-pointer ${
-                  cardSize === 'large' ? 'col-span-2 row-span-2' : 
-                  cardSize === 'medium' ? 'col-span-1 row-span-2' : 
-                  'col-span-1 row-span-1'
-                }`}
+                className="relative cursor-pointer col-span-1 row-span-1"
                 style={{
-                  background: '#ffffff',
-                  borderRadius: '12px',
-                  border: '1px solid rgba(0, 0, 0, 0.08)',
-                  boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)'
+                  background: 'transparent',
+                  borderRadius: '50%',
+                  border: 'none',
+                  aspectRatio: '1/1',
+                  width: circleSize === 'large' ? '180px' : circleSize === 'medium' ? '160px' : '140px',
+                  height: circleSize === 'large' ? '180px' : circleSize === 'medium' ? '160px' : '140px',
+                  margin: '0 auto'
                 }}
                 whileHover={{
-                  y: -2,
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                  scale: 1.08,
+                  y: -4,
                   transition: {
                     duration: 0.2,
                     ease: "easeOut"
                   }
                 }}
                 whileTap={{
-                  scale: 0.98,
+                  scale: 0.95,
                   transition: { duration: 0.1 }
                 }}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
-                {/* Content */}
-                <div className={`relative z-10 h-full flex flex-col ${
-                  cardSize === 'large' ? 'p-6' : 
-                  cardSize === 'medium' ? 'p-5' : 
-                  'p-4'
-                }`}>
+                {/* Círculo principal */}
+                <div 
+                  className="w-full h-full flex flex-col items-center justify-center relative"
+                  style={{
+                    background: isHovered 
+                      ? 'radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(99, 102, 241, 0.06) 70%, transparent 100%)'
+                      : 'radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 70%)',
+                    borderRadius: '50%',
+                    transition: 'background 0.3s ease',
+                    boxShadow: isHovered 
+                      ? '0 8px 25px rgba(99, 102, 241, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1)'
+                      : '0 4px 15px rgba(99, 102, 241, 0.1), 0 2px 5px rgba(0, 0, 0, 0.05)'
+                  }}
+                >
                   
-                  {/* Header */}
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-lg"
-                         style={{
-                           background: 'rgba(99, 102, 241, 0.08)',
-                           border: '1px solid rgba(99, 102, 241, 0.15)'
-                         }}>
+                  {/* Icono central */}
+                  <div 
+                    className="flex items-center justify-center mb-3"
+                    style={{
+                      width: circleSize === 'large' ? '60px' : circleSize === 'medium' ? '50px' : '45px',
+                      height: circleSize === 'large' ? '60px' : circleSize === 'medium' ? '50px' : '45px',
+                      background: 'rgba(99, 102, 241, 0.1)',
+                      borderRadius: '50%',
+                      border: '1px solid rgba(99, 102, 241, 0.2)',
+                      boxShadow: '0 2px 8px rgba(99, 102, 241, 0.15)'
+                    }}
+                  >
+                    <div style={{ 
+                      fontSize: circleSize === 'large' ? '24px' : circleSize === 'medium' ? '20px' : '18px',
+                      color: '#6366f1'
+                    }}>
                       {tool.icon}
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      {tool.isCustom && onDeactivate && (
-                        <button 
-                          onClick={(e) => {
-                            e.preventDefault()
-                            e.stopPropagation()
-                            onDeactivate(tool.id)
-                          }}
-                          className="px-2 py-1 rounded text-xs transition-colors"
-                          style={{
-                            background: 'rgba(239, 68, 68, 0.08)',
-                            color: '#dc2626'
-                          }}
-                        >
-                          <Trash2 className="w-3 h-3" />
-                        </button>
-                      )}
-                      <button 
-                        onClick={(e) => onFavoriteClick(e, tool.href)}
-                        className="opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                      >
-                        {favorites.includes(tool.href) ? (
-                          <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                        ) : (
-                          <Star className="w-4 h-4 text-gray-400 hover:text-yellow-500 transition-colors" />
-                        )}
-                      </button>
                     </div>
                   </div>
 
-                  {/* Title and Description */}
-                  <div className="flex-1">
-                    <h3 
-                      className={`font-semibold ${
-                        cardSize === 'large' ? 'text-xl mb-2' :
-                        cardSize === 'medium' ? 'text-lg mb-2' :
-                        'text-base mb-1'
-                      }`}
-                      style={{ color: '#1f2937' }}
+                  {/* Título */}
+                  <h3 
+                    className={`font-medium text-center ${
+                      circleSize === 'large' ? 'text-base mb-1' :
+                      circleSize === 'medium' ? 'text-sm mb-1' :
+                      'text-sm mb-1'
+                    }`}
+                    style={{ color: '#1f2937' }}
+                  >
+                    {tool.title}
+                  </h3>
+
+                  {/* Botones flotantes */}
+                  <div className="absolute top-2 right-2 flex items-center gap-1">
+                    {tool.isCustom && onDeactivate && (
+                      <button 
+                        onClick={(e) => {
+                          e.preventDefault()
+                          e.stopPropagation()
+                          onDeactivate(tool.id)
+                        }}
+                        className="w-6 h-6 rounded-full flex items-center justify-center transition-colors opacity-0 group-hover:opacity-100"
+                        style={{
+                          background: 'rgba(239, 68, 68, 0.1)',
+                          color: '#dc2626',
+                          boxShadow: '0 1px 3px rgba(239, 68, 68, 0.2)'
+                        }}
+                      >
+                        <Trash2 className="w-3 h-3" />
+                      </button>
+                    )}
+                    <button 
+                      onClick={(e) => onFavoriteClick(e, tool.href)}
+                      className="w-6 h-6 rounded-full flex items-center justify-center transition-colors opacity-0 group-hover:opacity-100"
+                      style={{
+                        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+                      }}
                     >
-                      {tool.title}
-                    </h3>
-                    <p 
-                      className={`leading-relaxed ${
-                        cardSize === 'large' ? 'text-sm' :
-                        cardSize === 'medium' ? 'text-sm' :
-                        'text-xs'
-                      }`}
-                      style={{ color: '#6b7280' }}
-                    >
-                      {cardSize === 'large' 
-                        ? tool.description 
-                        : cardSize === 'medium' 
-                        ? tool.description.substring(0, 80) + '...'
-                        : tool.description.substring(0, 50) + '...'
-                      }
-                    </p>
+                      {favorites.includes(tool.href) ? (
+                        <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />
+                      ) : (
+                        <Star className="w-3 h-3 text-gray-400 hover:text-yellow-500 transition-colors" />
+                      )}
+                    </button>
                   </div>
 
                   {/* Premium badge */}
                   {tool.isPremium && (
                     <span 
-                      className="inline-flex items-center px-2 py-1 rounded text-xs font-medium absolute top-3 right-3"
+                      className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 px-2 py-0.5 rounded-full text-xs font-medium"
                       style={{
-                        background: 'rgba(99, 102, 241, 0.1)',
-                        color: '#6366f1'
+                        background: 'rgba(99, 102, 241, 0.12)',
+                        color: '#6366f1',
+                        border: '1px solid rgba(99, 102, 241, 0.25)',
+                        boxShadow: '0 2px 6px rgba(99, 102, 241, 0.2)'
                       }}
                     >
                       Premium
