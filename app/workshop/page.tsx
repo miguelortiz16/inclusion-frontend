@@ -115,7 +115,7 @@ export default function Workshop() {
             id: "dua",
             title: t('workshop.tools.dua.title'),
             description: t('workshop.tools.dua.description'),
-            icon: <Accessibility className="w-8 h-8" style={{ color: '#65cc8a' }} />,
+            icon: <Accessibility className="w-8 h-8" style={{ color: '#fb923c' }} />,
             href: "/workshop/dua",
             category: "assessment" as const
           },
@@ -152,7 +152,7 @@ export default function Workshop() {
             id: "creador-cuestionarios",
             title: t('workshop.tools.quizCreator.title'),
             description: t('workshop.tools.quizCreator.description'),
-            icon: <RiQuestionAnswerFill className="w-8 h-8" style={{ color: '#65cc8a' }} />,
+            icon: <RiQuestionAnswerFill className="w-8 h-8" style={{ color: '#fb923c' }} />,
             href: "/workshop/creador-cuestionarios",
             category: "assessment" as const
           },
@@ -160,7 +160,7 @@ export default function Workshop() {
             id: "planificador-lecciones",
             title: t('workshop.tools.lessonPlanner.title'),
             description: t('workshop.tools.lessonPlanner.description'),
-            icon: <RiBookReadFill className="w-8 h-8" style={{ color: '#65cc8a' }} />,
+            icon: <RiBookReadFill className="w-8 h-8" style={{ color: '#fb923c' }} />,
             href: "/workshop/planificador-lecciones",
             category: "planning" as const
           },
@@ -168,7 +168,7 @@ export default function Workshop() {
             id: "buscador-imagenes",
             title: t('workshop.tools.imageSearch.title'),
             description: t('workshop.tools.imageSearch.description'),
-            icon: <RiSearchFill className="w-8 h-8" style={{ color: '#65cc8a' }} />,
+            icon: <RiSearchFill className="w-8 h-8" style={{ color: '#fb923c' }} />,
             href: "/workshop/buscador-imagenes",
             category: "content" as const
           },
@@ -186,7 +186,7 @@ export default function Workshop() {
             id: "generador-ideas",
             title: t('workshop.tools.ideaGenerator.title'),
             description: t('workshop.tools.ideaGenerator.description'),
-            icon: <RiLightbulbFill className="w-8 h-8" style={{ color: '#65cc8a' }} />,
+            icon: <RiLightbulbFill className="w-8 h-8" style={{ color: '#fb923c' }} />,
             href: "/workshop/generador-ideas",
             category: "content" as const
           },
@@ -194,7 +194,7 @@ export default function Workshop() {
             id: "ajustes-razonables",
             title: t('workshop.tools.reasonableAdjustments.title'),
             description: t('workshop.tools.reasonableAdjustments.description'),
-            icon: <Heart className="w-8 h-8" style={{ color: '#65cc8a' }} />,
+            icon: <Heart className="w-8 h-8" style={{ color: '#fb923c' }} />,
             href: "/workshop/ajustes-razonables",
             category: "assessment" as const
           },
@@ -202,7 +202,7 @@ export default function Workshop() {
             id: "steam",
             title: t('workshop.tools.steam.title'),
             description: t('workshop.tools.steam.description'),
-            icon: <RiUserSettingsLine className="w-8 h-8" style={{ color: '#65cc8a' }} />,
+            icon: <RiUserSettingsLine className="w-8 h-8" style={{ color: '#fb923c' }} />,
             href: "/workshop/steam",
             category: "planning" as const
           },
@@ -210,7 +210,7 @@ export default function Workshop() {
             id: "rubrica",
             title: t('workshop.tools.rubric.title'),
             description: t('workshop.tools.rubric.description'),
-            icon: <RiFileTextFill className="w-8 h-8" style={{ color: '#65cc8a' }} />,
+            icon: <RiFileTextFill className="w-8 h-8" style={{ color: '#fb923c' }} />,
             href: "/workshop/rubrica",
             category: "assessment" as const
           },
@@ -418,7 +418,7 @@ export default function Workshop() {
             id: "nivelacion-textos",
             title: t('workshop.tools.textLeveling.title'),
             description: t('workshop.tools.textLeveling.description'),
-            icon: <RiFileTextFill className="w-8 h-8" style={{ color: '#65cc8a' }} />,
+            icon: <RiFileTextFill className="w-8 h-8" style={{ color: '#fb923c' }} />,
             href: "/workshop/nivelacion-textos",
             category: "content" as const
           },
@@ -426,7 +426,7 @@ export default function Workshop() {
             id: "accesibilidad-textos",
             title: t('workshop.tools.textAccessibility.title'),
             description: t('workshop.tools.textAccessibility.description'),
-            icon: <Shield className="w-8 h-8" style={{ color: '#65cc8a' }} />,
+            icon: <Shield className="w-8 h-8" style={{ color: '#fb923c' }} />,
             href: "/workshop/accesibilidad-textos",
             category: "content" as const
           },
@@ -711,29 +711,12 @@ export default function Workshop() {
         transition={{ duration: 0.5 }}
         className="min-h-screen font-montserrat"
         style={{ 
-          background: 'linear-gradient(135deg, #f0fdf4 0%, #ffffff 50%, #dcfce7 100%)',
+          background: '#ffffff',
           position: 'relative',
           overflow: 'hidden'
         }}
       >
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-32 h-32 rounded-full opacity-20"
-               style={{ 
-                 background: 'radial-gradient(circle, #65cc8a, transparent)',
-                 animation: 'float 6s ease-in-out infinite'
-               }}></div>
-          <div className="absolute top-40 right-20 w-24 h-24 rounded-full opacity-15"
-               style={{ 
-                 background: 'radial-gradient(circle, #4ade80, transparent)',
-                 animation: 'float 8s ease-in-out infinite reverse'
-               }}></div>
-          <div className="absolute bottom-20 left-1/4 w-20 h-20 rounded-full opacity-10"
-               style={{ 
-                 background: 'radial-gradient(circle, #65cc8a, transparent)',
-                 animation: 'float 7s ease-in-out infinite'
-               }}></div>
-        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           {/* Header */}
                       <motion.div 
@@ -742,12 +725,11 @@ export default function Workshop() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex flex-col gap-4 sm:gap-6 mb-6 sm:mb-12"
               style={{
-                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-                backdropFilter: 'blur(10px)',
-                borderRadius: '24px',
-                padding: '32px',
-                border: '1px solid rgba(101, 204, 138, 0.1)',
-                boxShadow: '0 20px 40px rgba(101, 204, 138, 0.1)'
+                background: '#ffffff',
+                borderRadius: '16px',
+                padding: '24px',
+                border: '1px solid rgba(0, 0, 0, 0.1)',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
               }}
             >
             <motion.div 
@@ -767,10 +749,10 @@ export default function Workshop() {
                     alt="Logo"
                     width={48}
                     height={48}
-                    className="rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 sm:w-16 sm:h-16"
+                    className="rounded-lg transform hover:scale-105 transition-transform duration-300 sm:w-16 sm:h-16"
                     style={{ 
-                      boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)',
-                      border: '2px solid rgba(101, 204, 138, 0.2)'
+                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                      border: '1px solid rgba(0, 0, 0, 0.1)'
                     }}
                   />
                   <motion.div 
@@ -779,7 +761,7 @@ export default function Workshop() {
                     transition={{ duration: 0.3, delay: 0.6 }}
                     className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 rounded-full w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center text-xs font-bold"
                     style={{ 
-                      background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                      background: '#fb923c',
                       color: 'white'
                     }}
                   >
@@ -796,8 +778,7 @@ export default function Workshop() {
                   <div className="flex flex-col gap-1 sm:gap-2">
                     <h1 className="text-3xl sm:text-4xl lg:text-6xl font-black font-montserrat"
                         style={{ 
-                          color: '#000000',
-                          textShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                          color: '#000000'
                         }}>
                        Herramientas de Inclusión
                     </h1>
@@ -819,9 +800,9 @@ export default function Workshop() {
                 variant="outline"
                 className="flex items-center gap-2 shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-xs sm:text-sm lg:text-base w-full sm:w-auto"
                 style={{ 
-                  background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                  border: '1px solid rgba(101, 204, 138, 0.3)',
-                  color: '#65cc8a'
+                  background: 'rgba(251, 146, 60, 0.1)',
+                  border: '1px solid rgba(251, 146, 60, 0.3)',
+                  color: '#fb923c'
                 }}
                 onClick={() => setShowGettingStarted(true)}
               >
@@ -832,8 +813,8 @@ export default function Workshop() {
               <Link href="/solicitar-herramienta" className="w-full sm:w-auto">
                 <Button className="flex items-center gap-2 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-xs sm:text-sm lg:text-base w-full"
                         style={{ 
-                          background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                          boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                          background: '#fb923c',
+                          boxShadow: '0 4px 12px rgba(251, 146, 60, 0.3)'
                         }}>
                   <RiAddLine className="w-3 h-3 sm:w-4 sm:h-4" />
                   {t('workshop.suggestNewTool')}
@@ -856,20 +837,20 @@ export default function Workshop() {
                 className="bg-white rounded-xl p-8 max-w-md w-full mx-4 shadow-2xl"
                 style={{ 
                   background: '#ffffff',
-                  border: '1px solid rgba(101, 204, 138, 0.2)',
-                  boxShadow: '0 20px 40px rgba(101, 204, 138, 0.1)'
+                  border: '1px solid rgba(0, 0, 0, 0.1)',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
                 }}
                 onClick={e => e.stopPropagation()}
               >
-                <h2 className="text-2xl font-bold mb-4" style={{ color: '#65cc8a' }}>¿Qué necesitas hacer?</h2>
+                <h2 className="text-2xl font-bold mb-4" style={{ color: '#fb923c' }}>¿Qué necesitas hacer?</h2>
                 <div className="space-y-4">
                                       <Button
                       className="w-full flex items-center gap-2 justify-start"
                       variant="outline"
                       style={{ 
-                        background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                        border: '1px solid rgba(101, 204, 138, 0.3)',
-                        color: '#65cc8a'
+                        background: 'rgba(251, 146, 60, 0.1)',
+                        border: '1px solid rgba(251, 146, 60, 0.3)',
+                        color: '#fb923c'
                       }}
                       onClick={() => {
                         setSelectedCategory("planning")
@@ -883,9 +864,9 @@ export default function Workshop() {
                       className="w-full flex items-center gap-2 justify-start"
                       variant="outline"
                       style={{ 
-                        background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                        border: '1px solid rgba(101, 204, 138, 0.3)',
-                        color: '#65cc8a'
+                        background: 'rgba(251, 146, 60, 0.1)',
+                        border: '1px solid rgba(251, 146, 60, 0.3)',
+                        color: '#fb923c'
                       }}
                       onClick={() => {
                         setSelectedCategory("assessment")
@@ -899,9 +880,9 @@ export default function Workshop() {
                       className="w-full flex items-center gap-2 justify-start"
                       variant="outline"
                       style={{ 
-                        background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                        border: '1px solid rgba(101, 204, 138, 0.3)',
-                        color: '#65cc8a'
+                        background: 'rgba(251, 146, 60, 0.1)',
+                        border: '1px solid rgba(251, 146, 60, 0.3)',
+                        color: '#fb923c'
                       }}
                       onClick={() => {
                         setSelectedCategory("content")
@@ -931,12 +912,11 @@ export default function Workshop() {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
                  style={{
-                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 253, 244, 0.8))',
-                   backdropFilter: 'blur(10px)',
-                   borderRadius: '20px',
-                   padding: '24px',
-                   border: '1px solid rgba(101, 204, 138, 0.1)',
-                   boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                   background: '#ffffff',
+                   borderRadius: '16px',
+                   padding: '20px',
+                   border: '1px solid rgba(0, 0, 0, 0.1)',
+                   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
                  }}>
               {tools
                 .filter(tool => recommendedTools.includes(tool.id))
@@ -965,12 +945,11 @@ export default function Workshop() {
             transition={{ duration: 0.5, delay: 0.8 }}
             className="flex flex-wrap gap-2 mb-4 sm:mb-6 lg:mb-8 justify-center sm:justify-start"
             style={{
-              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-              backdropFilter: 'blur(10px)',
-              borderRadius: '20px',
-              padding: '24px',
-              border: '1px solid rgba(101, 204, 138, 0.1)',
-              boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+              background: '#ffffff',
+              borderRadius: '16px',
+              padding: '20px',
+              border: '1px solid rgba(0, 0, 0, 0.1)',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
             }}
           >
             <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
@@ -985,13 +964,13 @@ export default function Workshop() {
                 variant={showFavorites ? "default" : "outline"}
                 className={`shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-xs sm:text-sm lg:text-base w-full sm:w-auto flex items-center gap-2 justify-center`}
                 style={showFavorites ? {
-                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                  background: '#fb923c',
                   color: 'white',
-                  boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                  boxShadow: '0 4px 12px rgba(251, 146, 60, 0.3)'
                 } : {
-                  background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                  border: '1px solid rgba(101, 204, 138, 0.3)',
-                  color: '#65cc8a'
+                  background: 'rgba(251, 146, 60, 0.1)',
+                  border: '1px solid rgba(251, 146, 60, 0.3)',
+                  color: '#fb923c'
                 }}
                 onClick={() => setShowFavorites(!showFavorites)}
               >
@@ -1011,13 +990,13 @@ export default function Workshop() {
                   variant={selectedCategory === category.id ? "default" : "outline"}
                   className={`shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-xs sm:text-sm lg:text-base w-full sm:w-auto flex items-center gap-2 justify-center`}
                   style={selectedCategory === category.id ? {
-                    background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                    background: '#fb923c',
                     color: 'white',
-                    boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                    boxShadow: '0 4px 12px rgba(251, 146, 60, 0.3)'
                   } : {
-                    background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                    border: '1px solid rgba(101, 204, 138, 0.3)',
-                    color: '#65cc8a'
+                    background: 'rgba(251, 146, 60, 0.1)',
+                    border: '1px solid rgba(251, 146, 60, 0.3)',
+                    color: '#fb923c'
                   }}
                   onClick={() => setSelectedCategory(category.id)}
                 >
@@ -1045,12 +1024,11 @@ export default function Workshop() {
               }}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 relative z-0"
               style={{
-                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 253, 244, 0.8))',
-                backdropFilter: 'blur(10px)',
-                borderRadius: '24px',
-                padding: '32px',
-                border: '1px solid rgba(101, 204, 138, 0.1)',
-                boxShadow: '0 20px 40px rgba(101, 204, 138, 0.1)'
+                background: '#ffffff',
+                borderRadius: '16px',
+                padding: '24px',
+                border: '1px solid rgba(0, 0, 0, 0.1)',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
               }}
             >
               {isLoading ? (
@@ -1134,8 +1112,8 @@ export default function Workshop() {
                     onClick={() => handleFeedback('positive', true)}
                     className="text-white"
                     style={{ 
-                      background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                      boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                      background: '#fb923c',
+                      boxShadow: '0 4px 8px rgba(251, 146, 60, 0.3)'
                     }}
                     disabled={!feedbackSent} // Deshabilitar el botón hasta que se seleccione un tipo de feedback
                   >

@@ -621,29 +621,12 @@ export default function HistoryPage() {
         transition={{ duration: 0.5 }}
         className="min-h-screen font-montserrat"
         style={{ 
-          background: 'linear-gradient(135deg, #f0fdf4 0%, #ffffff 50%, #dcfce7 100%)',
+          background: '#ffffff',
           position: 'relative',
           overflow: 'hidden'
         }}
       >
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-32 h-32 rounded-full opacity-20"
-               style={{ 
-                 background: 'radial-gradient(circle, #65cc8a, transparent)',
-                 animation: 'float 6s ease-in-out infinite'
-               }}></div>
-          <div className="absolute top-40 right-20 w-24 h-24 rounded-full opacity-15"
-               style={{ 
-                 background: 'radial-gradient(circle, #4ade80, transparent)',
-                 animation: 'float 8s ease-in-out infinite reverse'
-               }}></div>
-          <div className="absolute bottom-20 left-1/4 w-20 h-20 rounded-full opacity-10"
-               style={{ 
-                 background: 'radial-gradient(circle, #65cc8a, transparent)',
-                 animation: 'float 7s ease-in-out infinite'
-               }}></div>
-        </div>
+
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -680,7 +663,8 @@ export default function HistoryPage() {
                     repeat: Infinity,
                     repeatType: "reverse"
                   }}
-                  className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 bg-yellow-400 text-white rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-xs sm:text-sm font-bold"
+                  className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 text-white rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-xs sm:text-sm font-bold"
+                  style={{ background: '#fb923c' }}
                 >
                   !
                 </motion.div>
@@ -709,8 +693,8 @@ export default function HistoryPage() {
                       variant="destructive"
                       className="flex items-center gap-2 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-sm sm:text-base w-full sm:w-auto"
                       style={{
-                        background: 'linear-gradient(135deg, #ef4444, #dc2626)',
-                        boxShadow: '0 8px 16px rgba(239, 68, 68, 0.3)'
+                        background: '#ef4444',
+                        boxShadow: '0 4px 12px rgba(239, 68, 68, 0.3)'
                       }}
                       disabled={isDeleting}
                     >
@@ -740,8 +724,8 @@ export default function HistoryPage() {
               <Button 
                 className="flex items-center gap-2 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 font-montserrat text-sm sm:text-base w-full sm:w-auto"
                 style={{
-                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                  boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                  background: '#fb923c',
+                  boxShadow: '0 4px 12px rgba(251, 146, 60, 0.3)'
                 }}
                 onClick={() => router.push('/workshop')}
               >
@@ -764,10 +748,9 @@ export default function HistoryPage() {
               transition={{ delay: 0.7 }}
               className="w-full lg:w-96 flex-shrink-0 rounded-xl p-4 sm:p-6 transition-all duration-300"
               style={{
-                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-                backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(101, 204, 138, 0.2)',
-                boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                background: '#ffffff',
+                border: '1px solid rgba(0, 0, 0, 0.1)',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
               }}
             >
                               <h2 className="text-lg sm:text-xl font-semibold mb-4 font-montserrat"
@@ -781,8 +764,8 @@ export default function HistoryPage() {
                     transition={{ delay: 0.1 * index }}
                     className={`flex items-center gap-2 sm:gap-3 p-2 sm:p-3 cursor-pointer transition-all duration-300 rounded-xl`}
                     style={expandedFolders.includes(folder.id) ? {
-                      background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.2), rgba(74, 222, 128, 0.2))',
-                      border: '1px solid rgba(101, 204, 138, 0.3)'
+                      background: 'rgba(251, 146, 60, 0.1)',
+                      border: '1px solid rgba(251, 146, 60, 0.3)'
                     } : {
                       background: 'transparent',
                       border: '1px solid transparent'
@@ -794,7 +777,7 @@ export default function HistoryPage() {
                       transition={{ duration: 0.3 }}
                       className="transition-transform duration-300"
                     >
-                      <ChevronRight className="w-4 h-4" style={{ color: '#65cc8a' }} />
+                      <ChevronRight className="w-4 h-4" style={{ color: '#fb923c' }} />
                     </motion.div>
                     <div className="flex-shrink-0">
                       {folder.icon}
@@ -817,10 +800,9 @@ export default function HistoryPage() {
               transition={{ delay: 0.8 }}
               className="flex-1 rounded-xl p-4 sm:p-6 transition-all duration-300"
               style={{
-                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-                backdropFilter: 'blur(20px)',
-                border: '1px solid rgba(101, 204, 138, 0.2)',
-                boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                background: '#ffffff',
+                border: '1px solid rgba(0, 0, 0, 0.1)',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
               }}
             >
               {expandedFolders.length === 0 ? (
@@ -836,11 +818,11 @@ export default function HistoryPage() {
                       whileTap={{ scale: 0.9 }}
                       className="rounded-full w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center mx-auto mb-4 shadow-lg"
                       style={{
-                        background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.2), rgba(74, 222, 128, 0.2))',
-                        boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                        background: 'rgba(251, 146, 60, 0.1)',
+                        boxShadow: '0 2px 8px rgba(251, 146, 60, 0.2)'
                       }}
                     >
-                      <Folder className="w-8 h-8 sm:w-10 sm:h-10" style={{ color: '#65cc8a' }} />
+                      <Folder className="w-8 h-8 sm:w-10 sm:h-10" style={{ color: '#fb923c' }} />
                     </motion.div>
                     <h3 className="text-lg sm:text-xl font-medium mb-2 font-montserrat" style={{ color: '#000000' }}>{t('history.selectCategory')}</h3>
                     <p className="text-sm sm:text-base font-montserrat" style={{ color: '#000000' }}>{t('history.organizeMaterial')}</p>
@@ -868,8 +850,8 @@ export default function HistoryPage() {
                           <div className="flex items-center gap-3 sm:gap-4">
                             <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-xl shadow-md"
                                  style={{
-                                   background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.2), rgba(74, 222, 128, 0.2))',
-                                   boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                                   background: 'rgba(251, 146, 60, 0.1)',
+                                   boxShadow: '0 2px 8px rgba(251, 146, 60, 0.2)'
                                  }}>
                               {folder.icon}
                             </div>
@@ -895,9 +877,9 @@ export default function HistoryPage() {
                               variant="outline"
                               className="flex items-center gap-2 font-montserrat text-sm sm:text-base"
                               style={{
-                                background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                                border: '1px solid rgba(101, 204, 138, 0.3)',
-                                color: '#65cc8a'
+                                background: 'rgba(251, 146, 60, 0.1)',
+                                border: '1px solid rgba(251, 146, 60, 0.3)',
+                                color: '#fb923c'
                               }}
                               onClick={() => handleViewWorkshop({ tipoTaller: folder.id })}
                             >
@@ -925,11 +907,10 @@ export default function HistoryPage() {
                                 h-full
                                 ${selectedItems.includes(item.id) ? 'ring-2' : ''}`}
                                 style={{
-                                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-                                  backdropFilter: 'blur(20px)',
-                                  border: '1px solid rgba(101, 204, 138, 0.2)',
-                                  boxShadow: '0 8px 32px rgba(101, 204, 138, 0.1)',
-                                  borderTop: selectedItems.includes(item.id) ? '4px solid #65cc8a' : '4px solid rgba(101, 204, 138, 0.3)'
+                                  background: '#ffffff',
+                                  border: '1px solid rgba(0, 0, 0, 0.1)',
+                                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)',
+                                  borderTop: selectedItems.includes(item.id) ? '4px solid #fb923c' : '4px solid rgba(251, 146, 60, 0.3)'
                                 }}
                               onClick={() => toggleItemSelection(item.id)}
                             >
@@ -992,8 +973,8 @@ export default function HistoryPage() {
                                   <motion.div 
                                     className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-xl shadow-md"
                                     style={{
-                                      background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.2), rgba(74, 222, 128, 0.2))',
-                                      boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                                      background: 'rgba(251, 146, 60, 0.1)',
+                                      boxShadow: '0 2px 8px rgba(251, 146, 60, 0.2)'
                                     }}
                                     whileHover={{ 
                                       scale: 1.05,
@@ -1001,7 +982,7 @@ export default function HistoryPage() {
                                       transition: { duration: 0.3 }
                                     }}
                                   >
-                                    <FileText className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: '#65cc8a' }} />
+                                    <FileText className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: '#fb923c' }} />
                                   </motion.div>
                                   <div>
                                     <motion.h3 
@@ -1028,7 +1009,7 @@ export default function HistoryPage() {
                                       variant="ghost"
                                       className="font-montserrat text-sm sm:text-base"
                                       style={{
-                                        color: '#65cc8a',
+                                        color: '#fb923c',
                                         background: 'transparent'
                                       }}
                                       onClick={(e) => {
@@ -1086,10 +1067,10 @@ export default function HistoryPage() {
                             <div className="col-span-full text-center py-8 sm:py-12">
                               <div className="rounded-full w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center mx-auto mb-4 shadow-lg"
                                    style={{
-                                     background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.2), rgba(74, 222, 128, 0.2))',
-                                     boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                                     background: 'rgba(251, 146, 60, 0.1)',
+                                     boxShadow: '0 2px 8px rgba(251, 146, 60, 0.2)'
                                    }}>
-                                <FileText className="w-8 h-8 sm:w-10 sm:h-10" style={{ color: '#65cc8a' }} />
+                                                                  <FileText className="w-8 h-8 sm:w-10 sm:h-10" style={{ color: '#fb923c' }} />
                               </div>
                               <h3 className="text-lg sm:text-xl font-medium mb-2 font-montserrat" style={{ color: '#000000' }}>
                                 {searchQuery ? t('history.noResourcesFound') : t('history.noResourcesInCategory')}
@@ -1099,9 +1080,9 @@ export default function HistoryPage() {
                                   variant="outline"
                                   className="font-montserrat text-sm sm:text-base"
                                   style={{
-                                    background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                                    border: '1px solid rgba(101, 204, 138, 0.3)',
-                                    color: '#65cc8a'
+                                    background: 'rgba(251, 146, 60, 0.1)',
+                                    border: '1px solid rgba(251, 146, 60, 0.3)',
+                                    color: '#fb923c'
                                   }}
                                   onClick={() => handleViewWorkshop({ tipoTaller: folder.id })}
                                 >

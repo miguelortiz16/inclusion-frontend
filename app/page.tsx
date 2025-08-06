@@ -140,19 +140,17 @@ export default function InclusionPlanner() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="min-h-screen flex flex-col relative overflow-hidden"
           style={{ 
-            background: 'linear-gradient(135deg, #ffffff 0%, #f0fdf4 25%, #dcfce7 50%, #f0fdf4 75%, #ffffff 100%)',
-            backgroundSize: '400% 400%',
-            animation: 'gradientShift 15s ease infinite'
+            background: '#ffffff'
           }}
         >
           {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute top-20 left-10 w-32 h-32 rounded-full opacity-10"
-                 style={{ background: 'radial-gradient(circle, #65cc8a, transparent)', animation: 'float 6s ease-in-out infinite' }}></div>
+                 style={{ background: 'radial-gradient(circle, #fb923c, transparent)', animation: 'float 6s ease-in-out infinite' }}></div>
             <div className="absolute top-40 right-20 w-24 h-24 rounded-full opacity-15"
-                 style={{ background: 'radial-gradient(circle, #4ade80, transparent)', animation: 'float 8s ease-in-out infinite reverse' }}></div>
+                 style={{ background: 'radial-gradient(circle, #f97316, transparent)', animation: 'float 8s ease-in-out infinite reverse' }}></div>
             <div className="absolute bottom-40 left-1/4 w-20 h-20 rounded-full opacity-10"
-                 style={{ background: 'radial-gradient(circle, #65cc8a, transparent)', animation: 'float 7s ease-in-out infinite' }}></div>
+                 style={{ background: 'radial-gradient(circle, #fb923c, transparent)', animation: 'float 7s ease-in-out infinite' }}></div>
           </div>
         {/* WhatsApp Contact Button with Dropdown */}
         <div className="fixed left-4 bottom-4 z-[9999] sm:fixed">
@@ -161,7 +159,7 @@ export default function InclusionPlanner() {
             <button
               onClick={() => setIsContactMenuOpen(!isContactMenuOpen)}
               className="text-white rounded-full p-4 sm:p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 sm:gap-4"
-              style={{ background: 'linear-gradient(to right, #65cc8a, #4ade80)' }}
+              style={{ background: 'linear-gradient(to right, #fb923c, #f97316)' }}
             >
               <MessageCircle className="w-7 h-7 sm:w-8 sm:h-8" />
               <span className="text-base sm:text-lg font-semibold">¡Contáctanos!</span>
@@ -186,9 +184,9 @@ export default function InclusionPlanner() {
                     onClick={() => setIsContactMenuOpen(false)}
                     className="flex items-center gap-3 p-3 rounded-lg hover:bg-green-50 transition-colors duration-200 group"
                   >
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center group-hover:bg-green-200 transition-colors duration-200"
-                         style={{ backgroundColor: '#f0fdf4' }}>
-                      <MessageCircle className="w-5 h-5" style={{ color: '#65cc8a' }} />
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors duration-200"
+                         style={{ backgroundColor: '#fff5f0' }}>
+                      <MessageCircle className="w-5 h-5" style={{ color: '#fb923c' }} />
                     </div>
                     <div className="flex-1">
                       <p className="font-medium text-gray-900">Mensaje Directo</p>
@@ -204,9 +202,9 @@ export default function InclusionPlanner() {
                     onClick={() => setIsContactMenuOpen(false)}
                     className="flex items-center gap-3 p-3 rounded-lg hover:bg-green-50 transition-colors duration-200 group"
                   >
-                    <div className="w-10 h-10 rounded-full flex items-center justify-center group-hover:bg-green-200 transition-colors duration-200"
-                         style={{ backgroundColor: '#f0fdf4' }}>
-                      <Users2 className="w-5 h-5" style={{ color: '#65cc8a' }} />
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors duration-200"
+                         style={{ backgroundColor: '#fff5f0' }}>
+                      <Users2 className="w-5 h-5" style={{ color: '#fb923c' }} />
                     </div>
                     <div className="flex-1">
                       <p className="font-medium text-gray-900">Unirse al Grupo</p>
@@ -241,24 +239,24 @@ export default function InclusionPlanner() {
               <div className="flex items-center">
                 <div className="flex-shrink-0 flex items-center">
                   <div className="relative w-10 h-10 mr-3 p-2 rounded-xl"
-                       style={{ background: 'linear-gradient(135deg, #65cc8a, #4ade80)' }}>
+                       style={{ background: 'linear-gradient(135deg, #fb923c, #f97316)' }}>
                     <Image src="/images/logo.png" alt="Logo" fill className="rounded-lg object-cover" />
                   </div>
                   <span className="text-xl font-display font-bold bg-clip-text text-transparent"
-                        style={{ background: 'linear-gradient(to right, #65cc8a, #4ade80)', WebkitBackgroundClip: 'text' }}>
+                        style={{ background: 'linear-gradient(to right, #fb923c, #f97316)', WebkitBackgroundClip: 'text' }}>
                     InclusionPlanner
                   </span>
                 </div>
                 <div className="hidden md:ml-12 md:flex md:space-x-8">
                   <Link
                     href="#features"
-                    className="text-gray-700 hover:text-green-600 px-4 py-2 text-sm font-medium transition-all duration-300 hover:scale-105"
+                    className="text-gray-700 hover:text-orange-600 px-4 py-2 text-sm font-medium transition-all duration-300 hover:scale-105"
                   >
                     Características
                   </Link>
                   <Link
                     href="#tools"
-                    className="text-gray-700 hover:text-green-600 px-4 py-2 text-sm font-medium transition-all duration-300 hover:scale-105"
+                    className="text-gray-700 hover:text-orange-600 px-4 py-2 text-sm font-medium transition-all duration-300 hover:scale-105"
                   >
                     Herramientas
                   </Link>
@@ -273,7 +271,7 @@ export default function InclusionPlanner() {
                 </Link>
                 <Link href="/sign-up">
                   <Button className="text-white font-semibold px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                          style={{ background: 'linear-gradient(135deg, #65cc8a, #4ade80)' }}>
+                          style={{ background: 'linear-gradient(135deg, #fb923c, #f97316)' }}>
                     Registrarse
                   </Button>
                 </Link>
@@ -291,20 +289,20 @@ export default function InclusionPlanner() {
           {isMenuOpen && (
             <div className="md:hidden bg-white border-t border-gray-200">
               <div className="px-4 pt-2 pb-3 space-y-1">
-                <Link
-                  href="#features"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="block px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                >
-                  Características
-                </Link>
-                <Link
-                  href="#tools"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="block px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50"
-                >
-                  Herramientas
-                </Link>
+                                  <Link
+                    href="#features"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-orange-600 hover:bg-orange-50"
+                  >
+                    Características
+                  </Link>
+                  <Link
+                    href="#tools"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-orange-600 hover:bg-orange-50"
+                  >
+                    Herramientas
+                  </Link>
                 <div onClick={() => setIsMenuOpen(false)}>
                   <PrivacyPolicy />
                 </div>
@@ -316,9 +314,9 @@ export default function InclusionPlanner() {
                       </Button>
                     </Link>
                     <Link href="/sign-up" onClick={() => setIsMenuOpen(false)}>
-                      <Button className="w-full justify-center bg-blue-600 hover:bg-blue-700 text-white">
-                        Registrarse
-                      </Button>
+                                          <Button className="w-full justify-center bg-orange-600 hover:bg-orange-700 text-white">
+                      Registrarse
+                    </Button>
                     </Link>
                   </div>
                 </div>
@@ -333,7 +331,7 @@ export default function InclusionPlanner() {
             <section className="relative overflow-hidden py-32">
               {/* Animated background */}
               <div className="absolute inset-0" style={{ 
-                background: 'radial-gradient(ellipse at center, rgba(101, 204, 138, 0.1) 0%, rgba(255, 255, 255, 0) 70%)',
+                background: 'radial-gradient(ellipse at center, rgba(251, 146, 60, 0.1) 0%, rgba(255, 255, 255, 0) 70%)',
                 animation: 'pulse 4s ease-in-out infinite'
               }}></div>
               
@@ -345,12 +343,12 @@ export default function InclusionPlanner() {
                     transition={{ duration: 0.6 }}
                     className="inline-flex items-center px-6 py-3 rounded-full mb-8"
                     style={{ 
-                      background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                      border: '1px solid rgba(101, 204, 138, 0.2)'
+                      background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(249, 115, 22, 0.1))',
+                      border: '1px solid rgba(251, 146, 60, 0.2)'
                     }}
                   >
                     <span className="text-lg mr-2">🌱</span>
-                    <span className="text-sm font-semibold" style={{ color: '#65cc8a' }}>
+                    <span className="text-sm font-semibold" style={{ color: '#fb923c' }}>
                       Crecimiento y Armonía para Todos
                     </span>
                   </motion.div>
@@ -361,7 +359,7 @@ export default function InclusionPlanner() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-5xl md:text-7xl lg:text-8xl font-display font-black mb-8"
                     style={{ 
-                      background: 'linear-gradient(135deg, #1f2937 0%, #65cc8a 50%, #1f2937 100%)',
+                      background: 'linear-gradient(135deg, #1f2937 0%, #fb923c 50%, #1f2937 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text'
@@ -369,7 +367,7 @@ export default function InclusionPlanner() {
                   >
                     Inclusión que
                     <br />
-                    <span style={{ color: '#65cc8a' }}>Transforma</span>
+                    <span style={{ color: '#fb923c' }}>Transforma</span>
                   </motion.h1>
 
                   <motion.p
@@ -392,8 +390,8 @@ export default function InclusionPlanner() {
                         size="lg"
                         className="text-white px-12 py-6 text-xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 w-full sm:w-auto"
                         style={{ 
-                          background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                          boxShadow: '0 20px 40px rgba(101, 204, 138, 0.3)'
+                          background: 'linear-gradient(135deg, #fb923c, #f97316)',
+                          boxShadow: '0 20px 40px rgba(251, 146, 60, 0.3)'
                         }}
                       >
                         Comenzar Ahora
@@ -410,26 +408,26 @@ export default function InclusionPlanner() {
                   >
                     <div className="flex items-center justify-center p-6 rounded-2xl backdrop-blur-sm"
                          style={{ 
-                           background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                           border: '1px solid rgba(101, 204, 138, 0.2)'
+                           background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(249, 115, 22, 0.1))',
+                           border: '1px solid rgba(251, 146, 60, 0.2)'
                          }}>
-                      <Accessibility className="w-8 h-8 mr-3" style={{ color: '#65cc8a' }} />
+                      <Accessibility className="w-8 h-8 mr-3" style={{ color: '#fb923c' }} />
                       <span className="text-lg font-semibold text-gray-800">Accesibilidad Universal</span>
                     </div>
                     <div className="flex items-center justify-center p-6 rounded-2xl backdrop-blur-sm"
                          style={{ 
-                           background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                           border: '1px solid rgba(101, 204, 138, 0.2)'
+                           background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(249, 115, 22, 0.1))',
+                           border: '1px solid rgba(251, 146, 60, 0.2)'
                          }}>
-                      <Heart className="w-8 h-8 mr-3" style={{ color: '#65cc8a' }} />
+                      <Heart className="w-8 h-8 mr-3" style={{ color: '#fb923c' }} />
                       <span className="text-lg font-semibold text-gray-800">Diseño Universal</span>
                     </div>
                     <div className="flex items-center justify-center p-6 rounded-2xl backdrop-blur-sm"
                          style={{ 
-                           background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                           border: '1px solid rgba(101, 204, 138, 0.2)'
+                           background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(249, 115, 22, 0.1))',
+                           border: '1px solid rgba(251, 146, 60, 0.2)'
                          }}>
-                      <Shield className="w-8 h-8 mr-3" style={{ color: '#65cc8a' }} />
+                      <Shield className="w-8 h-8 mr-3" style={{ color: '#fb923c' }} />
                       <span className="text-lg font-semibold text-gray-800">Entorno Seguro</span>
                     </div>
                   </motion.div>
@@ -465,7 +463,7 @@ export default function InclusionPlanner() {
             <section className="py-32 relative overflow-hidden" id="premium-tools">
               {/* Background with animated elements */}
               <div className="absolute inset-0" style={{ 
-                background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #f0fdf4 100%)',
+                background: 'linear-gradient(135deg, #fff5f0 0%, #fed7aa 50%, #fff5f0 100%)',
                 backgroundSize: '400% 400%',
                 animation: 'gradientShift 20s ease infinite'
               }}></div>
@@ -480,18 +478,18 @@ export default function InclusionPlanner() {
                 >
                   <div className="inline-flex items-center px-6 py-3 rounded-full mb-8"
                        style={{ 
-                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                         border: '1px solid rgba(101, 204, 138, 0.2)'
+                         background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(249, 115, 22, 0.1))',
+                         border: '1px solid rgba(251, 146, 60, 0.2)'
                        }}>
                     <span className="text-lg mr-2">🚀</span>
-                    <span className="text-sm font-semibold" style={{ color: '#65cc8a' }}>
+                    <span className="text-sm font-semibold" style={{ color: '#fb923c' }}>
                       Herramientas Avanzadas
                     </span>
                   </div>
                   
                   <h2 className="text-4xl md:text-6xl font-display font-black mb-8"
                       style={{ 
-                        background: 'linear-gradient(135deg, #1f2937 0%, #65cc8a 50%, #1f2937 100%)',
+                        background: 'linear-gradient(135deg, #1f2937 0%, #fb923c 50%, #1f2937 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text'
@@ -511,32 +509,32 @@ export default function InclusionPlanner() {
                   viewport={{ once: true, amount: 0.2 }}
                 >
                   <ToolFeatureCard
-                    icon={<Accessibility className="w-8 h-8" style={{ color: '#65cc8a' }} />}
+                    icon={<Accessibility className="w-8 h-8" style={{ color: '#fb923c' }} />}
                     title="Diseño Universal de Aprendizaje"
                     description="Crea lecciones accesibles para todos los estilos de aprendizaje y necesidades."
                   />
                   <ToolFeatureCard
-                    icon={<Eye className="w-8 h-8" style={{ color: '#65cc8a' }} />}
+                    icon={<Eye className="w-8 h-8" style={{ color: '#fb923c' }} />}
                     title="Adaptaciones Visuales"
                     description="Genera materiales con alto contraste, textos alternativos y formatos accesibles."
                   />
                   <ToolFeatureCard
-                    icon={<Ear className="w-8 h-8" style={{ color: '#65cc8a' }} />}
+                    icon={<Ear className="w-8 h-8" style={{ color: '#fb923c' }} />}
                     title="Recursos Auditivos"
                     description="Crea podcasts, audiolibros y recursos de audio para estudiantes con necesidades auditivas."
                   />
                   <ToolFeatureCard
-                    icon={<HandHeart className="w-8 h-8" style={{ color: '#65cc8a' }} />}
+                    icon={<HandHeart className="w-8 h-8" style={{ color: '#fb923c' }} />}
                     title="Ajustes Razonables"
                     description="Diseña adaptaciones personalizadas para estudiantes con necesidades específicas."
                   />
                   <ToolFeatureCard
-                    icon={<Target className="w-8 h-8" style={{ color: '#65cc8a' }} />}
+                    icon={<Target className="w-8 h-8" style={{ color: '#fb923c' }} />}
                     title="Evaluación Inclusiva"
                     description="Crea evaluaciones múltiples formatos y opciones de respuesta para todos."
                   />
                   <ToolFeatureCard
-                    icon={<Globe className="w-8 h-8" style={{ color: '#65cc8a' }} />}
+                    icon={<Globe className="w-8 h-8" style={{ color: '#fb923c' }} />}
                     title="Materiales Multiculturales"
                     description="Desarrolla contenido que refleje la diversidad cultural y lingüística."
                   />
@@ -552,10 +550,10 @@ export default function InclusionPlanner() {
                     <Button
                       size="lg"
                       className="text-white px-12 py-6 text-xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110"
-                      style={{ 
-                        background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                        boxShadow: '0 20px 40px rgba(101, 204, 138, 0.3)'
-                      }}
+                                              style={{ 
+                          background: 'linear-gradient(135deg, #fb923c, #f97316)',
+                          boxShadow: '0 20px 40px rgba(251, 146, 60, 0.3)'
+                        }}
                     >
                       ¡Quiero crear inclusión!
                       <ArrowRight className="ml-3 w-6 h-6" />
@@ -568,7 +566,7 @@ export default function InclusionPlanner() {
 
           {/* Video Tutorial */}
           <AnimatedSection>
-            <section className="py-20" style={{ background: 'linear-gradient(to bottom, #dcfce7, #f0fdf4)' }}>
+            <section className="py-20" style={{ background: '#ffffff' }}>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
@@ -596,7 +594,7 @@ export default function InclusionPlanner() {
             <section className="py-32 relative overflow-hidden">
               {/* Background with animated elements */}
               <div className="absolute inset-0" style={{ 
-                background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #f0fdf4 100%)',
+                background: 'linear-gradient(135deg, #fff5f0 0%, #fed7aa 50%, #fff5f0 100%)',
                 backgroundSize: '400% 400%',
                 animation: 'gradientShift 20s ease infinite'
               }}></div>
@@ -611,18 +609,18 @@ export default function InclusionPlanner() {
                 >
                   <div className="inline-flex items-center px-6 py-3 rounded-full mb-8"
                        style={{ 
-                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                         border: '1px solid rgba(101, 204, 138, 0.2)'
+                         background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(249, 115, 22, 0.1))',
+                         border: '1px solid rgba(251, 146, 60, 0.2)'
                        }}>
                     <span className="text-lg mr-2">💰</span>
-                    <span className="text-sm font-semibold" style={{ color: '#65cc8a' }}>
+                    <span className="text-sm font-semibold" style={{ color: '#fb923c' }}>
                       Planes Accesibles
                     </span>
                   </div>
                   
                   <h2 className="text-4xl md:text-6xl font-display font-black mb-8"
                       style={{ 
-                        background: 'linear-gradient(135deg, #1f2937 0%, #65cc8a 50%, #1f2937 100%)',
+                        background: 'linear-gradient(135deg, #1f2937 0%, #fb923c 50%, #1f2937 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text'
@@ -647,32 +645,32 @@ export default function InclusionPlanner() {
                   <div className="relative group">
                     <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-gray-100 to-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="relative p-8 rounded-3xl backdrop-blur-sm border border-white/20 transition-all duration-300 hover:scale-105"
-                         style={{ 
-                           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-                           boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
-                         }}>
+                                      style={{ 
+               background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9))',
+               boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+             }}>
                       <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">Plan Básico</h3>
                       <p className="text-gray-600 mb-6 text-sm">Ideal para empezar tu camino en la inclusión</p>
 
                       <ul className="space-y-4 mb-8">
                         <li className="flex items-start gap-3 text-gray-700">
                           <div className="mt-1 p-1 rounded-full"
-                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
-                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
+                               style={{ backgroundColor: 'rgba(251, 146, 60, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#fb923c' }} />
                           </div>
                           <span className="text-gray-600 text-sm">Acceso a funcionalidades básicas de inclusión</span>
                         </li>
                         <li className="flex items-start gap-3 text-gray-700">
                           <div className="mt-1 p-1 rounded-full"
-                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
-                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
+                               style={{ backgroundColor: 'rgba(251, 146, 60, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#fb923c' }} />
                           </div>
                           <span className="text-gray-600 text-sm">5 créditos mensuales</span>
                         </li>
                         <li className="flex items-start gap-3 text-gray-700">
                           <div className="mt-1 p-1 rounded-full"
-                               style={{ backgroundColor: 'rgba(101, 204, 138, 0.1)' }}>
-                            <CheckCircle2 className="w-4 h-4" style={{ color: '#65cc8a' }} />
+                               style={{ backgroundColor: 'rgba(251, 146, 60, 0.1)' }}>
+                            <CheckCircle2 className="w-4 h-4" style={{ color: '#fb923c' }} />
                           </div>
                           <span className="text-gray-600 text-sm">Recursos básicos de inclusión</span>
                         </li>
@@ -681,7 +679,7 @@ export default function InclusionPlanner() {
                       <Link href="/sign-up">
                         <Button
                           className="w-full text-white h-12 text-base font-semibold rounded-2xl transition-all duration-300 hover:scale-105"
-                          style={{ background: 'linear-gradient(135deg, #65cc8a, #4ade80)' }}
+                          style={{ background: 'linear-gradient(135deg, #fb923c, #f97316)' }}
                           size="lg"
                         >
                           Comenzar Ahora
@@ -705,8 +703,8 @@ export default function InclusionPlanner() {
                     <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-green-100 to-green-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="relative p-8 rounded-3xl backdrop-blur-sm border-2 border-green-200 transition-all duration-300 hover:scale-105"
                          style={{ 
-                           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
-                           boxShadow: '0 15px 40px rgba(101, 204, 138, 0.2)'
+                           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95))',
+                           boxShadow: '0 15px 40px rgba(251, 146, 60, 0.2)'
                          }}>
                       <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">Plan Profesional Mensual</h3>
                       <p className="text-gray-600 mb-6 text-sm">Acceso completo a todas las herramientas de inclusión</p>
@@ -715,7 +713,7 @@ export default function InclusionPlanner() {
                         <div className="text-center">
                           <span className="text-5xl font-black"
                                 style={{ 
-                                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                                  background: 'linear-gradient(135deg, #fb923c, #f97316)',
                                   WebkitBackgroundClip: 'text',
                                   WebkitTextFillColor: 'transparent',
                                   backgroundClip: 'text'
@@ -787,8 +785,8 @@ export default function InclusionPlanner() {
                     <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-green-100 to-green-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="relative p-8 rounded-3xl backdrop-blur-sm border-2 border-green-200 transition-all duration-300 hover:scale-105"
                          style={{ 
-                           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
-                           boxShadow: '0 15px 40px rgba(101, 204, 138, 0.2)'
+                           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95))',
+                           boxShadow: '0 15px 40px rgba(251, 146, 60, 0.2)'
                          }}>
                       <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">Plan Profesional Anual</h3>
                       <p className="text-gray-600 mb-6 text-sm">Acceso completo con precio de lanzamiento</p>
@@ -798,7 +796,7 @@ export default function InclusionPlanner() {
                           <div className="flex items-center justify-center gap-2 mb-2">
                             <span className="text-5xl font-black"
                                   style={{ 
-                                    background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                                    background: 'linear-gradient(135deg, #fb923c, #f97316)',
                                     WebkitBackgroundClip: 'text',
                                     WebkitTextFillColor: 'transparent',
                                     backgroundClip: 'text'
@@ -807,7 +805,7 @@ export default function InclusionPlanner() {
                             </span>
                             <span className="text-gray-500">/año USD</span>
                           </div>
-                          <div className="text-sm font-bold" style={{ color: '#65cc8a' }}>
+                          <div className="text-sm font-bold" style={{ color: '#fb923c' }}>
                             ¡Ahorra 60% - $42.1 USD al año!
                           </div>
                           <div className="text-sm text-gray-500 mt-1">
@@ -892,8 +890,8 @@ export default function InclusionPlanner() {
                     <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-green-100 to-green-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="relative p-8 rounded-3xl backdrop-blur-sm border-2 border-green-200 transition-all duration-300 hover:scale-105 min-h-[600px] flex flex-col justify-center"
                          style={{ 
-                           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
-                           boxShadow: '0 15px 40px rgba(101, 204, 138, 0.2)'
+                           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95))',
+                           boxShadow: '0 15px 40px rgba(251, 146, 60, 0.2)'
                          }}>
                       <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">Plan para Escuelas</h3>
                       <p className="text-gray-600 mb-6 text-sm">Obtén InclusionPlanner gratis y conviértete en la sensación entre los educadores</p>
@@ -901,7 +899,7 @@ export default function InclusionPlanner() {
                         <div className="text-center">
                           <span className="text-5xl font-black"
                                 style={{ 
-                                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                                  background: 'linear-gradient(135deg, #fb923c, #f97316)',
                                   WebkitBackgroundClip: 'text',
                                   WebkitTextFillColor: 'transparent',
                                   backgroundClip: 'text'
@@ -961,7 +959,7 @@ export default function InclusionPlanner() {
 
           {/* Herramientas Destacadas */}
           <AnimatedSection>
-            <section className="py-20" id="tools" style={{ background: 'linear-gradient(to bottom, #f0fdf4, #dcfce7)' }}>
+            <section className="py-20" id="tools" style={{ background: '#ffffff' }}>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
@@ -1001,7 +999,7 @@ export default function InclusionPlanner() {
 
           {/* Cronograma */}
           <AnimatedSection>
-            <section className="py-20" style={{ background: 'linear-gradient(to bottom, #dcfce7, #f0fdf4)' }}>
+            <section className="py-20" style={{ background: '#ffffff' }}>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
@@ -1014,11 +1012,11 @@ export default function InclusionPlanner() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   <div className="p-6 rounded-xl shadow-sm border border-gray-200"
-                       style={{ backgroundColor: '#f0fdf4' }}>
+                       style={{ backgroundColor: '#ffffff' }}>
                     <div className="flex items-center mb-4">
                       <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4"
-                           style={{ backgroundColor: '#dcfce7' }}>
-                        <Calendar className="w-6 h-6" style={{ color: '#65cc8a' }} />
+                           style={{ backgroundColor: '#fed7aa' }}>
+                        <Calendar className="w-6 h-6" style={{ color: '#fb923c' }} />
                       </div>
                       <h3 className="text-lg font-semibold text-gray-900">Fase 1: Acceso Anticipado</h3>
                     </div>
@@ -1027,12 +1025,12 @@ export default function InclusionPlanner() {
                     </p>
                   </div>
 
-                  <div className="p-6 rounded-xl shadow-sm border border-gray-200"
-                       style={{ backgroundColor: '#f0fdf4' }}>
+                                    <div className="p-6 rounded-xl shadow-sm border border-gray-200"
+                       style={{ backgroundColor: '#ffffff' }}>
                     <div className="flex items-center mb-4">
                       <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4"
-                           style={{ backgroundColor: '#dcfce7' }}>
-                        <Rocket className="w-6 h-6" style={{ color: '#65cc8a' }} />
+                           style={{ backgroundColor: '#fed7aa' }}>
+                        <Rocket className="w-6 h-6" style={{ color: '#fb923c' }} />
                       </div>
                       <h3 className="text-lg font-semibold text-gray-900">Fase 2: Lanzamiento Oficial</h3>
                     </div>
@@ -1042,11 +1040,11 @@ export default function InclusionPlanner() {
                   </div>
 
                   <div className="p-6 rounded-xl shadow-sm border border-gray-200"
-                       style={{ backgroundColor: '#f0fdf4' }}>
+                       style={{ backgroundColor: '#ffffff' }}>
                     <div className="flex items-center mb-4">
                       <div className="w-10 h-10 rounded-lg flex items-center justify-center mr-4"
-                           style={{ backgroundColor: '#dcfce7' }}>
-                        <TrendingUp className="w-6 h-6" style={{ color: '#65cc8a' }} />
+                           style={{ backgroundColor: '#fed7aa' }}>
+                        <TrendingUp className="w-6 h-6" style={{ color: '#fb923c' }} />
                       </div>
                       <h3 className="text-lg font-semibold text-gray-900">Fase 3: Expansión</h3>
                     </div>
@@ -1061,7 +1059,7 @@ export default function InclusionPlanner() {
 
           {/* Testimonios */}
           <AnimatedSection>
-            <section className="py-20" style={{ background: 'linear-gradient(to bottom, #f0fdf4, #dcfce7)' }}>
+            <section className="py-20" style={{ background: '#ffffff' }}>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                   <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-4">
@@ -1101,7 +1099,7 @@ export default function InclusionPlanner() {
 
           {/* CTA Section */}
           <AnimatedSection>
-            <section className="py-20" style={{ background: 'linear-gradient(to right, #65cc8a, #4ade80)' }}>
+            <section className="py-20" style={{ background: 'linear-gradient(to right, #fb923c, #f97316)' }}>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center">
                   <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
@@ -1114,7 +1112,7 @@ export default function InclusionPlanner() {
                     <Button
                       size="lg"
                       className="bg-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
-                      style={{ color: '#65cc8a' }}
+                      style={{ color: '#fb923c' }}
                     >
                       Comenzar Ahora
                       <ArrowRight className="ml-2 w-5 h-5" />
@@ -1133,7 +1131,7 @@ export default function InclusionPlanner() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           className="border-t border-gray-200"
-          style={{ background: 'linear-gradient(to bottom, #ffffff, #f0fdf4)' }}
+          style={{ background: 'linear-gradient(to bottom, #ffffff, #ffffff)' }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -1150,7 +1148,7 @@ export default function InclusionPlanner() {
                     />
                   </div>
                   <span className="text-lg font-display font-semibold bg-clip-text text-transparent"
-                        style={{ background: 'linear-gradient(to right, #65cc8a, #4ade80)', WebkitBackgroundClip: 'text' }}>
+                        style={{ background: 'linear-gradient(to right, #fb923c, #f97316)', WebkitBackgroundClip: 'text' }}>
                     InclusionPlanner
                   </span>
                 </div>
@@ -1271,14 +1269,14 @@ function ToolFeatureCard({ icon, title, description }: { icon: React.ReactNode; 
       <div className="relative">
         <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
              style={{ 
-               background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-               boxShadow: '0 8px 25px rgba(101, 204, 138, 0.3)'
+               background: 'linear-gradient(135deg, #fb923c, #f97316)',
+               boxShadow: '0 8px 25px rgba(251, 146, 60, 0.3)'
              }}>
           <div className="text-white">
             {icon}
           </div>
         </div>
-        <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-green-700 transition-colors duration-300">{title}</h3>
+        <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-orange-700 transition-colors duration-300">{title}</h3>
         <p className="text-gray-600 leading-relaxed text-lg">{description}</p>
       </div>
     </motion.div>
@@ -1305,7 +1303,7 @@ function TestimonialCard({ quote, author, role }: { quote: string; author: strin
       <div className="relative">
         <div className="flex items-center mb-6">
           {[...Array(5)].map((_, i) => (
-            <Star key={i} className="w-6 h-6" style={{ color: '#65cc8a' }} />
+            <Star key={i} className="w-6 h-6" style={{ color: '#fb923c' }} />
           ))}
         </div>
         <p className="text-gray-700 mb-6 leading-relaxed text-lg italic">"{quote}"</p>

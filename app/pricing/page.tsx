@@ -450,44 +450,27 @@ export default function Pricing() {
     <Layout>
       <div className="min-h-screen"
            style={{
-             background: 'linear-gradient(135deg, #f0fdf4 0%, #ffffff 50%, #dcfce7 100%)',
+             background: '#ffffff',
              position: 'relative',
              overflow: 'hidden'
            }}>
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-32 h-32 rounded-full opacity-20"
-               style={{ 
-                 background: 'radial-gradient(circle, #65cc8a, transparent)',
-                 animation: 'float 6s ease-in-out infinite'
-               }}></div>
-          <div className="absolute top-40 right-20 w-24 h-24 rounded-full opacity-15"
-               style={{ 
-                 background: 'radial-gradient(circle, #4ade80, transparent)',
-                 animation: 'float 8s ease-in-out infinite reverse'
-               }}></div>
-          <div className="absolute bottom-20 left-1/4 w-20 h-20 rounded-full opacity-10"
-               style={{ 
-                 background: 'radial-gradient(circle, #65cc8a, transparent)',
-                 animation: 'float 7s ease-in-out infinite'
-               }}></div>
-        </div>
+
         
         <div className="max-w-7xl mx-auto px-4 py-8">
           {/* Subscription Status Banner */}
           {subscriptionLoading ? (
             <div className="rounded-xl p-2 mb-4 text-white text-center shadow-md animate-pulse"
                  style={{
-                   background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                   boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                   background: '#fb923c',
+                   boxShadow: '0 4px 12px rgba(251, 146, 60, 0.3)'
                  }}>
               Consultando estado de tu suscripción...
             </div>
           ) : subscriptionStatus && ["active", "Aceptada", "on_trial"].includes(subscriptionStatus.status) ? (
             <div className="rounded-xl p-3 mb-4 text-white text-center shadow-lg flex flex-col items-center"
                  style={{
-                   background: 'linear-gradient(135deg, #4ade80, #22c55e)',
-                   boxShadow: '0 12px 24px rgba(101, 204, 138, 0.3)'
+                   background: '#fb923c',
+                   boxShadow: '0 4px 12px rgba(251, 146, 60, 0.3)'
                  }}>
               <div className="flex items-center gap-2 justify-center mb-1">
                 <CheckCircle className="w-5 h-5 animate-bounce" style={{ color: '#ffffff' }} />
@@ -520,8 +503,8 @@ export default function Pricing() {
           {/* Early Bird Banner */}
           <div className="rounded-xl p-2 mb-4 text-white text-center shadow-md"
                style={{
-                 background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                 boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                 background: '#fb923c',
+                 boxShadow: '0 4px 12px rgba(251, 146, 60, 0.3)'
                }}>
             <h2 className="text-sm font-bold tracking-tight text-white leading-tight">
               🎉 ¡Oferta Especial! Acceso Ilimitado por $29.99 USD/año -  por $2.49 USD/mes- ¡Ahorra 60%! 🎉
@@ -532,8 +515,8 @@ export default function Pricing() {
           {hasUsedTrial === false && (
             <div className="rounded-2xl p-3 mb-8 text-white text-center shadow-lg"
                  style={{
-                   background: 'linear-gradient(135deg, #4ade80, #22c55e)',
-                   boxShadow: '0 12px 24px rgba(101, 204, 138, 0.3)'
+                   background: '#fb923c',
+                   boxShadow: '0 4px 12px rgba(251, 146, 60, 0.3)'
                  }}>
               <div className="flex flex-col md:flex-row items-center justify-center gap-2">
                 <div className="flex items-center gap-2">
@@ -570,16 +553,15 @@ export default function Pricing() {
                 {plans.monthly.map((plan) => (
                   <div key={plan.name} className="rounded-2xl shadow-lg relative scale-105 transition-all duration-300 hover:shadow-xl w-full max-w-xs"
                        style={{
-                         background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-                         backdropFilter: 'blur(20px)',
-                         border: '1px solid rgba(101, 204, 138, 0.2)',
-                         boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                         background: '#ffffff',
+                         border: '1px solid rgba(0, 0, 0, 0.1)',
+                         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
                        }}>
                     <div className="absolute -top-2.5 left-1/2 transform -translate-x-1/2">
                       <div className="text-white px-3 py-0.5 rounded-full text-xs font-semibold shadow-lg"
                            style={{
-                             background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                             boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                             background: '#fb923c',
+                             boxShadow: '0 2px 8px rgba(251, 146, 60, 0.3)'
                            }}>
                         Más Popular
                       </div>
@@ -591,9 +573,10 @@ export default function Pricing() {
                         <div className="text-center">
                           <span className="text-3xl font-bold"
                                 style={{
-                                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                                  background: 'linear-gradient(135deg, #fb923c, #f97316)',
                                   WebkitBackgroundClip: 'text',
-                                  WebkitTextFillColor: 'transparent'
+                                  WebkitTextFillColor: 'transparent',
+                                  backgroundClip: 'text'
                                 }}>
                             ${plan.price}
                           </span>
@@ -643,7 +626,7 @@ export default function Pricing() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center justify-center gap-2 w-full mt-1 font-semibold text-xs transition-colors"
-                          style={{ color: '#65cc8a' }}
+                          style={{ color: '#fb923c' }}
                         >
                           <Youtube className="w-4 h-4" />
                           Ver tutorial de cómo pagar
@@ -660,16 +643,15 @@ export default function Pricing() {
                 {plans.yearly.map((plan) => (
                   <div key={plan.name} className="rounded-2xl shadow-lg relative scale-105 transition-all duration-300 hover:shadow-xl w-full max-w-xs"
                        style={{
-                         background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-                         backdropFilter: 'blur(20px)',
-                         border: '1px solid rgba(101, 204, 138, 0.2)',
-                         boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                         background: '#ffffff',
+                         border: '1px solid rgba(0, 0, 0, 0.1)',
+                         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
                        }}>
                     <div className="absolute -top-2.5 left-1/2 transform -translate-x-1/2">
                       <div className="text-white px-3 py-0.5 rounded-full text-xs font-semibold shadow-lg"
                            style={{
-                             background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                             boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                             background: '#fb923c',
+                             boxShadow: '0 2px 8px rgba(251, 146, 60, 0.3)'
                            }}>
                         Mejor Valor
                       </div>
@@ -682,9 +664,10 @@ export default function Pricing() {
                           <div className="flex items-center justify-center gap-2 mb-0.5">
                             <span className="text-3xl font-bold"
                                   style={{
-                                    background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                                    background: 'linear-gradient(135deg, #fb923c, #f97316)',
                                     WebkitBackgroundClip: 'text',
-                                    WebkitTextFillColor: 'transparent'
+                                    WebkitTextFillColor: 'transparent',
+                                    backgroundClip: 'text'
                                   }}>
                               ${plan.price}
                             </span>
@@ -703,7 +686,7 @@ export default function Pricing() {
                               </div>
                             </>
                           )}
-                          <div className="text-xs font-semibold mt-0.5" style={{ color: '#65cc8a' }}>
+                          <div className="text-xs font-semibold mt-0.5" style={{ color: '#fb923c' }}>
                             ¡Ahorra 60% - ${(parseFloat(plans.monthly[0].price) * 12 - parseFloat(plan.price)).toFixed(2)} USD al año!
                           </div>
                         </div>
@@ -755,9 +738,9 @@ export default function Pricing() {
                             className="w-full text-white h-9 text-sm font-bold transition-all duration-300 rounded-xl border shadow-md"
                             size="lg"
                             style={{
-                              background: 'linear-gradient(135deg, #4ade80, #22c55e)',
-                              boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)',
-                              border: '1px solid rgba(101, 204, 138, 0.3)'
+                              background: '#fb923c',
+                              boxShadow: '0 2px 8px rgba(251, 146, 60, 0.3)',
+                              border: '1px solid rgba(251, 146, 60, 0.3)'
                             }}
                             onClick={() => handleEpaycoPayment(plan)}
                           >
@@ -805,10 +788,9 @@ export default function Pricing() {
                 ].map((plan) => (
                   <div key={plan.name} className="rounded-2xl shadow-lg relative scale-105 transition-all duration-300 hover:shadow-xl w-full max-w-xs"
                        style={{
-                         background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-                         backdropFilter: 'blur(20px)',
-                         border: '1px solid rgba(101, 204, 138, 0.2)',
-                         boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                         background: '#ffffff',
+                         border: '1px solid rgba(0, 0, 0, 0.1)',
+                         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
                        }}>
                     <div className="p-3">
                       <h2 className="text-xl font-display font-bold mb-1" style={{ color: '#000000' }}>{plan.name}</h2>
@@ -817,9 +799,10 @@ export default function Pricing() {
                         <div className="text-center">
                           <span className="text-3xl font-bold"
                                 style={{
-                                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                                  background: 'linear-gradient(135deg, #fb923c, #f97316)',
                                   WebkitBackgroundClip: 'text',
-                                  WebkitTextFillColor: 'transparent'
+                                  WebkitTextFillColor: 'transparent',
+                                  backgroundClip: 'text'
                                 }}>
                             ${plan.price}
                           </span>
@@ -871,8 +854,8 @@ export default function Pricing() {
                           className="w-full text-white h-9 text-sm font-semibold transition-all duration-300 rounded-xl"
                           size="lg"
                           style={{
-                            background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                            boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                            background: '#fb923c',
+                            boxShadow: '0 2px 8px rgba(251, 146, 60, 0.3)'
                           }}
                           onClick={() => window.LemonSqueezy?.Url.Open(`https://profeplanner.lemonsqueezy.com/buy/${plan.productId}?embed=1&locale=es`)}
                           data-lemonsqueezy="true"
@@ -886,7 +869,7 @@ export default function Pricing() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center justify-center gap-2 w-full mt-1 font-semibold text-xs transition-colors"
-                          style={{ color: '#65cc8a' }}
+                          style={{ color: '#fb923c' }}
                         >
                           <Youtube className="w-4 h-4" />
                           Ver tutorial de cómo pagar
@@ -896,9 +879,9 @@ export default function Pricing() {
                             className="w-full text-white h-9 text-sm font-bold transition-all duration-300 rounded-xl border shadow-md"
                             size="lg"
                             style={{
-                              background: 'linear-gradient(135deg, #4ade80, #22c55e)',
-                              boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)',
-                              border: '1px solid rgba(101, 204, 138, 0.3)'
+                              background: '#fb923c',
+                              boxShadow: '0 2px 8px rgba(251, 146, 60, 0.3)',
+                              border: '1px solid rgba(251, 146, 60, 0.3)'
                             }}
                             onClick={() => handleEpaycoPayment(plan)}
                           >
@@ -919,12 +902,12 @@ export default function Pricing() {
         <div className="max-w-4xl mx-auto px-4 py-4">
           <div className="rounded-lg p-3 opacity-60 hover:opacity-100 transition-opacity duration-300"
                style={{
-                 background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                 border: '1px solid rgba(101, 204, 138, 0.2)'
+                 background: 'rgba(251, 146, 60, 0.1)',
+                 border: '1px solid rgba(251, 146, 60, 0.2)'
                }}>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <X className="w-3 h-3" style={{ color: '#65cc8a' }} />
+                <X className="w-3 h-3" style={{ color: '#fb923c' }} />
                 <span className="text-xs font-medium" style={{ color: '#000000' }}>Gestionar cuenta</span>
               </div>
               
@@ -934,9 +917,9 @@ export default function Pricing() {
                 className="px-3 py-1 rounded-md text-xs font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 size="sm"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.2), rgba(74, 222, 128, 0.2))',
+                  background: 'rgba(251, 146, 60, 0.2)',
                   color: '#000000',
-                  border: '1px solid rgba(101, 204, 138, 0.3)'
+                  border: '1px solid rgba(251, 146, 60, 0.3)'
                 }}
               >
                 {loading ? "..." : "Cancelar la suscripción"}
@@ -949,14 +932,13 @@ export default function Pricing() {
         <AlertDialog open={showCancelDialog} onOpenChange={setShowCancelDialog}>
           <AlertDialogContent className="sm:max-w-md"
                              style={{
-                               background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
-                               backdropFilter: 'blur(20px)',
-                               border: '1px solid rgba(101, 204, 138, 0.2)',
-                               boxShadow: '0 25px 50px rgba(101, 204, 138, 0.2)'
+                               background: '#ffffff',
+                               border: '1px solid rgba(0, 0, 0, 0.1)',
+                               boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
                              }}>
             <AlertDialogHeader>
               <AlertDialogTitle className="flex items-center gap-2"
-                               style={{ color: '#65cc8a' }}>
+                               style={{ color: '#fb923c' }}>
                 <AlertTriangle className="h-5 w-5" />
                 Cancelar Suscripción
               </AlertDialogTitle>
@@ -973,8 +955,8 @@ export default function Pricing() {
                 onClick={handleCancelSubscription}
                 className="text-white shadow-sm"
                 style={{
-                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                  boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                  background: '#fb923c',
+                  boxShadow: '0 2px 8px rgba(251, 146, 60, 0.3)'
                 }}
               >
                 {loading ? "Cancelando..." : "Sí, Cancelar"}
@@ -987,14 +969,13 @@ export default function Pricing() {
         <AlertDialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
           <AlertDialogContent className="sm:max-w-md"
                              style={{
-                               background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
-                               backdropFilter: 'blur(20px)',
-                               border: '1px solid rgba(101, 204, 138, 0.2)',
-                               boxShadow: '0 25px 50px rgba(101, 204, 138, 0.2)'
+                               background: '#ffffff',
+                               border: '1px solid rgba(0, 0, 0, 0.1)',
+                               boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
                              }}>
             <AlertDialogHeader>
               <AlertDialogTitle className="flex items-center gap-2"
-                               style={{ color: '#65cc8a' }}>
+                               style={{ color: '#fb923c' }}>
                 <CheckCircle className="h-5 w-5" />
                 Suscripción Cancelada
               </AlertDialogTitle>
@@ -1007,8 +988,8 @@ export default function Pricing() {
                 onClick={() => setShowSuccessDialog(false)}
                 className="text-white shadow-sm"
                 style={{
-                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                  boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                  background: '#fb923c',
+                  boxShadow: '0 2px 8px rgba(251, 146, 60, 0.3)'
                 }}
               >
                 Entendido
@@ -1021,14 +1002,13 @@ export default function Pricing() {
         <AlertDialog open={showNoSubscriptionDialog} onOpenChange={setShowNoSubscriptionDialog}>
           <AlertDialogContent className="sm:max-w-md"
                              style={{
-                               background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
-                               backdropFilter: 'blur(20px)',
-                               border: '1px solid rgba(101, 204, 138, 0.2)',
-                               boxShadow: '0 25px 50px rgba(101, 204, 138, 0.2)'
+                               background: '#ffffff',
+                               border: '1px solid rgba(0, 0, 0, 0.1)',
+                               boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
                              }}>
             <AlertDialogHeader>
               <AlertDialogTitle className="flex items-center gap-2"
-                               style={{ color: '#65cc8a' }}>
+                               style={{ color: '#fb923c' }}>
                 <Shield className="h-5 w-5" />
                 Sin Suscripción Activa
               </AlertDialogTitle>
@@ -1041,8 +1021,8 @@ export default function Pricing() {
                 onClick={() => setShowNoSubscriptionDialog(false)}
                 className="text-white shadow-sm"
                 style={{
-                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                  boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                  background: '#fb923c',
+                  boxShadow: '0 2px 8px rgba(251, 146, 60, 0.3)'
                 }}
               >
                 Entendido
@@ -1060,10 +1040,9 @@ export default function Pricing() {
           setShowFeedbackDialog(open)
         }}>
           <DialogContent style={{
-            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
-            backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(101, 204, 138, 0.2)',
-            boxShadow: '0 25px 50px rgba(101, 204, 138, 0.2)'
+            background: '#ffffff',
+            border: '1px solid rgba(0, 0, 0, 0.1)',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
           }}>
             <DialogHeader>
               <DialogTitle style={{ color: '#000000' }}>Tu suscripción fue cancelada</DialogTitle>
@@ -1078,10 +1057,10 @@ export default function Pricing() {
                   size="lg"
                   className="flex flex-col items-center gap-2"
                   style={feedbackType === "positive" ? {
-                    background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                    boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                    background: '#fb923c',
+                    boxShadow: '0 2px 8px rgba(251, 146, 60, 0.3)'
                   } : {
-                    border: '1px solid rgba(101, 204, 138, 0.3)',
+                    border: '1px solid rgba(251, 146, 60, 0.3)',
                     color: '#000000'
                   }}
                   onClick={() => setFeedbackType('positive')}
@@ -1094,10 +1073,10 @@ export default function Pricing() {
                   size="lg"
                   className="flex flex-col items-center gap-2"
                   style={feedbackType === "negative" ? {
-                    background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                    boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                    background: '#fb923c',
+                    boxShadow: '0 2px 8px rgba(251, 146, 60, 0.3)'
                   } : {
-                    border: '1px solid rgba(101, 204, 138, 0.3)',
+                    border: '1px solid rgba(251, 146, 60, 0.3)',
                     color: '#000000'
                   }}
                   onClick={() => setFeedbackType('negative')}
@@ -1112,9 +1091,8 @@ export default function Pricing() {
                   id="feedback-comment"
                   className="w-full min-h-[100px] p-2 rounded-md"
                   style={{
-                    border: '1px solid rgba(101, 204, 138, 0.3)',
-                    background: 'rgba(255, 255, 255, 0.9)',
-                    backdropFilter: 'blur(10px)'
+                    border: '1px solid rgba(0, 0, 0, 0.1)',
+                    background: '#ffffff'
                   }}
                   placeholder="¿Tienes algún comentario o sugerencia que nos ayude a mejorar?"
                   value={feedbackComment}
@@ -1126,8 +1104,8 @@ export default function Pricing() {
                   onClick={sendFeedback}
                   className="text-white"
                   style={{
-                    background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                    boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                    background: '#fb923c',
+                    boxShadow: '0 2px 8px rgba(251, 146, 60, 0.3)'
                   }}
                   disabled={!feedbackType || feedbackSending || feedbackSent}
                 >

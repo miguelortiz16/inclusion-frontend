@@ -84,46 +84,27 @@ export default function Comunidad() {
     <Layout>
       <div className="min-h-screen pb-10"
            style={{
-             background: 'linear-gradient(135deg, #f0fdf4 0%, #ffffff 50%, #dcfce7 100%)',
+             background: '#ffffff',
              position: 'relative',
              overflow: 'hidden'
            }}>
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-32 h-32 rounded-full opacity-20"
-               style={{ 
-                 background: 'radial-gradient(circle, #65cc8a, transparent)',
-                 animation: 'float 6s ease-in-out infinite'
-               }}></div>
-          <div className="absolute top-40 right-20 w-24 h-24 rounded-full opacity-15"
-               style={{ 
-                 background: 'radial-gradient(circle, #4ade80, transparent)',
-                 animation: 'float 8s ease-in-out infinite reverse'
-               }}></div>
-          <div className="absolute bottom-20 left-1/4 w-20 h-20 rounded-full opacity-10"
-               style={{ 
-                 background: 'radial-gradient(circle, #65cc8a, transparent)',
-                 animation: 'float 7s ease-in-out infinite'
-               }}></div>
-        </div>
+
         
         {/* Top search bar */}
         <div className="py-4 px-4 shadow-sm sticky top-0 z-10"
              style={{
-               background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-               backdropFilter: 'blur(20px)',
-               borderBottom: '1px solid rgba(101, 204, 138, 0.2)'
+               background: '#ffffff',
+               borderBottom: '1px solid rgba(0, 0, 0, 0.1)'
              }}>
           <div className="max-w-4xl mx-auto">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5" style={{ color: '#65cc8a' }} />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5" style={{ color: '#fb923c' }} />
               <Input
                 placeholder={t('community.inicio.searchPlaceholder')}
                 className="pl-12 pr-4 py-2.5 rounded-lg text-base transition-all"
                 style={{
-                  border: '1px solid rgba(101, 204, 138, 0.3)',
-                  background: 'rgba(255, 255, 255, 0.9)',
-                  backdropFilter: 'blur(10px)'
+                  border: '1px solid rgba(0, 0, 0, 0.1)',
+                  background: '#ffffff'
                 }}
                 value={searchQuery}
                 onChange={(e) => handleSearch(e.target.value)}
@@ -137,9 +118,8 @@ export default function Comunidad() {
             <Tabs defaultValue="feed">
               <TabsList className="p-1 rounded-lg shadow-sm"
                        style={{
-                         background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-                         backdropFilter: 'blur(20px)',
-                         border: '1px solid rgba(101, 204, 138, 0.2)'
+                         background: '#ffffff',
+                         border: '1px solid rgba(0, 0, 0, 0.1)'
                        }}>
                 <TabsTrigger value="feed" className="rounded-md transition-all"
                              style={{
@@ -157,30 +137,29 @@ export default function Comunidad() {
             <div className="w-full">
               <div className="rounded-xl overflow-hidden sticky top-24"
                    style={{
-                     background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-                     backdropFilter: 'blur(20px)',
-                     border: '1px solid rgba(101, 204, 138, 0.2)',
-                     boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                     background: '#ffffff',
+                     border: '1px solid rgba(0, 0, 0, 0.1)',
+                     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
                    }}>
                 <div className="p-5 flex flex-col items-center">
                   <div className="w-20 h-20 rounded-xl flex items-center justify-center text-white text-2xl font-medium mb-4 shadow-sm"
                        style={{
-                         background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                         boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                         background: '#fb923c',
+                         boxShadow: '0 4px 12px rgba(251, 146, 60, 0.3)'
                        }}>
                     {profile.name ? getInitials(profile.name) : 'M'}
                   </div>
                   <h2 className="text-lg font-semibold text-center mb-3" style={{ color: '#000000' }}>{profile.name || 'Nombre del profesor'}</h2>
                   <div className="w-full">
-                    <div className="text-sm font-medium text-center mb-2" style={{ color: '#65cc8a' }}>Materias:</div>
+                    <div className="text-sm font-medium text-center mb-2" style={{ color: '#fb923c' }}>Materias:</div>
                     {profile.subjects && profile.subjects.length > 0 ? (
                       <div className="flex flex-wrap justify-center gap-1.5">
                         {profile.subjects.map((subj, idx) => (
                           <span key={idx} className="rounded-lg px-2.5 py-1 text-xs font-medium"
                                 style={{
-                                  background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                                  color: '#65cc8a',
-                                  border: '1px solid rgba(101, 204, 138, 0.3)'
+                                  background: 'rgba(251, 146, 60, 0.1)',
+                                  color: '#fb923c',
+                                  border: '1px solid rgba(251, 146, 60, 0.3)'
                                 }}>{subj}</span>
                         ))}
                       </div>
@@ -197,19 +176,17 @@ export default function Comunidad() {
               {/* Nueva publicación */}
               <div className="mb-6 rounded-xl shadow-sm p-5"
                    style={{
-                     background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-                     backdropFilter: 'blur(20px)',
-                     border: '1px solid rgba(101, 204, 138, 0.2)',
-                     boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                     background: '#ffffff',
+                     border: '1px solid rgba(0, 0, 0, 0.1)',
+                     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
                    }}>
                 <div className="flex-1 relative">
                   <Input
                     placeholder={t('community.post.placeholder')}
                     className="pl-4 pr-10 py-2.5 rounded-lg transition-all"
                     style={{
-                      border: '1px solid rgba(101, 204, 138, 0.3)',
-                      background: 'rgba(255, 255, 255, 0.9)',
-                      backdropFilter: 'blur(10px)'
+                      border: '1px solid rgba(0, 0, 0, 0.1)',
+                      background: '#ffffff'
                     }}
                     value={newPost}
                     onChange={e => setNewPost(e.target.value)}
@@ -222,7 +199,7 @@ export default function Comunidad() {
                   />
                   <button
                     className="absolute right-3 top-1/2 transform -translate-y-1/2 transition-colors"
-                    style={{ color: '#65cc8a' }}
+                    style={{ color: '#fb923c' }}
                     onClick={handleNewPost}
                   >
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -244,20 +221,18 @@ export default function Comunidad() {
                 {loading ? (
                   <div className="flex items-center justify-center min-h-[200px] rounded-xl shadow-sm"
                        style={{
-                         background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-                         backdropFilter: 'blur(20px)',
-                         border: '1px solid rgba(101, 204, 138, 0.2)',
-                         boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                         background: '#ffffff',
+                         border: '1px solid rgba(0, 0, 0, 0.1)',
+                         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
                        }}>
                     <div className="text-center py-8" style={{ color: '#000000' }}>Cargando publicaciones...</div>
                   </div>
                 ) : filteredPosts.length === 0 ? (
                   <div className="flex items-center justify-center min-h-[200px] rounded-xl shadow-sm"
                        style={{
-                         background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-                         backdropFilter: 'blur(20px)',
-                         border: '1px solid rgba(101, 204, 138, 0.2)',
-                         boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+                         background: '#ffffff',
+                         border: '1px solid rgba(0, 0, 0, 0.1)',
+                         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
                        }}>
                     <div className="text-center py-8" style={{ color: '#000000' }}>No hay publicaciones.</div>
                   </div>
@@ -386,17 +361,16 @@ function ElegantPostCard({ post, t, setPosts, posts }: ElegantPostCardProps) {
   return (
     <div className="rounded-xl p-5 mb-4 transition-all hover:shadow-md"
          style={{
-           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-           backdropFilter: 'blur(20px)',
-           border: '1px solid rgba(101, 204, 138, 0.2)',
-           boxShadow: '0 16px 32px rgba(101, 204, 138, 0.1)'
+           background: '#ffffff',
+           border: '1px solid rgba(0, 0, 0, 0.1)',
+           boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
          }}>
       {/* Header */}
       <div className="flex items-center gap-3 mb-4">
         <div className="w-12 h-12 rounded-lg flex items-center justify-center text-base font-bold text-white shadow-sm"
              style={{
-               background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-               boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+               background: '#fb923c',
+               boxShadow: '0 2px 8px rgba(251, 146, 60, 0.3)'
              }}>
           {initials}
         </div>
@@ -404,7 +378,7 @@ function ElegantPostCard({ post, t, setPosts, posts }: ElegantPostCardProps) {
           <div className="font-medium leading-tight" style={{ color: '#000000' }}>{displayName}</div>
           <div className="text-xs leading-tight" style={{ color: '#000000' }}>{fecha}</div>
         </div>
-        <button className="transition-colors" style={{ color: '#65cc8a' }}>
+        <button className="transition-colors" style={{ color: '#fb923c' }}>
           <Share2 className="w-5 h-5" />
         </button>
       </div>
@@ -412,13 +386,13 @@ function ElegantPostCard({ post, t, setPosts, posts }: ElegantPostCardProps) {
       <div className="mb-4 whitespace-pre-line text-[15px] leading-relaxed" style={{ color: '#000000' }}>{post.content}</div>
       {/* Actions */}
       <div className="flex items-center gap-6 pt-4 pb-2 text-sm"
-           style={{ borderTop: '1px solid rgba(101, 204, 138, 0.2)' }}>
+           style={{ borderTop: '1px solid rgba(0, 0, 0, 0.1)' }}>
         <button
           className="flex items-center gap-1.5 font-medium transition-all"
-          style={{ color: hasLiked ? '#65cc8a' : '#000000' }}
+          style={{ color: hasLiked ? '#fb923c' : '#000000' }}
           onClick={handleLike}
         >
-          <svg className="w-5 h-5" fill={hasLiked ? '#65cc8a' : 'none'} stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <svg className="w-5 h-5" fill={hasLiked ? '#fb923c' : 'none'} stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
             <path d="M6 21h12a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-5.31l.95-4.57.03-.32a1 1 0 0 0-.99-1.11h-2.28a1 1 0 0 0-.99.79l-1.38 6.59A1 1 0 0 0 8 13h8" />
           </svg>
           Me gusta
@@ -435,8 +409,8 @@ function ElegantPostCard({ post, t, setPosts, posts }: ElegantPostCardProps) {
       <div className="flex items-center gap-2 sm:gap-3 mt-4 relative">
         <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center text-white font-bold text-xs sm:text-sm shadow-sm flex-shrink-0"
              style={{
-               background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-               boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+               background: '#fb923c',
+               boxShadow: '0 2px 8px rgba(251, 146, 60, 0.3)'
              }}>
           M
         </div>
@@ -444,9 +418,8 @@ function ElegantPostCard({ post, t, setPosts, posts }: ElegantPostCardProps) {
           ref={inputRef}
           className="flex-1 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-sm transition-all"
           style={{
-            border: '1px solid rgba(101, 204, 138, 0.3)',
-            background: 'rgba(255, 255, 255, 0.9)',
-            backdropFilter: 'blur(10px)'
+            border: '1px solid rgba(0, 0, 0, 0.1)',
+            background: '#ffffff'
           }}
           placeholder="Escribe un comentario..."
           value={comment}
@@ -457,7 +430,7 @@ function ElegantPostCard({ post, t, setPosts, posts }: ElegantPostCardProps) {
         <button
           ref={emojiBtnRef}
           className="text-lg sm:text-xl px-1.5 sm:px-2 transition-colors flex-shrink-0"
-          style={{ color: '#65cc8a' }}
+          style={{ color: '#fb923c' }}
           type="button"
           onClick={() => setShowEmojis(v => !v)}
           tabIndex={-1}
@@ -467,10 +440,9 @@ function ElegantPostCard({ post, t, setPosts, posts }: ElegantPostCardProps) {
         {showEmojis && (
           <div ref={emojiPanelRef} className="absolute bottom-12 right-0 rounded-lg shadow-lg p-2 flex flex-wrap gap-1 z-10"
                style={{
-                 background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
-                 backdropFilter: 'blur(20px)',
-                 border: '1px solid rgba(101, 204, 138, 0.2)',
-                 boxShadow: '0 20px 40px rgba(101, 204, 138, 0.2)'
+                 background: '#ffffff',
+                 border: '1px solid rgba(0, 0, 0, 0.1)',
+                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
                }}>
             {EMOJIS.map(e => (
               <button
@@ -491,8 +463,8 @@ function ElegantPostCard({ post, t, setPosts, posts }: ElegantPostCardProps) {
         <button
           className="text-white rounded-lg p-2 sm:p-2.5 transition-all disabled:opacity-50 shadow-sm flex-shrink-0"
           style={{
-            background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-            boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+            background: '#fb923c',
+            boxShadow: '0 2px 8px rgba(251, 146, 60, 0.3)'
           }}
           onClick={handleComment}
           disabled={sending}
@@ -503,20 +475,19 @@ function ElegantPostCard({ post, t, setPosts, posts }: ElegantPostCardProps) {
       {/* Comentarios */}
       <div className="mt-4 space-y-3 rounded-lg p-4"
            style={{
-             background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+             background: 'rgba(251, 146, 60, 0.1)'
            }}>
         {post.comments?.map((c: Comment, idx) => (
           <div key={idx} className="flex items-start gap-3 rounded-lg shadow-sm p-4"
                style={{
-                 background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-                 backdropFilter: 'blur(20px)',
-                 border: '1px solid rgba(101, 204, 138, 0.2)',
-                 boxShadow: '0 8px 16px rgba(101, 204, 138, 0.1)'
+                 background: '#ffffff',
+                 border: '1px solid rgba(0, 0, 0, 0.1)',
+                 boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)'
                }}>
             <div className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-base shadow-sm"
                  style={{
-                   background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                   boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                   background: '#fb923c',
+                   boxShadow: '0 2px 8px rgba(251, 146, 60, 0.3)'
                  }}>
               {getInitials(c.userName)}
             </div>

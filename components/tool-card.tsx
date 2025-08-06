@@ -54,10 +54,9 @@ export function ToolCard({
               <motion.div 
                 className="relative overflow-hidden rounded-2xl p-6 h-full cursor-pointer"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 253, 244, 0.9))',
-                  backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(101, 204, 138, 0.2)',
-                  boxShadow: '0 8px 32px rgba(101, 204, 138, 0.1)'
+                  background: '#ffffff',
+                  border: '1px solid rgba(0, 0, 0, 0.1)',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
                 }}
                 whileHover={{
                   y: -8,
@@ -78,7 +77,7 @@ export function ToolCard({
                 <motion.div 
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
+                    background: 'rgba(251, 146, 60, 0.1)',
                     borderRadius: '16px'
                   }}
                 />
@@ -90,7 +89,7 @@ export function ToolCard({
                       key={i}
                       className="absolute w-2 h-2 rounded-full"
                       style={{
-                        background: 'radial-gradient(circle, #65cc8a, transparent)',
+                        background: 'radial-gradient(circle, #fb923c, transparent)',
                         left: `${20 + i * 30}%`,
                         top: `${30 + i * 20}%`
                       }}
@@ -124,15 +123,15 @@ export function ToolCard({
                   >
                     <div className="w-16 h-16 rounded-2xl flex items-center justify-center relative overflow-hidden"
                          style={{
-                           background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.2), rgba(74, 222, 128, 0.2))',
-                           boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)',
-                           border: '1px solid rgba(101, 204, 138, 0.3)'
+                           background: 'rgba(251, 146, 60, 0.1)',
+                           boxShadow: '0 2px 8px rgba(251, 146, 60, 0.2)',
+                           border: '1px solid rgba(251, 146, 60, 0.2)'
                          }}>
                       {/* Icon glow effect */}
                       <motion.div
                         className="absolute inset-0 rounded-2xl"
                         style={{
-                          background: 'radial-gradient(circle, rgba(101, 204, 138, 0.3), transparent)'
+                          background: 'radial-gradient(circle, rgba(251, 146, 60, 0.3), transparent)'
                         }}
                         animate={{
                           scale: [1, 1.2, 1],
@@ -266,7 +265,7 @@ export function ToolCard({
                 <motion.div 
                   className="absolute bottom-0 left-0 right-0 h-1 overflow-hidden rounded-b-2xl"
                   style={{
-                    background: 'linear-gradient(90deg, #65cc8a, #4ade80, #22c55e)'
+                    background: 'linear-gradient(90deg, #fb923c, #f97316, #ea580c)'
                   }}
                   initial={{ scaleX: 0 }}
                   whileHover={{ scaleX: 1 }}
@@ -293,9 +292,9 @@ export function ToolCard({
                   <motion.span 
                     className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold absolute top-4 right-4"
                     style={{
-                      background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
+                      background: '#fb923c',
                       color: 'white',
-                      boxShadow: '0 4px 8px rgba(101, 204, 138, 0.3)'
+                      boxShadow: '0 4px 8px rgba(251, 146, 60, 0.3)'
                     }}
                     whileHover={{ scale: 1.1 }}
                   >
@@ -307,8 +306,8 @@ export function ToolCard({
                 <motion.div
                   className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.05), rgba(74, 222, 128, 0.05))',
-                    border: '1px solid rgba(101, 204, 138, 0.2)'
+                    background: 'rgba(251, 146, 60, 0.05)',
+                    border: '1px solid rgba(251, 146, 60, 0.2)'
                   }}
                 />
               </motion.div>
@@ -319,10 +318,9 @@ export function ToolCard({
           side="top" 
           className="max-w-xs p-4 bg-white border border-gray-200 shadow-xl rounded-xl font-montserrat z-[9999]"
           style={{
-            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
-            backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(101, 204, 138, 0.2)',
-            boxShadow: '0 20px 40px rgba(101, 204, 138, 0.2)'
+            background: '#ffffff',
+            border: '1px solid rgba(0, 0, 0, 0.1)',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
           }}
           sideOffset={10}
           align="start"

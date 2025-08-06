@@ -79,9 +79,9 @@ function LoadingSpinner() {
         }}
         className="bg-white rounded-xl p-8 shadow-lg flex flex-col items-center"
         style={{ 
-          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 253, 244, 0.95))',
+          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95))',
           backdropFilter: 'blur(10px)',
-          boxShadow: '0 20px 40px rgba(101, 204, 138, 0.2)'
+          boxShadow: '0 20px 40px rgba(251, 146, 60, 0.2)'
         }}
       >
         <motion.div
@@ -92,7 +92,7 @@ function LoadingSpinner() {
             ease: "linear"
           }}
         >
-          <Loader2 className="w-12 h-12 mb-4" style={{ color: '#65cc8a' }} />
+          <Loader2 className="w-12 h-12 mb-4" style={{ color: '#fb923c' }} />
         </motion.div>
         <motion.p 
           initial={{ opacity: 0, y: 10 }}
@@ -180,9 +180,9 @@ function ProgressIndicator({ currentStep }: { currentStep: number }) {
           }`}
           style={{
             backgroundColor: index + 1 === currentStep
-              ? '#65cc8a'
+              ? '#fb923c'
               : index + 1 < currentStep
-              ? '#4ade80'
+              ? '#f97316'
               : '#e5e7eb'
           }}
         />
@@ -484,12 +484,12 @@ export default function UnitPlanner() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
               style={{ 
-                background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                border: '1px solid rgba(101, 204, 138, 0.2)'
+                background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(249, 115, 22, 0.1))',
+                border: '1px solid rgba(251, 146, 60, 0.2)'
               }}
             >
-              <Sparkles className="w-5 h-5" style={{ color: '#65cc8a' }} />
-              <span className="text-sm font-medium" style={{ color: '#65cc8a' }}>{t('unitPlanner.newTool')}</span>
+              <Sparkles className="w-5 h-5" style={{ color: '#fb923c' }} />
+              <span className="text-sm font-medium" style={{ color: '#fb923c' }}>{t('unitPlanner.newTool')}</span>
             </motion.div>
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -497,8 +497,9 @@ export default function UnitPlanner() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="text-4xl font-bold mb-4 bg-clip-text text-transparent"
               style={{ 
-                background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                WebkitBackgroundClip: 'text'
+                background: 'linear-gradient(135deg, #fb923c, #f97316)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text'
               }}
             >
               {t('unitPlanner.title')}
@@ -519,16 +520,16 @@ export default function UnitPlanner() {
               className="bg-white rounded-xl p-8 shadow-lg max-w-md mx-auto border mb-16"
               style={{ 
                 background: '#ffffff',
-                border: '1px solid rgba(101, 204, 138, 0.2)',
-                boxShadow: '0 8px 16px rgba(101, 204, 138, 0.1)'
+                border: '1px solid rgba(251, 146, 60, 0.2)',
+                boxShadow: '0 8px 16px rgba(251, 146, 60, 0.1)'
               }}
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-lg flex items-center justify-center"
                      style={{ 
-                       background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                       background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(249, 115, 22, 0.1))'
                      }}>
-                  <BookOpen className="w-6 h-6" style={{ color: '#65cc8a' }} />
+                  <BookOpen className="w-6 h-6" style={{ color: '#fb923c' }} />
                 </div>
                 <div>
                   <h2 className="text-xl font-semibold text-gray-800">{t('unitPlanner.startPlanning')}</h2>
@@ -540,8 +541,8 @@ export default function UnitPlanner() {
                 size="lg"
                 onClick={startPlanning}
                 style={{ 
-                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                  boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                  background: 'linear-gradient(135deg, #fb923c, #f97316)',
+                  boxShadow: '0 8px 16px rgba(251, 146, 60, 0.3)'
                 }}
               >
                 {t('unitPlanner.letsStart')} <ArrowRight className="ml-2 w-5 h-5" />
@@ -559,9 +560,9 @@ export default function UnitPlanner() {
                   variant="outline" 
                   className="flex items-center gap-2 px-6 py-3 text-base font-medium shadow-sm hover:shadow-md transition-all duration-300"
                   style={{ 
-                    background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))',
-                    border: '1px solid rgba(101, 204, 138, 0.3)',
-                    color: '#65cc8a'
+                    background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(249, 115, 22, 0.1))',
+                    border: '1px solid rgba(251, 146, 60, 0.3)',
+                    color: '#fb923c'
                   }}
                 >
                   <Clock className="w-5 h-5" />
@@ -577,16 +578,16 @@ export default function UnitPlanner() {
               className="max-w-3xl mx-auto mb-12 bg-white rounded-xl p-6 shadow-lg border"
               style={{ 
                 background: '#ffffff',
-                border: '1px solid rgba(101, 204, 138, 0.2)',
-                boxShadow: '0 8px 16px rgba(101, 204, 138, 0.1)'
+                border: '1px solid rgba(251, 146, 60, 0.2)',
+                boxShadow: '0 8px 16px rgba(251, 146, 60, 0.1)'
               }}
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-lg flex items-center justify-center"
                      style={{ 
-                       background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                       background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(249, 115, 22, 0.1))'
                      }}>
-                  <BookOpen className="w-6 h-6" style={{ color: '#65cc8a' }} />
+                  <BookOpen className="w-6 h-6" style={{ color: '#fb923c' }} />
                 </div>
                 <div>
                   <h2 className="text-xl font-semibold text-gray-800">Tutorial: Cómo crear una planeación efectiva</h2>
@@ -619,17 +620,17 @@ export default function UnitPlanner() {
                 className="bg-white rounded-xl p-8 shadow-sm border cursor-pointer"
                 style={{ 
                   background: '#ffffff',
-                  border: '1px solid rgba(101, 204, 138, 0.2)',
-                  boxShadow: '0 4px 8px rgba(101, 204, 138, 0.1)'
+                  border: '1px solid rgba(251, 146, 60, 0.2)',
+                  boxShadow: '0 4px 8px rgba(251, 146, 60, 0.1)'
                 }}
                 onClick={() => setStep(1)}
               >
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-4"
                        style={{ 
-                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                         background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(249, 115, 22, 0.1))'
                        }}>
-                    <BrainCircuit className="w-6 h-6" style={{ color: '#65cc8a' }} />
+                    <BrainCircuit className="w-6 h-6" style={{ color: '#fb923c' }} />
                   </div>
                   <h3 className="text-lg font-medium text-gray-800">{t('unitPlanner.features.intelligentPlanning.title')}</h3>
                 </div>
@@ -641,17 +642,17 @@ export default function UnitPlanner() {
                 className="bg-white rounded-xl p-8 shadow-sm border cursor-pointer"
                 style={{ 
                   background: '#ffffff',
-                  border: '1px solid rgba(101, 204, 138, 0.2)',
-                  boxShadow: '0 4px 8px rgba(101, 204, 138, 0.1)'
+                  border: '1px solid rgba(251, 146, 60, 0.2)',
+                  boxShadow: '0 4px 8px rgba(251, 146, 60, 0.1)'
                 }}
                 onClick={() => setStep(1)}
               >
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-4"
                        style={{ 
-                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                         background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(249, 115, 22, 0.1))'
                        }}>
-                    <Target className="w-6 h-6" style={{ color: '#65cc8a' }} />
+                    <Target className="w-6 h-6" style={{ color: '#fb923c' }} />
                   </div>
                   <h3 className="text-lg font-medium text-gray-800">{t('unitPlanner.features.clearObjectives.title')}</h3>
                 </div>
@@ -663,17 +664,17 @@ export default function UnitPlanner() {
                 className="bg-white rounded-xl p-8 shadow-sm border cursor-pointer"
                 style={{ 
                   background: '#ffffff',
-                  border: '1px solid rgba(101, 204, 138, 0.2)',
-                  boxShadow: '0 4px 8px rgba(101, 204, 138, 0.1)'
+                  border: '1px solid rgba(251, 146, 60, 0.2)',
+                  boxShadow: '0 4px 8px rgba(251, 146, 60, 0.1)'
                 }}
                 onClick={() => setStep(1)}
               >
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-4"
                        style={{ 
-                         background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                         background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(249, 115, 22, 0.1))'
                        }}>
-                    <Calendar className="w-6 h-6" style={{ color: '#65cc8a' }} />
+                    <Calendar className="w-6 h-6" style={{ color: '#fb923c' }} />
                   </div>
                   <h3 className="text-lg font-medium text-gray-800">{t('unitPlanner.features.efficientOrganization.title')}</h3>
                 </div>
@@ -785,8 +786,8 @@ function UnitPlannerSteps({
       className="bg-white rounded-xl border shadow-sm p-8"
       style={{ 
         background: '#ffffff',
-        border: '1px solid rgba(101, 204, 138, 0.2)',
-        boxShadow: '0 8px 16px rgba(101, 204, 138, 0.1)'
+        border: '1px solid rgba(251, 146, 60, 0.2)',
+        boxShadow: '0 8px 16px rgba(251, 146, 60, 0.1)'
       }}
     >
       <ProgressIndicator currentStep={currentStep} />
@@ -838,7 +839,7 @@ function UnitPlannerSteps({
                 value={formData.nombreUnidad}
                 onChange={(e) => handleFieldChange('nombreUnidad', e.target.value)}
                 placeholder="Ej: La independencia de Colombia"
-                className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
+                className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
                   touched.nombreUnidad && errors.nombreUnidad ? 'border-red-500' : 'border-gray-300'
                 }`}
               />
@@ -867,7 +868,7 @@ function UnitPlannerSteps({
                     handleFieldChange("nivelEducativo", newValues)
                   }}
                 >
-                  <SelectTrigger className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
+                  <SelectTrigger                   className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
                     touched.nivelEducativo && errors.nivelEducativo ? 'border-red-500' : 'border-gray-300'
                   }`}>
                     <SelectValue>
@@ -959,7 +960,7 @@ function UnitPlannerSteps({
                   value={formData.asignatura}
                   onValueChange={(value) => handleFieldChange('asignatura', value)}
                 >
-                  <SelectTrigger className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
+                  <SelectTrigger                   className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
                     touched.asignatura && errors.asignatura ? 'border-red-500' : 'border-gray-300'
                   }`}>
                     <SelectValue placeholder="Selecciona la materia" />
@@ -1053,8 +1054,8 @@ function UnitPlannerSteps({
                 onClick={goNext}
                 className="flex-1 text-white"
                 style={{ 
-                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                  boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                  background: 'linear-gradient(135deg, #fb923c, #f97316)',
+                  boxShadow: '0 8px 16px rgba(251, 146, 60, 0.3)'
                 }}
                 disabled={touched.nombreUnidad && touched.asignatura && (!!errors.nombreUnidad || !!errors.asignatura)}
               >
@@ -1103,7 +1104,7 @@ function UnitPlannerSteps({
                   handleFieldChange('methodology', newMethodologies)
                 }}
               >
-                <SelectTrigger className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 ${
+                <SelectTrigger                 className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
                   touched.methodology && errors.methodology ? 'border-red-500' : 'border-gray-300'
                 }`}>
                   <SelectValue>
@@ -1240,7 +1241,7 @@ function UnitPlannerSteps({
                 value={formData.detallesUnidad}
                 onChange={(e) => handleFieldChange('detallesUnidad', e.target.value)}
                 placeholder="Describe los principales conceptos y habilidades que quieres que tus estudiantes desarrollen"
-                className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 min-h-[100px] ${
+                className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 min-h-[100px] ${
                   touched.detallesUnidad && errors.detallesUnidad ? 'border-red-500' : 'border-gray-300'
                 }`}
               />
@@ -1270,8 +1271,8 @@ function UnitPlannerSteps({
                 onClick={goNext}
                 className="flex-1 text-white"
                 style={{ 
-                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                  boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                  background: 'linear-gradient(135deg, #fb923c, #f97316)',
+                  boxShadow: '0 8px 16px rgba(251, 146, 60, 0.3)'
                 }}
                 disabled={touched.detallesUnidad && !!errors.detallesUnidad}
               >
@@ -1315,7 +1316,7 @@ function UnitPlannerSteps({
                 value={formData.estandaresObjetivos}
                 onChange={(e) => handleFieldChange('estandaresObjetivos', e.target.value)}
                 placeholder="Aquí puedes escribir los estándares y objetivos de aprendizaje, todos los detalles de la clase (actividades, contenidos, recursos y estrategias inclusivas), y puedes  incorporar los planes y programas de la Educación de enseñanza de tu país."
-                className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 min-h-[100px] ${
+                className={`w-full p-3 border rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 min-h-[100px] ${
                   touched.estandaresObjetivos && errors.estandaresObjetivos ? 'border-red-500' : 'border-gray-300'
                 }`}
               />
@@ -1355,8 +1356,8 @@ function UnitPlannerSteps({
                 onClick={goNext}
                 className="flex-1 text-white"
                 style={{ 
-                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                  boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                  background: 'linear-gradient(135deg, #fb923c, #f97316)',
+                  boxShadow: '0 8px 16px rgba(251, 146, 60, 0.3)'
                 }}
                 disabled={touched.estandaresObjetivos && !!errors.estandaresObjetivos}
               >
@@ -1380,10 +1381,10 @@ function UnitPlannerSteps({
               transition={{ duration: 0.5, delay: 0.3 }}
               className="w-12 h-12 rounded-lg flex items-center justify-center"
               style={{ 
-                background: 'linear-gradient(135deg, rgba(101, 204, 138, 0.1), rgba(74, 222, 128, 0.1))'
+                background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.1), rgba(249, 115, 22, 0.1))'
               }}
             >
-              <Calendar className="w-6 h-6" style={{ color: '#65cc8a' }} />
+              <Calendar className="w-6 h-6" style={{ color: '#fb923c' }} />
             </motion.div>
             <div>
               <h1 className="text-2xl font-semibold text-gray-800">Duración de la clase</h1>
@@ -1446,8 +1447,8 @@ function UnitPlannerSteps({
                 onClick={goNext}
                 className="flex-1 text-white"
                 style={{ 
-                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                  boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                  background: 'linear-gradient(135deg, #fb923c, #f97316)',
+                  boxShadow: '0 8px 16px rgba(251, 146, 60, 0.3)'
                 }}
               >
                 Ver vista previa
@@ -1527,8 +1528,8 @@ function UnitPlannerSteps({
                 onClick={onSubmit}
                 className="flex-1 text-white"
                 style={{ 
-                  background: 'linear-gradient(135deg, #65cc8a, #4ade80)',
-                  boxShadow: '0 8px 16px rgba(101, 204, 138, 0.3)'
+                  background: 'linear-gradient(135deg, #fb923c, #f97316)',
+                  boxShadow: '0 8px 16px rgba(251, 146, 60, 0.3)'
                 }}
                 disabled={isLoading}
               >

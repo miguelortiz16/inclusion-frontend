@@ -111,6 +111,16 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/workshop/cotejo/page.js"
+    ],
+    "/workshop/nivelacion-textos/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/workshop/nivelacion-textos/page.js"
+    ],
+    "/workshop/capacitacion-docentes/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/workshop/capacitacion-docentes/page.js"
     ]
   }
 }
